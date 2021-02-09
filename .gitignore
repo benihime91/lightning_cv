@@ -9,6 +9,8 @@
 _tmp*
 tmp*
 tags
+nbs/data/
+data/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
