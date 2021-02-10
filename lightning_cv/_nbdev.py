@@ -22,8 +22,7 @@ index = {"default_logger": "00a_utils.common.ipynb",
 
 modules = ["utils/common.py",
            "utils/data.py",
-           "data/transforms.py",
-           "data/datasets.py"]
+           "data/transforms.py"]
 
 doc_url = "https://benihime91.github.io/lightning_cv/"
 
