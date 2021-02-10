@@ -5,9 +5,10 @@ __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 index = {"default_logger": "00a_utils.common.ipynb",
          "imshow_tensor": "00a_utils.common.ipynb",
          "generate_random_id": "00a_utils.common.ipynb",
-         "logger": "01a_data.transforms.ipynb",
+         "logger": "01b_data.datasets.ipynb",
          "Urls": "00b_utils.data.ipynb",
          "download_data": "00b_utils.data.ipynb",
+         "Loaders": "00b_utils.data.ipynb",
          "pil_loader": "00b_utils.data.ipynb",
          "cv2_loader": "00b_utils.data.ipynb",
          "folder2df": "00b_utils.data.ipynb",
@@ -18,11 +19,13 @@ index = {"default_logger": "00a_utils.common.ipynb",
          "AlbumentationsTransform": "01a_data.transforms.ipynb",
          "ImagenetNoAugmentTransform": "01a_data.transforms.ipynb",
          "GenericImageTransform": "01a_data.transforms.ipynb",
-         "AugTransforms": "01a_data.transforms.ipynb"}
+         "AugTransforms": "01a_data.transforms.ipynb",
+         "ImageFolderDataset": "01b_data.datasets.ipynb"}
 
 modules = ["utils/common.py",
            "utils/data.py",
-           "data/transforms.py"]
+           "data/transforms.py",
+           "data/datasets.py"]
 
 doc_url = "https://benihime91.github.io/lightning_cv/"
 
