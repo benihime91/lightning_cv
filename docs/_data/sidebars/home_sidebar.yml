@@ -15,6 +15,12 @@ entries:
     - output: web,pdf
       title: Data Utility
       url: utils.data.html
+    - output: web,pdf
+      title: Transformation
+      url: data.transforms.html
+    - output: web,pdf
+      title: Title
+      url: data.datasets.html
     output: web
     title: lightning_cv
   output: web
