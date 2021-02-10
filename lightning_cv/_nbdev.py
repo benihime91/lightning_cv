@@ -2,19 +2,28 @@
 
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
-index = {"get_default_logger": "00_utils.common.ipynb",
-         "imshow_tensor": "00_utils.common.ipynb",
-         "generate_random_id": "00_utils.common.ipynb",
-         "logger": "00_utils.data.ipynb",
-         "Urls": "00_utils.data.ipynb",
-         "download_data": "00_utils.data.ipynb",
-         "pil_loader": "00_utils.data.ipynb",
-         "cv2_loader": "00_utils.data.ipynb",
-         "folder2df": "00_utils.data.ipynb",
-         "stratify_df": "00_utils.data.ipynb"}
+index = {"default_logger": "00a_utils.common.ipynb",
+         "imshow_tensor": "00a_utils.common.ipynb",
+         "generate_random_id": "00a_utils.common.ipynb",
+         "logger": "01a_data.transforms.ipynb",
+         "Urls": "00b_utils.data.ipynb",
+         "download_data": "00b_utils.data.ipynb",
+         "pil_loader": "00b_utils.data.ipynb",
+         "cv2_loader": "00b_utils.data.ipynb",
+         "folder2df": "00b_utils.data.ipynb",
+         "stratify_df": "00b_utils.data.ipynb",
+         "TransformCatalog": "01a_data.transforms.ipynb",
+         "ImageClassificationTransforms": "01a_data.transforms.ipynb",
+         "TorchvisionTransform": "01a_data.transforms.ipynb",
+         "AlbumentationsTransform": "01a_data.transforms.ipynb",
+         "ImagenetNoAugmentTransform": "01a_data.transforms.ipynb",
+         "GenericImageTransform": "01a_data.transforms.ipynb",
+         "AugTransforms": "01a_data.transforms.ipynb"}
 
 modules = ["utils/common.py",
-           "utils/data.py"]
+           "utils/data.py",
+           "data/transforms.py",
+           "data/datasets.py"]
 
 doc_url = "https://benihime91.github.io/lightning_cv/"
 
