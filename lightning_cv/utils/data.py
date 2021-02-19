@@ -63,7 +63,7 @@ def folder2df(folder: str, extension: list = None, shuffle: bool = False):
     "parses all the images in a folder into a pandas dataframe."
     extensions = ifnone(extension, IMG_EXTENSIONS)
 
-    image_list  = []
+    image_list = []
     target_list = []
 
     for f in os.listdir(folder):
@@ -71,7 +71,7 @@ def folder2df(folder: str, extension: list = None, shuffle: bool = False):
         if os.path.isdir(curr_path):
             for image in os.listdir(curr_path):
                 image_path = os.path.join(curr_path, image)
-                image_tgt  = f
+                image_tgt = f
                 if image_path.lower().endswith(extensions):
                     image_list.append(image_path)
                     target_list.append(image_tgt)
@@ -79,8 +79,9 @@ def folder2df(folder: str, extension: list = None, shuffle: bool = False):
     logger.info(f"Found {len(image_list)} files belonging to {len(set(target_list))} classes.")
     dataframe = pd.DataFrame()
     dataframe["image_id"] = image_list
-    dataframe["target"]   = target_list
-    if shuffle: dataframe = dataframe.sample(frac=1).reset_index(inplace=False, drop=True)
+    dataframe["target"] = target_list
+    if shuffle:
+        dataframe = dataframe.sample(frac=1).reset_index(inplace=False, drop=True)
     return dataframe
 
 # Cell

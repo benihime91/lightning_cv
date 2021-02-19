@@ -38,6 +38,7 @@ def imshow_tensor(inp, title=None, **kwargs):
     plt.pause(0.001)
 
 # Cell
+# hide
 def generate_random_id() -> str:
     "generates a random id"
     idx = uuid.uuid1()

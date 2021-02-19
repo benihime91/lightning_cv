@@ -26,7 +26,7 @@ from ..utils.common import Registry, default_logger
 from ..utils.data import Loaders
 
 # Cell
-# register Transformations
+# hide
 TransformCatalog = Registry('TRANSFORMS')
 
 # Cell
