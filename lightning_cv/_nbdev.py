@@ -20,7 +20,8 @@ index = {"default_logger": "00a_utils.common.ipynb",
          "ImagenetNoAugmentTransform": "01a_data.transforms.ipynb",
          "GenericImageTransform": "01a_data.transforms.ipynb",
          "AugTransforms": "01a_data.transforms.ipynb",
-         "ImageFolderDataset": "01b_data.datasets.ipynb"}
+         "ImageFolderDataset": "01b_data.datasets.ipynb",
+         "ImageCsvDataset": "01b_data.datasets.ipynb"}
 
 modules = ["utils/common.py",
            "utils/data.py",
