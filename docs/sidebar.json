@@ -3,7 +3,7 @@
     "Overview": "/",
     "Common utility functions": "utils.common.html",
     "Data Utility": "utils.data.html",
-    "Transformation": "data.transforms.html",
+    "Transform": "data.transforms.html",
     "Datasets": "data.datasets.html"
   }
 }

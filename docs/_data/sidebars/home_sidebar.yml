@@ -16,7 +16,7 @@ entries:
       title: Data Utility
       url: utils.data.html
     - output: web,pdf
-      title: Transformation
+      title: Transform
       url: data.transforms.html
     - output: web,pdf
       title: Datasets
