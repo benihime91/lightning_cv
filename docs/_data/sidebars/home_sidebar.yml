@@ -19,7 +19,7 @@ entries:
       title: Transformation
       url: data.transforms.html
     - output: web,pdf
-      title: Title
+      title: Datasets
       url: data.datasets.html
     output: web
     title: lightning_cv
