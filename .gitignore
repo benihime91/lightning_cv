@@ -10,6 +10,7 @@ _tmp*
 tmp*
 tags
 nbs/data/
+dev_nbs/MNIST
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
