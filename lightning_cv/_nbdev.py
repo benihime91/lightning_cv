@@ -2,31 +2,35 @@
 
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
-index = {"default_logger": "00a_utils.common.ipynb",
-         "imshow_tensor": "00a_utils.common.ipynb",
-         "generate_random_id": "00a_utils.common.ipynb",
-         "logger": "01b_data.datasets.ipynb",
-         "Urls": "00b_utils.data.ipynb",
-         "download_data": "00b_utils.data.ipynb",
-         "Loaders": "00b_utils.data.ipynb",
-         "pil_loader": "00b_utils.data.ipynb",
-         "cv2_loader": "00b_utils.data.ipynb",
-         "folder2df": "00b_utils.data.ipynb",
-         "stratify_df": "00b_utils.data.ipynb",
-         "TransformCatalog": "01a_data.transforms.ipynb",
-         "ImageClassificationTransforms": "01a_data.transforms.ipynb",
-         "TorchvisionTransform": "01a_data.transforms.ipynb",
-         "AlbumentationsTransform": "01a_data.transforms.ipynb",
-         "ImagenetNoAugmentTransform": "01a_data.transforms.ipynb",
-         "GenericImageTransform": "01a_data.transforms.ipynb",
-         "AugTransforms": "01a_data.transforms.ipynb",
-         "ImageFolderDataset": "01b_data.datasets.ipynb",
-         "ImageCsvDataset": "01b_data.datasets.ipynb"}
+index = {"default_logger": "00a_core.common.ipynb",
+         "FORMAT": "00a_core.common.ipynb",
+         "ROOT_NAME": "00a_core.common.ipynb",
+         "ABBREV_NAME": "00a_core.common.ipynb",
+         "imshow_tensor": "00a_core.common.ipynb",
+         "generate_random_id": "00a_core.common.ipynb",
+         "logger": "01b_classification.data.datasets.ipynb",
+         "Urls": "00b_core.data_utils.ipynb",
+         "download_data": "00b_core.data_utils.ipynb",
+         "Loaders": "00b_core.data_utils.ipynb",
+         "pil_loader": "00b_core.data_utils.ipynb",
+         "cv2_loader": "00b_core.data_utils.ipynb",
+         "folder2df": "00b_core.data_utils.ipynb",
+         "stratify_df": "00b_core.data_utils.ipynb",
+         "TransformCatalog": "01a_classification.data.transforms.ipynb",
+         "ImageClassificationTransforms": "01a_classification.data.transforms.ipynb",
+         "TorchvisionTransform": "01a_classification.data.transforms.ipynb",
+         "AlbumentationsTransform": "01a_classification.data.transforms.ipynb",
+         "ImagenetNoAugmentTransform": "01a_classification.data.transforms.ipynb",
+         "GenericImageTransform": "01a_classification.data.transforms.ipynb",
+         "AugTransforms": "01a_classification.data.transforms.ipynb",
+         "BaseClassificationDataset": "01b_classification.data.datasets.ipynb",
+         "ImageFolderDataset": "01b_classification.data.datasets.ipynb",
+         "ImageCsvDataset": "01b_classification.data.datasets.ipynb"}
 
-modules = ["utils/common.py",
-           "utils/data.py",
-           "data/transforms.py",
-           "data/datasets.py"]
+modules = ["core/common.py",
+           "core/data_utils.py",
+           "classification/data/transforms.py",
+           "classification/data/datasets.py"]
 
 doc_url = "https://benihime91.github.io/lightning_cv/"
 
