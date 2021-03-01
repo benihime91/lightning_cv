@@ -1,4 +1,4 @@
-# Welcome LightningCV
+# Welcome to LightningCV
 > LightningCV is a thin wrapper over <a href='https://github.com/PyTorchLightning/pytorch-lightning'>PyTorch Lightning</a> for tackling computer vision tasks with SOTA techniques.
 
 

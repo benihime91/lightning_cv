@@ -10,17 +10,17 @@ entries:
       title: Overview
       url: /
     - output: web,pdf
-      title: Common utility functions
-      url: utils.common.html
+      title: Common Utilities
+      url: core.common.html
     - output: web,pdf
       title: Data Utility
-      url: utils.data.html
+      url: core.data_utils.html
     - output: web,pdf
-      title: Transform
-      url: data.transforms.html
+      title: Transforms for ImageClassification
+      url: classification.data.transforms.html
     - output: web,pdf
       title: Datasets
-      url: data.datasets.html
+      url: classification.data.datasets.html
     output: web
     title: lightning_cv
   output: web

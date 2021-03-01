@@ -1,9 +1,9 @@
 {
   "lightning_cv": {
     "Overview": "/",
-    "Common utility functions": "utils.common.html",
-    "Data Utility": "utils.data.html",
-    "Transform": "data.transforms.html",
-    "Datasets": "data.datasets.html"
+    "Common Utilities": "core.common.html",
+    "Data Utility": "core.data_utils.html",
+    "Transforms for ImageClassification": "classification.data.transforms.html",
+    "Datasets": "classification.data.datasets.html"
   }
 }
