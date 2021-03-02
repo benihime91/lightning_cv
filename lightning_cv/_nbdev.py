@@ -2,7 +2,9 @@
 
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
-index = {"default_logger": "00a_core.common.ipynb",
+index = {"get_cfg": "00_config.ipynb",
+         "set_global_cfg": "00_config.ipynb",
+         "default_logger": "00a_core.common.ipynb",
          "FORMAT": "00a_core.common.ipynb",
          "ROOT_NAME": "00a_core.common.ipynb",
          "ABBREV_NAME": "00a_core.common.ipynb",
@@ -27,7 +29,8 @@ index = {"default_logger": "00a_core.common.ipynb",
          "ImageFolderDataset": "01b_classification.data.datasets.ipynb",
          "ImageCsvDataset": "01b_classification.data.datasets.ipynb"}
 
-modules = ["core/common.py",
+modules = ["config.py",
+           "core/common.py",
            "core/data_utils.py",
            "classification/data/transforms.py",
            "classification/data/datasets.py"]
