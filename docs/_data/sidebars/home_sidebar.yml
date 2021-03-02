@@ -25,11 +25,17 @@ entries:
       title: Learning Rate Schedules
       url: core.schedules.html
     - output: web,pdf
+      title: Layers
+      url: core.layers.html
+    - output: web,pdf
       title: Transforms for ImageClassification
       url: classification.data.transforms.html
     - output: web,pdf
       title: Datasets
       url: classification.data.datasets.html
+    - output: web,pdf
+      title: Image Classification Heads
+      url: classification.modelling.heads.html
     output: web
     title: lightning_cv
   output: web

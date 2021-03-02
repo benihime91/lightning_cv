@@ -6,7 +6,9 @@
     "Data Utility": "core.data_utils.html",
     "Optimizers": "core.optim.html",
     "Learning Rate Schedules": "core.schedules.html",
+    "Layers": "core.layers.html",
     "Transforms for ImageClassification": "classification.data.transforms.html",
-    "Datasets": "classification.data.datasets.html"
+    "Datasets": "classification.data.datasets.html",
+    "Image Classification Heads": "classification.modelling.heads.html"
   }
 }
