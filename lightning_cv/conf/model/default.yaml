@@ -1,0 +1,9 @@
+# @package MODEL
+BODY:
+  NAME: CnnBody
+  ARGUMENTS:
+    model_name: resnet18
+    cut: -2
+    act_layer: null
+    pretrained: true
+HEAD:

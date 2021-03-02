@@ -41,11 +41,13 @@ index = {"get_cfg": "00_config.ipynb",
          "requires_grad": "00e_core.layers.ipynb",
          "init_default": "00e_core.layers.ipynb",
          "cond_init": "00e_core.layers.ipynb",
+         "norm_types": "00e_core.layers.ipynb",
          "apply_leaf": "00e_core.layers.ipynb",
          "apply_init": "00e_core.layers.ipynb",
-         "norm_types": "00e_core.layers.ipynb",
          "set_bn_eval": "00e_core.layers.ipynb",
          "bn_types": "00e_core.layers.ipynb",
+         "trainable_params": "00e_core.layers.ipynb",
+         "params": "00e_core.layers.ipynb",
          "TransformCatalog": "01a_classification.data.transforms.ipynb",
          "ImageClassificationTransforms": "01a_classification.data.transforms.ipynb",
          "TorchvisionTransform": "01a_classification.data.transforms.ipynb",
@@ -55,7 +57,12 @@ index = {"get_cfg": "00_config.ipynb",
          "AugTransforms": "01a_classification.data.transforms.ipynb",
          "BaseClassificationDataset": "01b_classification.data.datasets.ipynb",
          "ImageFolderDataset": "01b_classification.data.datasets.ipynb",
-         "ImageCsvDataset": "01b_classification.data.datasets.ipynb"}
+         "ImageCsvDataset": "01b_classification.data.datasets.ipynb",
+         "has_pool_type": "01c_classification.modelling.body.ipynb",
+         "create_body": "01c_classification.modelling.body.ipynb",
+         "CnnBody": "01c_classification.modelling.body.ipynb",
+         "ModelBody": "01c_classification.modelling.body.ipynb",
+         "create_cnn_body": "01c_classification.modelling.body.ipynb"}
 
 modules = ["config.py",
            "core/common.py",
@@ -64,7 +71,8 @@ modules = ["config.py",
            "core/schedules.py",
            "core/layers.py",
            "classification/data/transforms.py",
-           "classification/data/datasets.py"]
+           "classification/data/datasets.py",
+           "classification/modelling/body.py"]
 
 doc_url = "https://benihime91.github.io/lightning_cv/"
 
