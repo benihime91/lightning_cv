@@ -34,8 +34,8 @@ entries:
       title: Datasets
       url: classification.data.datasets.html
     - output: web,pdf
-      title: Image Classification Heads
-      url: classification.modelling.heads.html
+      title: Model Body for Image Classification
+      url: classification.modelling.body.html
     output: web
     title: lightning_cv
   output: web

@@ -9,6 +9,6 @@
     "Layers": "core.layers.html",
     "Transforms for ImageClassification": "classification.data.transforms.html",
     "Datasets": "classification.data.datasets.html",
-    "Image Classification Heads": "classification.modelling.heads.html"
+    "Model Body for Image Classification": "classification.modelling.body.html"
   }
 }
