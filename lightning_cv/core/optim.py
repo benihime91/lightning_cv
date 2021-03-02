@@ -11,7 +11,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 from torch.optim.optimizer import Optimizer, required
 
-from timm.optim import Lookahead, RAdam
+from timm.optim import Lookahead, RAdam, RMSpropTF
 from fastcore.all import delegates
 
 # Cell
