@@ -10,6 +10,9 @@ entries:
       title: Overview
       url: /
     - output: web,pdf
+      title: Config API
+      url: config.html
+    - output: web,pdf
       title: Common Utilities
       url: core.common.html
     - output: web,pdf

@@ -1,6 +1,7 @@
 {
   "lightning_cv": {
     "Overview": "/",
+    "Config API": "config.html",
     "Common Utilities": "core.common.html",
     "Data Utility": "core.data_utils.html",
     "Transforms for ImageClassification": "classification.data.transforms.html",
