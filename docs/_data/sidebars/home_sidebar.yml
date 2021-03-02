@@ -19,6 +19,12 @@ entries:
       title: Data Utility
       url: core.data_utils.html
     - output: web,pdf
+      title: Optimizers
+      url: core.optim.html
+    - output: web,pdf
+      title: Learning Rate Schedules
+      url: core.schedules.html
+    - output: web,pdf
       title: Transforms for ImageClassification
       url: classification.data.transforms.html
     - output: web,pdf

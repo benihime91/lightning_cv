@@ -4,6 +4,8 @@
     "Config API": "config.html",
     "Common Utilities": "core.common.html",
     "Data Utility": "core.data_utils.html",
+    "Optimizers": "core.optim.html",
+    "Learning Rate Schedules": "core.schedules.html",
     "Transforms for ImageClassification": "classification.data.transforms.html",
     "Datasets": "classification.data.datasets.html"
   }
