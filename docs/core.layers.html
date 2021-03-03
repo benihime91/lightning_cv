@@ -325,92 +325,7 @@ From : <a href="https://github.com/fastai/fastai/blob/master/fastai/layers.py">h
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="MishJitAutoFn" class="doc_header"><code>class</code> <code>MishJitAutoFn</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/core/layers.py#L102" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>MishJitAutoFn</code>() :: <code>Function</code></p>
-</blockquote>
-<p>Records operation history and defines formulas for differentiating ops.</p>
-<p>See the Note on extending the autograd engine for more details on how to use
-this class: <a href="https://pytorch.org/docs/stable/notes/extending.html#extending-torch-autograd">https://pytorch.org/docs/stable/notes/extending.html#extending-torch-autograd</a></p>
-<p>Every operation performed on :class:<code>Tensor</code> s creates a new function
-object, that performs the computation, and records that it happened.
-The history is retained in the form of a DAG of functions, with edges
-denoting data dependencies (<code>input &lt;- output</code>). Then, when backward is
-called, the graph is processed in the topological ordering, by calling
-:func:<code>backward</code> methods of each :class:<code>Function</code> object, and passing
-returned gradients on to next :class:<code>Function</code> s.</p>
-<p>Normally, the only way users interact with functions is by creating
-subclasses and defining new operations. This is a recommended way of
-extending torch.autograd.</p>
-<p>Examples::</p>
-
-<pre><code>&gt;&gt;&gt; class Exp(Function):
-&gt;&gt;&gt;
-&gt;&gt;&gt;     @staticmethod
-&gt;&gt;&gt;     def forward(ctx, i):
-&gt;&gt;&gt;         result = i.exp()
-&gt;&gt;&gt;         ctx.save_for_backward(result)
-&gt;&gt;&gt;         return result
-&gt;&gt;&gt;
-&gt;&gt;&gt;     @staticmethod
-&gt;&gt;&gt;     def backward(ctx, grad_output):
-&gt;&gt;&gt;         result, = ctx.saved_tensors
-&gt;&gt;&gt;         return grad_output * result
-&gt;&gt;&gt;
-&gt;&gt;&gt; #Use it by calling the apply method:
-&gt;&gt;&gt; output = Exp.apply(input)</code></pre>
-
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-<div class="output_markdown rendered_html output_subarea ">
-<h4 id="mish" class="doc_header"><code>mish</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/core/layers.py#L113" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>mish</code>(<strong><code>x</code></strong>)</p>
-</blockquote>
-
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-<div class="output_markdown rendered_html output_subarea ">
-<h2 id="Mish" class="doc_header"><code>class</code> <code>Mish</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/core/layers.py#L117" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Mish</code>(<strong><code>inplace</code></strong>=<em><code>True</code></em>) :: <code>Module</code></p>
+<h2 id="Mish" class="doc_header"><code>class</code> <code>Mish</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/core/layers.py#L118" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Mish</code>(<strong><code>inplace</code></strong>=<em><code>True</code></em>) :: <code>Module</code></p>
 </blockquote>
 <p>Mish Activation function</p>
 
@@ -433,12 +348,12 @@ extending torch.autograd.</p>
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Registery of Common Activation Functions -</p>
-<blockquote><p>To add a activation function to the registery simply do :&gt;```python&gt; SomeActivation() # activation function
-ActivationCatalog.register(SomeActivation)</p>
-<h1 id="accesss-it-via">accesss it via<a class="anchor-link" href="#accesss-it-via"> </a></h1><p>act_func = ActivationCatalog.get("SomeActivation")
-```</p>
-</blockquote>
+<h2 id="Registery-of-Common-Activation-Functions--">Registery of Common Activation Functions -<a class="anchor-link" href="#Registery-of-Common-Activation-Functions--"> </a></h2><p>To add a activation function to the registery simply do :</p>
+<div class="highlight"><pre><span></span><span class="n">SomeActivation</span><span class="p">()</span> <span class="c1"># activation function</span>
+<span class="n">ActivationCatalog</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">SomeActivation</span><span class="p">)</span>
+<span class="c1"># accesss it via</span>
+<span class="n">act_func</span> <span class="o">=</span> <span class="n">ActivationCatalog</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;SomeActivation&quot;</span><span class="p">)</span>
+</pre></div>
 
 </div>
 </div>
@@ -450,9 +365,51 @@ ActivationCatalog.register(SomeActivation)</p>
 </div>
     {% endraw %}
 
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Registry of ACTIVATIONS:
+╒════════════╤══════════════════════════════════════════════════╕
+│ Names      │ Objects                                          │
+╞════════════╪══════════════════════════════════════════════════╡
+│ Mish       │ &lt;class &#39;__main__.Mish&#39;&gt;                          │
+├────────────┼──────────────────────────────────────────────────┤
+│ LeakyReLU  │ &lt;class &#39;torch.nn.modules.activation.LeakyReLU&#39;&gt;  │
+├────────────┼──────────────────────────────────────────────────┤
+│ ReLU       │ &lt;class &#39;torch.nn.modules.activation.ReLU&#39;&gt;       │
+├────────────┼──────────────────────────────────────────────────┤
+│ GELU       │ &lt;class &#39;torch.nn.modules.activation.GELU&#39;&gt;       │
+├────────────┼──────────────────────────────────────────────────┤
+│ Sigmoid    │ &lt;class &#39;torch.nn.modules.activation.Sigmoid&#39;&gt;    │
+├────────────┼──────────────────────────────────────────────────┤
+│ SiLU       │ &lt;class &#39;torch.nn.modules.activation.SiLU&#39;&gt;       │
+├────────────┼──────────────────────────────────────────────────┤
+│ Tanh       │ &lt;class &#39;torch.nn.modules.activation.Tanh&#39;&gt;       │
+├────────────┼──────────────────────────────────────────────────┤
+│ LogSoftmax │ &lt;class &#39;torch.nn.modules.activation.LogSoftmax&#39;&gt; │
+├────────────┼──────────────────────────────────────────────────┤
+│ Softmax    │ &lt;class &#39;torch.nn.modules.activation.Softmax&#39;&gt;    │
+╘════════════╧══════════════════════════════════════════════════╛
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Helper-functions">Helper functions<a class="anchor-link" href="#Helper-functions"> </a></h2>
+<h2 id="Features">Features<a class="anchor-link" href="#Features"> </a></h2>
 </div>
 </div>
 </div>
@@ -467,7 +424,7 @@ ActivationCatalog.register(SomeActivation)</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="num_features_model" class="doc_header"><code>num_features_model</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/core/layers.py#L139" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>num_features_model</code>(<strong><code>m</code></strong>, <strong><code>ch_int</code></strong>:<code>int</code>=<em><code>3</code></em>)</p>
+<h4 id="num_features_model" class="doc_header"><code>num_features_model</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/core/layers.py#L140" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>num_features_model</code>(<strong><code>m</code></strong>, <strong><code>ch_int</code></strong>:<code>int</code>=<em><code>3</code></em>)</p>
 </blockquote>
 <p>Return the number of output features for <code>m</code>.</p>
 
@@ -508,8 +465,7 @@ ActivationCatalog.register(SomeActivation)</p>
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Model Init</strong></p>
-
+<h2 id="Model-Init">Model Init<a class="anchor-link" href="#Model-Init"> </a></h2>
 </div>
 </div>
 </div>
@@ -524,7 +480,7 @@ ActivationCatalog.register(SomeActivation)</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="requires_grad" class="doc_header"><code>requires_grad</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/core/layers.py#L157" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>requires_grad</code>(<strong><code>m</code></strong>)</p>
+<h4 id="requires_grad" class="doc_header"><code>requires_grad</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/core/layers.py#L158" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>requires_grad</code>(<strong><code>m</code></strong>)</p>
 </blockquote>
 <p>Check if the first parameter of <code>m</code> requires grad or not</p>
 
@@ -576,7 +532,7 @@ ActivationCatalog.register(SomeActivation)</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="init_default" class="doc_header"><code>init_default</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/core/layers.py#L163" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>init_default</code>(<strong><code>m</code></strong>, <strong><code>func</code></strong>=<em><code>kaiming_normal_</code></em>)</p>
+<h4 id="init_default" class="doc_header"><code>init_default</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/core/layers.py#L164" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>init_default</code>(<strong><code>m</code></strong>, <strong><code>func</code></strong>=<em><code>kaiming_normal_</code></em>)</p>
 </blockquote>
 <p>Initialize <code>m</code> weights with <code>func</code> and set <code>bias</code> to 0.</p>
 
@@ -631,7 +587,7 @@ ActivationCatalog.register(SomeActivation)</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="cond_init" class="doc_header"><code>cond_init</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/core/layers.py#L173" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>cond_init</code>(<strong><code>m</code></strong>, <strong><code>func</code></strong>)</p>
+<h4 id="cond_init" class="doc_header"><code>cond_init</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/core/layers.py#L174" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>cond_init</code>(<strong><code>m</code></strong>, <strong><code>func</code></strong>)</p>
 </blockquote>
 <p>Apply <a href="/lightning_cv/core.layers.html#init_default"><code>init_default</code></a> to <code>m</code> unless it's a batchnorm module</p>
 
@@ -692,7 +648,7 @@ ActivationCatalog.register(SomeActivation)</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="apply_leaf" class="doc_header"><code>apply_leaf</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/core/layers.py#L178" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>apply_leaf</code>(<strong><code>m</code></strong>, <strong><code>f</code></strong>)</p>
+<h4 id="apply_leaf" class="doc_header"><code>apply_leaf</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/core/layers.py#L179" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>apply_leaf</code>(<strong><code>m</code></strong>, <strong><code>f</code></strong>)</p>
 </blockquote>
 <p>Apply <code>f</code> to children of <code>m</code>.</p>
 
@@ -745,7 +701,7 @@ ActivationCatalog.register(SomeActivation)</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="apply_init" class="doc_header"><code>apply_init</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/core/layers.py#L185" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>apply_init</code>(<strong><code>m</code></strong>, <strong><code>func</code></strong>=<em><code>kaiming_normal_</code></em>)</p>
+<h4 id="apply_init" class="doc_header"><code>apply_init</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/core/layers.py#L186" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>apply_init</code>(<strong><code>m</code></strong>, <strong><code>func</code></strong>=<em><code>kaiming_normal_</code></em>)</p>
 </blockquote>
 <p>Initialize all non-batchnorm layers of <code>m</code> with <code>func</code>.</p>
 
@@ -801,7 +757,7 @@ ActivationCatalog.register(SomeActivation)</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="set_bn_eval" class="doc_header"><code>set_bn_eval</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/core/layers.py#L192" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>set_bn_eval</code>(<strong><code>m</code></strong>:<code>Module</code>)</p>
+<h4 id="set_bn_eval" class="doc_header"><code>set_bn_eval</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/core/layers.py#L193" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>set_bn_eval</code>(<strong><code>m</code></strong>:<code>Module</code>)</p>
 </blockquote>
 <p>Set bn layers in eval mode for all recursive children of <code>m</code>.</p>
 
@@ -824,8 +780,7 @@ ActivationCatalog.register(SomeActivation)</p>
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Model Paramters</strong></p>
-
+<h2 id="Model-Paramters">Model Paramters<a class="anchor-link" href="#Model-Paramters"> </a></h2>
 </div>
 </div>
 </div>
@@ -840,7 +795,7 @@ ActivationCatalog.register(SomeActivation)</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="trainable_params" class="doc_header"><code>trainable_params</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/core/layers.py#L202" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>trainable_params</code>(<strong><code>m</code></strong>)</p>
+<h4 id="trainable_params" class="doc_header"><code>trainable_params</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/core/layers.py#L203" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>trainable_params</code>(<strong><code>m</code></strong>)</p>
 </blockquote>
 <p>Return all trainable parameters of <code>m</code></p>
 
@@ -872,7 +827,7 @@ ActivationCatalog.register(SomeActivation)</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="params" class="doc_header"><code>params</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/core/layers.py#L207" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>params</code>(<strong><code>m</code></strong>)</p>
+<h4 id="params" class="doc_header"><code>params</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/core/layers.py#L208" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>params</code>(<strong><code>m</code></strong>)</p>
 </blockquote>
 <p>Return all parameters of <code>m</code></p>
 
