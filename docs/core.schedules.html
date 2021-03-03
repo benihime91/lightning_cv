@@ -54,7 +54,7 @@ nb_path: "nbs/00d_core.schedules.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="LRMultiplier" class="doc_header"><code>class</code> <code>LRMultiplier</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/core/schedules.py#L13" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>LRMultiplier</code>(<strong><code>optimizer</code></strong>:<code>Optimizer</code>, <strong><code>multiplier</code></strong>:<code>ParamScheduler</code>, <strong><code>max_iter</code></strong>:<code>int</code>, <strong><code>last_iter</code></strong>:<code>int</code>=<em><code>-1</code></em>) :: <code>_LRScheduler</code></p>
+<h2 id="LRMultiplier" class="doc_header"><code>class</code> <code>LRMultiplier</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/core/schedules.py#L14" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>LRMultiplier</code>(<strong><code>optimizer</code></strong>:<code>Optimizer</code>, <strong><code>multiplier</code></strong>:<code>ParamScheduler</code>, <strong><code>max_iter</code></strong>:<code>int</code>, <strong><code>last_iter</code></strong>:<code>int</code>=<em><code>-1</code></em>) :: <code>_LRScheduler</code></p>
 </blockquote>
 <p>A LRScheduler which uses fvcore  <code>ParamScheduler</code> to multiply the
 learning rate of each param in the optimizer.
@@ -160,7 +160,7 @@ not change during training.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="FlatCos" class="doc_header"><code>FlatCos</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/core/schedules.py#L59" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>FlatCos</code>(<strong><code>optimizer</code></strong>:<code>Optimizer</code>, <strong><code>pct_start</code></strong>:<code>float</code>, <strong><code>max_iters</code></strong>:<code>int</code>)</p>
+<h4 id="FlatCos" class="doc_header"><code>FlatCos</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/core/schedules.py#L60" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>FlatCos</code>(<strong><code>optimizer</code></strong>:<code>Optimizer</code>, <strong><code>pct_start</code></strong>:<code>float</code>, <strong><code>max_iters</code></strong>:<code>int</code>)</p>
 </blockquote>
 <p>Schedule the LearningRate at flat <code>lr</code> for <code>pct_start</code> of <code>max_iters</code> before cosine annealing.
 Inspired From - <a href="https://docs.fast.ai/callback.schedule.html#Learner.fit_flat_cos">https://docs.fast.ai/callback.schedule.html#Learner.fit_flat_cos</a></p>
@@ -254,7 +254,7 @@ Inspired From - <a href="https://docs.fast.ai/callback.schedule.html#Learner.fit
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="WarmupParamScheduler" class="doc_header"><code>class</code> <code>WarmupParamScheduler</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/core/schedules.py#L75" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>WarmupParamScheduler</code>(<strong><code>scheduler</code></strong>:<code>ParamScheduler</code>, <strong><code>warmup_factor</code></strong>:<code>float</code>, <strong><code>warmup_length</code></strong>:<code>float</code>, <strong><code>warmup_method</code></strong>:<code>str</code>=<em><code>'linear'</code></em>) :: <code>CompositeParamScheduler</code></p>
+<h2 id="WarmupParamScheduler" class="doc_header"><code>class</code> <code>WarmupParamScheduler</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/core/schedules.py#L76" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>WarmupParamScheduler</code>(<strong><code>scheduler</code></strong>:<code>ParamScheduler</code>, <strong><code>warmup_factor</code></strong>:<code>float</code>, <strong><code>warmup_length</code></strong>:<code>float</code>, <strong><code>warmup_method</code></strong>:<code>str</code>=<em><code>'linear'</code></em>) :: <code>CompositeParamScheduler</code></p>
 </blockquote>
 <p>Add an initial warmup stage to another scheduler.
 From - <a href="https://github.com/facebookresearch/fvcore/blob/master/fvcore/common/param_scheduler.py">https://github.com/facebookresearch/fvcore/blob/master/fvcore/common/param_scheduler.py</a></p>
@@ -287,7 +287,7 @@ From - <a href="https://github.com/facebookresearch/fvcore/blob/master/fvcore/co
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="WarmupCosineLR" class="doc_header"><code>WarmupCosineLR</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/core/schedules.py#L102" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>WarmupCosineLR</code>(<strong><code>optimizer</code></strong>:<code>Optimizer</code>, <strong><code>warmup_iters</code></strong>:<code>int</code>, <strong><code>max_iters</code></strong>:<code>int</code>)</p>
+<h4 id="WarmupCosineLR" class="doc_header"><code>WarmupCosineLR</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/core/schedules.py#L103" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>WarmupCosineLR</code>(<strong><code>optimizer</code></strong>:<code>Optimizer</code>, <strong><code>warmup_iters</code></strong>:<code>int</code>, <strong><code>max_iters</code></strong>:<code>int</code>)</p>
 </blockquote>
 <p>Linearly increase <code>lr</code> for <code>warmup_iters</code> before cosine annealing.</p>
 
@@ -373,7 +373,7 @@ From - <a href="https://github.com/facebookresearch/fvcore/blob/master/fvcore/co
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="WarmupLinearLR" class="doc_header"><code>WarmupLinearLR</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/core/schedules.py#L111" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>WarmupLinearLR</code>(<strong><code>optimizer</code></strong>:<code>Optimizer</code>, <strong><code>warmup_iters</code></strong>:<code>int</code>, <strong><code>max_iters</code></strong>:<code>int</code>)</p>
+<h4 id="WarmupLinearLR" class="doc_header"><code>WarmupLinearLR</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/core/schedules.py#L112" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>WarmupLinearLR</code>(<strong><code>optimizer</code></strong>:<code>Optimizer</code>, <strong><code>warmup_iters</code></strong>:<code>int</code>, <strong><code>max_iters</code></strong>:<code>int</code>)</p>
 </blockquote>
 <p>Linearly increase <code>lr</code> for <code>warmup_iters</code> before linearly decreasing the <code>lr</code></p>
 
@@ -459,7 +459,7 @@ From - <a href="https://github.com/facebookresearch/fvcore/blob/master/fvcore/co
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="WarmupConstantLR" class="doc_header"><code>WarmupConstantLR</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/core/schedules.py#L120" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>WarmupConstantLR</code>(<strong><code>optimizer</code></strong>:<code>Optimizer</code>, <strong><code>warmup_iters</code></strong>:<code>int</code>, <strong><code>max_iters</code></strong>:<code>int</code>)</p>
+<h4 id="WarmupConstantLR" class="doc_header"><code>WarmupConstantLR</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/core/schedules.py#L121" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>WarmupConstantLR</code>(<strong><code>optimizer</code></strong>:<code>Optimizer</code>, <strong><code>warmup_iters</code></strong>:<code>int</code>, <strong><code>max_iters</code></strong>:<code>int</code>)</p>
 </blockquote>
 <p>Linearly increase <code>lr</code> for <code>warmup_iters</code> after which keep <code>lr</code> at constant value</p>
 
@@ -515,6 +515,361 @@ From - <a href="https://github.com/facebookresearch/fvcore/blob/master/fvcore/co
 
 <div class="output_png output_subarea ">
 <img src="data:image/png;base64,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
+"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="LR_SCHEDULER_REGISTERY">LR_SCHEDULER_REGISTERY<a class="anchor-link" href="#LR_SCHEDULER_REGISTERY"> </a></h2><blockquote><p>Registery of LRSchedulers</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">LR_SCHEDULER_REGISTERY</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Registry of LRSchedulers:
+╒═════════════════════════════╤════════════════════════════════════════════════════════════════╕
+│ Names                       │ Objects                                                        │
+╞═════════════════════════════╪════════════════════════════════════════════════════════════════╡
+│ OneCycleLR                  │ &lt;class &#39;torch.optim.lr_scheduler.OneCycleLR&#39;&gt;                  │
+├─────────────────────────────┼────────────────────────────────────────────────────────────────┤
+│ CosineAnnealingWarmRestarts │ &lt;class &#39;torch.optim.lr_scheduler.CosineAnnealingWarmRestarts&#39;&gt; │
+├─────────────────────────────┼────────────────────────────────────────────────────────────────┤
+│ StepLR                      │ &lt;class &#39;torch.optim.lr_scheduler.StepLR&#39;&gt;                      │
+├─────────────────────────────┼────────────────────────────────────────────────────────────────┤
+│ MultiStepLR                 │ &lt;class &#39;torch.optim.lr_scheduler.MultiStepLR&#39;&gt;                 │
+├─────────────────────────────┼────────────────────────────────────────────────────────────────┤
+│ ExponentialLR               │ &lt;class &#39;torch.optim.lr_scheduler.ExponentialLR&#39;&gt;               │
+├─────────────────────────────┼────────────────────────────────────────────────────────────────┤
+│ ReduceLROnPlateau           │ &lt;class &#39;torch.optim.lr_scheduler.ReduceLROnPlateau&#39;&gt;           │
+├─────────────────────────────┼────────────────────────────────────────────────────────────────┤
+│ MultiplicativeLR            │ &lt;class &#39;torch.optim.lr_scheduler.MultiplicativeLR&#39;&gt;            │
+├─────────────────────────────┼────────────────────────────────────────────────────────────────┤
+│ FlatCos                     │ &lt;function FlatCos at 0x7f8371b22670&gt;                           │
+├─────────────────────────────┼────────────────────────────────────────────────────────────────┤
+│ WarmupCosineLR              │ &lt;function WarmupCosineLR at 0x7f8371dc7820&gt;                    │
+├─────────────────────────────┼────────────────────────────────────────────────────────────────┤
+│ WarmupLinearLR              │ &lt;function WarmupLinearLR at 0x7f8371dd9b80&gt;                    │
+├─────────────────────────────┼────────────────────────────────────────────────────────────────┤
+│ WarmupConstantLR            │ &lt;function WarmupConstantLR at 0x7f8371dc7af0&gt;                  │
+╘═════════════════════════════╧════════════════════════════════════════════════════════════════╛</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="create_scheduler" class="doc_header"><code>create_scheduler</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/core/schedules.py#L155" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>create_scheduler</code>(<strong><code>opt</code></strong>:<code>Optimizer</code>, <strong><code>cfg</code></strong>:<code>DictConfig</code>, <strong><code>n_epochs</code></strong>:<code>int</code>, <strong><code>n_steps</code></strong>:<code>int</code>)</p>
+</blockquote>
+<p>Instantiate a scheduler from <a href="/lightning_cv/core.schedules.html#LR_SCHEDULER_REGISTERY"><code>LR_SCHEDULER_REGISTERY</code></a> given <code>opt</code> from <code>cfg</code>, <code>n_epochs</code> &amp; <code>n_steps</code>.</p>
+<blockquote><p>Note: Returned scheduler will be in a format similar
+<a href="https://pytorch-lightning.readthedocs.io/en/latest/common/optimizers.html">scheduler configuration</a>
+in pytorch lightning.</p>
+</blockquote>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">lightning_cv.config</span> <span class="kn">import</span> <span class="n">get_cfg</span>
+<span class="kn">from</span> <span class="nn">omegaconf</span> <span class="kn">import</span> <span class="n">OmegaConf</span>
+
+<span class="n">cfg</span> <span class="o">=</span> <span class="n">get_cfg</span><span class="p">(</span><span class="n">strict</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">OmegaConf</span><span class="o">.</span><span class="n">to_yaml</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">SCHEDULER</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>NAME: FlatCos
+ARGUMENTS:
+  pct_start: 0.72
+  max_iters: null
+INTERVAL: step
+FREQUENCY: 1
+MONITOR: null
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">epoch</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">batch_nb</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">True</span><span class="p">))]</span>
+<span class="n">optim</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+
+<span class="n">scheduler</span> <span class="o">=</span> <span class="n">create_scheduler</span><span class="p">(</span><span class="n">optim</span><span class="p">,</span> <span class="n">cfg</span><span class="p">,</span> <span class="n">n_epochs</span><span class="o">=</span><span class="n">epoch</span><span class="p">,</span> <span class="n">n_steps</span><span class="o">=</span><span class="n">batch_nb</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">scheduler</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>{&#39;scheduler&#39;: &lt;__main__.LRMultiplier object at 0x7f8376169dc0&gt;, &#39;monitor&#39;: None, &#39;interval&#39;: &#39;step&#39;, &#39;frequency&#39;: 1}
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">lrs</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epoch</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">batch_nb</span><span class="p">):</span>
+        <span class="n">scheduler</span><span class="p">[</span><span class="s2">&quot;scheduler&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+        <span class="n">lrs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">scheduler</span><span class="p">[</span><span class="s2">&quot;scheduler&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">get_lr</span><span class="p">())</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lrs</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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
+"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If you want to use <code>OneCycleScheduler</code></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>{% include note.html content='The scheduler that you want to use must be registerd in the <a href="/lightning_cv/core.schedules.html#LR_SCHEDULER_REGISTERY"><code>LR_SCHEDULER_REGISTERY</code></a> registery for <a href="/lightning_cv/core.schedules.html#create_scheduler"><code>create_scheduler</code></a> to work. Also if the scheduler you use requires <code>max_iters</code>, <code>epochs</code>, <code>steps_per_epoch</code> in <code>ARGUMENTS</code> and if these are None then <code>lightning_cv</code> will automatically set these values for you.' %}</p>
+
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cfg</span> <span class="o">=</span> <span class="n">get_cfg</span><span class="p">(</span><span class="n">strict</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">SCHEDULER</span><span class="o">.</span><span class="n">NAME</span> <span class="o">=</span> <span class="s2">&quot;OneCycleLR&quot;</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">SCHEDULER</span><span class="o">.</span><span class="n">ARGUMENTS</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">max_lr</span><span class="o">=</span><span class="mf">1e-03</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">steps_per_epoch</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">anneal_strategy</span><span class="o">=</span><span class="s1">&#39;cos&#39;</span><span class="p">,</span> <span class="n">cycle_momentum</span><span class="o">=</span><span class="kc">True</span><span class="p">,)</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">SCHEDULER</span><span class="o">.</span><span class="n">INTERVAL</span> <span class="o">=</span> <span class="s2">&quot;step&quot;</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">SCHEDULER</span><span class="o">.</span><span class="n">FREQUENCY</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">OmegaConf</span><span class="o">.</span><span class="n">to_yaml</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">SCHEDULER</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>NAME: OneCycleLR
+ARGUMENTS:
+  max_lr: 0.001
+  epochs: null
+  steps_per_epoch: null
+  anneal_strategy: cos
+  cycle_momentum: true
+INTERVAL: step
+FREQUENCY: 1
+MONITOR: null
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">epoch</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">batch_nb</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">True</span><span class="p">))]</span>
+<span class="n">optim</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+
+<span class="n">scheduler</span> <span class="o">=</span> <span class="n">create_scheduler</span><span class="p">(</span><span class="n">optim</span><span class="p">,</span> <span class="n">cfg</span><span class="p">,</span> <span class="n">n_epochs</span><span class="o">=</span><span class="n">epoch</span><span class="p">,</span> <span class="n">n_steps</span><span class="o">=</span><span class="n">batch_nb</span><span class="p">)</span>
+
+<span class="n">lrs</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epoch</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">batch_nb</span><span class="p">):</span>
+        <span class="n">scheduler</span><span class="p">[</span><span class="s2">&quot;scheduler&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+        <span class="n">lrs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">scheduler</span><span class="p">[</span><span class="s2">&quot;scheduler&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">get_lr</span><span class="p">())</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lrs</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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
 "
 >
 </div>

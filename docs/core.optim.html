@@ -61,7 +61,7 @@ nb_path: "nbs/00c_core.optim.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="Ranger" class="doc_header"><code>Ranger</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/core/optim.py#L18" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>Ranger</code>(<strong><code>params</code></strong>:<code>Iterable</code>[<code>T_co</code>], <strong><code>betas</code></strong>:<code>Tuple</code>[<code>float</code>, <code>float</code>]=<em><code>(0.95, 0.999)</code></em>, <strong><code>eps</code></strong>:<code>float</code>=<em><code>1e-05</code></em>, <strong><code>k</code></strong>:<code>int</code>=<em><code>6</code></em>, <strong><code>alpha</code></strong>:<code>float</code>=<em><code>0.5</code></em>, <strong><code>lr</code></strong>=<em><code>0.001</code></em>, <strong><code>weight_decay</code></strong>=<em><code>0</code></em>)</p>
+<h4 id="Ranger" class="doc_header"><code>Ranger</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/core/optim.py#L19" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>Ranger</code>(<strong><code>params</code></strong>:<code>Iterable</code>[<code>T_co</code>], <strong><code>betas</code></strong>:<code>Tuple</code>[<code>float</code>, <code>float</code>]=<em><code>(0.95, 0.999)</code></em>, <strong><code>eps</code></strong>:<code>float</code>=<em><code>1e-05</code></em>, <strong><code>k</code></strong>:<code>int</code>=<em><code>6</code></em>, <strong><code>alpha</code></strong>:<code>float</code>=<em><code>0.5</code></em>, <strong><code>lr</code></strong>=<em><code>0.001</code></em>, <strong><code>weight_decay</code></strong>=<em><code>0</code></em>)</p>
 </blockquote>
 <p>Convenience method for <code>Lookahead</code> with <code>RAdam</code></p>
 
@@ -100,7 +100,7 @@ nb_path: "nbs/00c_core.optim.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="RangerGC" class="doc_header"><code>class</code> <code>RangerGC</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/core/optim.py#L25" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>RangerGC</code>(<strong><code>params</code></strong>:<code>Iterable</code>[<code>T_co</code>], <strong><code>lr</code></strong>:<code>float</code>=<em><code>0.001</code></em>, <strong><code>alpha</code></strong>:<code>float</code>=<em><code>0.5</code></em>, <strong><code>k</code></strong>:<code>int</code>=<em><code>6</code></em>, <strong><code>N_sma_threshhold</code></strong>:<code>int</code>=<em><code>5</code></em>, <strong><code>betas</code></strong>:<code>Tuple</code>[<code>float</code>, <code>float</code>]=<em><code>(0.95, 0.999)</code></em>, <strong><code>eps</code></strong>:<code>float</code>=<em><code>1e-05</code></em>, <strong><code>weight_decay</code></strong>:<code>Union</code>[<code>float</code>, <code>int</code>]=<em><code>0</code></em>, <strong><code>use_gc</code></strong>:<code>bool</code>=<em><code>True</code></em>, <strong><code>gc_conv_only</code></strong>:<code>bool</code>=<em><code>False</code></em>) :: <code>Optimizer</code></p>
+<h2 id="RangerGC" class="doc_header"><code>class</code> <code>RangerGC</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/core/optim.py#L26" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>RangerGC</code>(<strong><code>params</code></strong>:<code>Iterable</code>[<code>T_co</code>], <strong><code>lr</code></strong>:<code>float</code>=<em><code>0.001</code></em>, <strong><code>alpha</code></strong>:<code>float</code>=<em><code>0.5</code></em>, <strong><code>k</code></strong>:<code>int</code>=<em><code>6</code></em>, <strong><code>N_sma_threshhold</code></strong>:<code>int</code>=<em><code>5</code></em>, <strong><code>betas</code></strong>:<code>Tuple</code>[<code>float</code>, <code>float</code>]=<em><code>(0.95, 0.999)</code></em>, <strong><code>eps</code></strong>:<code>float</code>=<em><code>1e-05</code></em>, <strong><code>weight_decay</code></strong>:<code>Union</code>[<code>float</code>, <code>int</code>]=<em><code>0</code></em>, <strong><code>use_gc</code></strong>:<code>bool</code>=<em><code>True</code></em>, <strong><code>gc_conv_only</code></strong>:<code>bool</code>=<em><code>False</code></em>) :: <code>Optimizer</code></p>
 </blockquote>
 <p>Ranger deep learning optimizer - RAdam + Lookahead + Gradient Centralization, combined into one optimizer.
 From - <a href="https://github.com/lessw2020/Ranger-Deep-Learning-Optimizer/blob/master/ranger/ranger.py">https://github.com/lessw2020/Ranger-Deep-Learning-Optimizer/blob/master/ranger/ranger.py</a></p>
@@ -140,7 +140,7 @@ From - <a href="https://github.com/lessw2020/Ranger-Deep-Learning-Optimizer/blob
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="SGDP" class="doc_header"><code>class</code> <code>SGDP</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/core/optim.py#L167" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>SGDP</code>(<strong><code>params</code></strong>:<code>Iterable</code>[<code>T_co</code>], <strong><code>lr</code></strong>=<em><code>&lt;required parameter&gt;</code></em>, <strong><code>momentum</code></strong>:<code>Union</code>[<code>float</code>, <code>int</code>]=<em><code>0</code></em>, <strong><code>dampening</code></strong>:<code>Union</code>[<code>float</code>, <code>int</code>]=<em><code>0</code></em>, <strong><code>weight_decay</code></strong>:<code>Union</code>[<code>float</code>, <code>int</code>]=<em><code>0</code></em>, <strong><code>nesterov</code></strong>:<code>bool</code>=<em><code>False</code></em>, <strong><code>eps</code></strong>:<code>float</code>=<em><code>1e-08</code></em>, <strong><code>delta</code></strong>:<code>float</code>=<em><code>0.1</code></em>, <strong><code>wd_ratio</code></strong>:<code>Union</code>[<code>float</code>, <code>int</code>]=<em><code>0.1</code></em>) :: <code>Optimizer</code></p>
+<h2 id="SGDP" class="doc_header"><code>class</code> <code>SGDP</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/core/optim.py#L168" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>SGDP</code>(<strong><code>params</code></strong>:<code>Iterable</code>[<code>T_co</code>], <strong><code>lr</code></strong>=<em><code>&lt;required parameter&gt;</code></em>, <strong><code>momentum</code></strong>:<code>Union</code>[<code>float</code>, <code>int</code>]=<em><code>0</code></em>, <strong><code>dampening</code></strong>:<code>Union</code>[<code>float</code>, <code>int</code>]=<em><code>0</code></em>, <strong><code>weight_decay</code></strong>:<code>Union</code>[<code>float</code>, <code>int</code>]=<em><code>0</code></em>, <strong><code>nesterov</code></strong>:<code>bool</code>=<em><code>False</code></em>, <strong><code>eps</code></strong>:<code>float</code>=<em><code>1e-08</code></em>, <strong><code>delta</code></strong>:<code>float</code>=<em><code>0.1</code></em>, <strong><code>wd_ratio</code></strong>:<code>Union</code>[<code>float</code>, <code>int</code>]=<em><code>0.1</code></em>) :: <code>Optimizer</code></p>
 </blockquote>
 <p>SGDP Optimizer Implementation copied from <a href="https://github.com/clovaai/AdamP/blob/master/adamp/sgdp.py">https://github.com/clovaai/AdamP/blob/master/adamp/sgdp.py</a></p>
 
@@ -179,7 +179,7 @@ From - <a href="https://github.com/lessw2020/Ranger-Deep-Learning-Optimizer/blob
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="AdamP" class="doc_header"><code>class</code> <code>AdamP</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/core/optim.py#L250" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>AdamP</code>(<strong><code>params</code></strong>:<code>Iterable</code>[<code>T_co</code>], <strong><code>lr</code></strong>:<code>Union</code>[<code>float</code>, <code>int</code>]=<em><code>0.001</code></em>, <strong><code>betas</code></strong>:<code>Tuple</code>[<code>float</code>, <code>float</code>]=<em><code>(0.9, 0.999)</code></em>, <strong><code>eps</code></strong>:<code>float</code>=<em><code>1e-08</code></em>, <strong><code>weight_decay</code></strong>:<code>Union</code>[<code>float</code>, <code>int</code>]=<em><code>0</code></em>, <strong><code>delta</code></strong>:<code>float</code>=<em><code>0.1</code></em>, <strong><code>wd_ratio</code></strong>:<code>float</code>=<em><code>0.1</code></em>, <strong><code>nesterov</code></strong>:<code>bool</code>=<em><code>False</code></em>) :: <code>Optimizer</code></p>
+<h2 id="AdamP" class="doc_header"><code>class</code> <code>AdamP</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/core/optim.py#L251" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>AdamP</code>(<strong><code>params</code></strong>:<code>Iterable</code>[<code>T_co</code>], <strong><code>lr</code></strong>:<code>Union</code>[<code>float</code>, <code>int</code>]=<em><code>0.001</code></em>, <strong><code>betas</code></strong>:<code>Tuple</code>[<code>float</code>, <code>float</code>]=<em><code>(0.9, 0.999)</code></em>, <strong><code>eps</code></strong>:<code>float</code>=<em><code>1e-08</code></em>, <strong><code>weight_decay</code></strong>:<code>Union</code>[<code>float</code>, <code>int</code>]=<em><code>0</code></em>, <strong><code>delta</code></strong>:<code>float</code>=<em><code>0.1</code></em>, <strong><code>wd_ratio</code></strong>:<code>float</code>=<em><code>0.1</code></em>, <strong><code>nesterov</code></strong>:<code>bool</code>=<em><code>False</code></em>) :: <code>Optimizer</code></p>
 </blockquote>
 <p>AdamP Optimizer Implementation copied from <a href="https://github.com/clovaai/AdamP/blob/master/adamp/adamp.py">https://github.com/clovaai/AdamP/blob/master/adamp/adamp.py</a></p>
 
@@ -241,6 +241,207 @@ With Recurrent Neural Networks &lt;https://arxiv.org/pdf/1308.0850v5.pdf&gt;</co
     lr_in_momentum (bool, optional): learning rate scaling is included in the momentum buffer
         update as per defaults in Tensorflow</p>
 
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="OPTIM_REGISTERY">OPTIM_REGISTERY<a class="anchor-link" href="#OPTIM_REGISTERY"> </a></h2><blockquote><p><code>Registery</code> of Optimizers</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Registry of OPTIMIZERS:
+╒══════════╤═════════════════════════════════════╕
+│ Names    │ Objects                             │
+╞══════════╪═════════════════════════════════════╡
+│ SGD      │ &lt;class &#39;torch.optim.sgd.SGD&#39;&gt;       │
+├──────────┼─────────────────────────────────────┤
+│ SGDP     │ &lt;class &#39;__main__.SGDP&#39;&gt;             │
+├──────────┼─────────────────────────────────────┤
+│ Adam     │ &lt;class &#39;torch.optim.adam.Adam&#39;&gt;     │
+├──────────┼─────────────────────────────────────┤
+│ AdamW    │ &lt;class &#39;torch.optim.adamw.AdamW&#39;&gt;   │
+├──────────┼─────────────────────────────────────┤
+│ AdamP    │ &lt;class &#39;__main__.AdamP&#39;&gt;            │
+├──────────┼─────────────────────────────────────┤
+│ Ranger   │ &lt;function Ranger at 0x7f972710f430&gt; │
+├──────────┼─────────────────────────────────────┤
+│ RangerGC │ &lt;class &#39;__main__.RangerGC&#39;&gt;         │
+╘══════════╧═════════════════════════════════════╛</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="create_optimizer" class="doc_header"><code>create_optimizer</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/core/optim.py#L363" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>create_optimizer</code>(<strong><code>params</code></strong>:<code>Iterable</code>[<code>T_co</code>], <strong><code>cfg</code></strong>=<em><code>None</code></em>)</p>
+</blockquote>
+<p>Instante an optimizer from <code>OPTIM_REGISTRY</code> given <code>params</code> with lightning_cv <code>cfg</code></p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Creating an Optimizer using <a href="/lightning_cv/core.optim.html#create_optimizer"><code>create_optimizer</code></a> from LightningCv config -</p>
+
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">lightning_cv.config</span> <span class="kn">import</span> <span class="n">get_cfg</span>
+<span class="kn">from</span> <span class="nn">omegaconf</span> <span class="kn">import</span> <span class="n">DictConfig</span><span class="p">,</span> <span class="n">OmegaConf</span>
+
+<span class="n">cfg</span> <span class="o">=</span> <span class="n">get_cfg</span><span class="p">(</span><span class="n">strict</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">OmegaConf</span><span class="o">.</span><span class="n">to_yaml</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">OPTIMIZER</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>NAME: Ranger
+ARGUMENTS:
+  betas:
+  - 0.95
+  - 0.999
+  eps: 1.0e-05
+  weight_decay: 0.01
+  k: 6
+  alpha: 0.5
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">p1</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">params</span><span class="o">=</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))],</span> <span class="n">lr</span><span class="o">=</span><span class="mf">1e-04</span><span class="p">,</span> <span class="n">weight_decay</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">p2</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">params</span><span class="o">=</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))],</span> <span class="n">lr</span><span class="o">=</span><span class="mf">1e-02</span><span class="p">,</span> <span class="n">weight_decay</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="p">[</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">]</span>
+<span class="n">opt</span> <span class="o">=</span> <span class="n">create_optimizer</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">cfg</span><span class="p">)</span>
+<span class="n">opt</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Lookahead (
+Parameter Group 0
+    betas: [0.95, 0.999]
+    eps: 1e-05
+    lookahead_alpha: 0.5
+    lookahead_k: 6
+    lookahead_step: 0
+    lr: 0.0001
+    weight_decay: 0
+
+Parameter Group 1
+    betas: [0.95, 0.999]
+    eps: 1e-05
+    lookahead_alpha: 0.5
+    lookahead_k: 6
+    lookahead_step: 0
+    lr: 0.01
+    weight_decay: 0.1
+)</pre>
 </div>
 
 </div>

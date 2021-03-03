@@ -165,13 +165,6 @@ nb_path: "nbs/01c_classification.modelling.body.ipynb"
     
 <div class="cell border-box-sizing code_cell rendered">
 
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-
 <div class="output_wrapper">
 <div class="output">
 
@@ -189,6 +182,13 @@ nb_path: "nbs/01c_classification.modelling.body.ipynb"
 
 </div>
 </div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
 
 </div>
     {% endraw %}
@@ -312,7 +312,7 @@ nb_path: "nbs/01c_classification.modelling.body.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="TorchvisionBody" class="doc_header"><code>class</code> <code>TorchvisionBody</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/classification/modelling/body.py#L95" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>TorchvisionBody</code>(<strong><code>model_name</code></strong>:<code>str</code>, <strong><code>in_chans</code></strong>:<code>int</code>=<em><code>3</code></em>, <strong><code>pretrained</code></strong>:<code>bool</code>=<em><code>True</code></em>, <strong><code>cut</code></strong>=<em><code>None</code></em>) :: <code>Module</code></p>
+<h2 id="TorchvisionCnnBody" class="doc_header"><code>class</code> <code>TorchvisionCnnBody</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/classification/modelling/body.py#L95" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>TorchvisionCnnBody</code>(<strong><code>model_name</code></strong>:<code>str</code>, <strong><code>in_chans</code></strong>:<code>int</code>=<em><code>3</code></em>, <strong><code>pretrained</code></strong>:<code>bool</code>=<em><code>True</code></em>, <strong><code>cut</code></strong>=<em><code>None</code></em>) :: <code>Module</code></p>
 </blockquote>
 <p>default <code>nn.Module</code> to create a body for vision applications from <code>torchvision.models</code></p>
 
@@ -335,7 +335,9 @@ nb_path: "nbs/01c_classification.modelling.body.ipynb"
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="ModelBody-Registery">ModelBody Registery<a class="anchor-link" href="#ModelBody-Registery"> </a></h2>
+<h2 id="CNN_BODY_REGISTRY">CNN_BODY_REGISTRY<a class="anchor-link" href="#CNN_BODY_REGISTRY"> </a></h2><blockquote><p>Registery of Model Body for Image Classification from <code>timm</code> &amp; <code>torchvision</code></p>
+</blockquote>
+
 </div>
 </div>
 </div>
@@ -359,13 +361,13 @@ nb_path: "nbs/01c_classification.modelling.body.ipynb"
 
 <div class="output_text output_subarea output_execute_result">
 <pre>Registry of CNN_Body:
-╒═════════════════╤════════════════════════════════════╕
-│ Names           │ Objects                            │
-╞═════════════════╪════════════════════════════════════╡
-│ TimmCnnBody     │ &lt;class &#39;__main__.TimmCnnBody&#39;&gt;     │
-├─────────────────┼────────────────────────────────────┤
-│ TorchvisionBody │ &lt;class &#39;__main__.TorchvisionBody&#39;&gt; │
-╘═════════════════╧════════════════════════════════════╛</pre>
+╒════════════════════╤═══════════════════════════════════════╕
+│ Names              │ Objects                               │
+╞════════════════════╪═══════════════════════════════════════╡
+│ TimmCnnBody        │ &lt;class &#39;__main__.TimmCnnBody&#39;&gt;        │
+├────────────────────┼───────────────────────────────────────┤
+│ TorchvisionCnnBody │ &lt;class &#39;__main__.TorchvisionCnnBody&#39;&gt; │
+╘════════════════════╧═══════════════════════════════════════╛</pre>
 </div>
 
 </div>
@@ -516,13 +518,13 @@ ARGUMENTS:
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># First we need to update the config</span>
-<span class="n">cfg</span><span class="o">.</span><span class="n">MODEL</span><span class="o">.</span><span class="n">BODY</span><span class="o">.</span><span class="n">NAME</span> <span class="o">=</span> <span class="s2">&quot;TorchvisionBody&quot;</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">MODEL</span><span class="o">.</span><span class="n">BODY</span><span class="o">.</span><span class="n">NAME</span> <span class="o">=</span> <span class="s2">&quot;TorchvisionCnnBody&quot;</span>
 
 <span class="n">arguments</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;resnet18&quot;</span><span class="p">,</span> <span class="n">pretrained</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">in_chans</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">cut</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 <span class="n">OmegaConf</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">MODEL</span><span class="o">.</span><span class="n">BODY</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;ARGUMENTS&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">arguments</span><span class="p">)</span>
 
 <span class="n">tst</span> <span class="o">=</span> <span class="n">create_cnn_body</span><span class="p">(</span><span class="n">cfg</span><span class="p">)</span>
-<span class="n">m1</span>  <span class="o">=</span> <span class="n">TorchvisionBody</span><span class="p">(</span><span class="s2">&quot;resnet18&quot;</span><span class="p">,</span> <span class="n">pretrained</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">in_chans</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">cut</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">m1</span>  <span class="o">=</span> <span class="n">TorchvisionCnnBody</span><span class="p">(</span><span class="s2">&quot;resnet18&quot;</span><span class="p">,</span> <span class="n">pretrained</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">in_chans</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">cut</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 
 <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
     <span class="n">i</span>  <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">299</span><span class="p">,</span> <span class="mi">299</span><span class="p">)</span>
@@ -541,11 +543,54 @@ ARGUMENTS:
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>{% include note.html content='For <a href="/lightning_cv/classification.modelling.body.html#create_cnn_body"><code>create_cnn_body</code></a> to work your <code>obj</code> must be registerd in the <a href="/lightning_cv/classification.modelling.body.html#ModelBody"><code>ModelBody</code></a> registery and the <code>obj</code> must have a <code>from_config</code> <code>classmethod</code>.' %}</p>
+<p>{% include note.html content='For <a href="/lightning_cv/classification.modelling.body.html#create_cnn_body"><code>create_cnn_body</code></a> to work your <code>obj</code> must be registerd in the <a href="/lightning_cv/classification.modelling.body.html#CNN_BODY_REGISTRY"><code>CNN_BODY_REGISTRY</code></a> registery and the <code>obj</code> must have a <code>from_config</code> <code>classmethod</code>.' %}</p>
 
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>you can also create your own custom body like so -</p>
+
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nd">@CNN_BODY_REGISTRY</span><span class="o">.</span><span class="n">register</span><span class="p">()</span>
+<span class="k">class</span> <span class="nc">CustomHead</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">CustomHead</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">googlenet</span><span class="p">(</span><span class="n">pretrained</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">_update_first_layer</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">n_in</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">net</span> <span class="o">=</span> <span class="n">create_body</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+        
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xb</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">net</span><span class="p">(</span><span class="n">xb</span><span class="p">)</span>
+    
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_config</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">cfg</span><span class="p">:</span> <span class="n">Dict</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="o">**</span><span class="n">cfg</span><span class="p">)</span>
+    
+<span class="n">cfg</span> <span class="o">=</span> <span class="n">get_cfg</span><span class="p">(</span><span class="n">strict</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">MODEL</span><span class="o">.</span><span class="n">BODY</span><span class="o">.</span><span class="n">NAME</span> <span class="o">=</span> <span class="s2">&quot;CustomHead&quot;</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">MODEL</span><span class="o">.</span><span class="n">BODY</span><span class="o">.</span><span class="n">ARGUMENTS</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+
+<span class="n">mb</span> <span class="o">=</span> <span class="n">create_cnn_body</span><span class="p">(</span><span class="n">cfg</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
 </div>
  
 
