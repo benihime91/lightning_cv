@@ -1,6 +1,6 @@
 # @package MODEL
 BODY:
-  NAME: CnnBody
+  NAME: TimmCnnBody
   ARGUMENTS:
     model_name: resnet18
     cut: -2

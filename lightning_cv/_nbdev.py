@@ -60,7 +60,8 @@ index = {"get_cfg": "00_config.ipynb",
          "ImageCsvDataset": "01b_classification.data.datasets.ipynb",
          "has_pool_type": "01c_classification.modelling.body.ipynb",
          "create_body": "01c_classification.modelling.body.ipynb",
-         "CnnBody": "01c_classification.modelling.body.ipynb",
+         "TimmCnnBody": "01c_classification.modelling.body.ipynb",
+         "TorchvisionBody": "01c_classification.modelling.body.ipynb",
          "ModelBody": "01c_classification.modelling.body.ipynb",
          "create_cnn_body": "01c_classification.modelling.body.ipynb"}
 

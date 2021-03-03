@@ -87,6 +87,7 @@ class LinBnDrop(nn.Sequential):
         super().__init__(*layers)
 
 # Cell
+#hide
 # Mish Activation Funtion
 # Souce code : https://github.com/fastai/fastai/blob/master/fastai/layers.py
 @script
