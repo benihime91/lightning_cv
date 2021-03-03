@@ -1,0 +1,8 @@
+# @package SCHEDULER
+NAME: FlatCos
+ARGUMENTS:
+  pct_start: 0.72
+  max_iters: null
+INTERVAL: step
+FREQUENCY: 1
+MONITOR: null

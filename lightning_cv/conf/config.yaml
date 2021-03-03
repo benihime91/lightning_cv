@@ -5,3 +5,5 @@ SEED: 42
 # Default Hydra Configs
 defaults:
   - model: default
+  - optimizer: default
+  - scheduler: default

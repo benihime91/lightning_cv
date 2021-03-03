@@ -1,0 +1,10 @@
+# @package OPTIMIZER
+NAME: Ranger
+ARGUMENTS:
+  betas:
+    - 0.95
+    - 0.999
+  eps: 1e-05
+  weight_decay: 0.01
+  k: 6
+  alpha: 0.5
