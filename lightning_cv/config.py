@@ -9,10 +9,10 @@ from fastcore.all import delegates
 
 # Cell
 @delegates(compose)
-def get_cfg(config_name="config", **kwargs) -> DictConfig:
+def get_cfg(config_name="config", strict=False, **kwargs) -> DictConfig:
     "Get a copy of the default config"
     with initialize_config_module("lightning_cv.conf"):
-        cfg = compose(config_name=config_name, **kwargs)
+        cfg = compose(config_name=config_name, strict=False, **kwargs)
     return cfg
 
 # Cell

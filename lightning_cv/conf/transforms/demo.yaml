@@ -1,0 +1,38 @@
+# @package TRANSFORMS
+TRAIN:
+  LOADER: pil_loader
+  NAME: TorchvisionTransform
+  ARGUMENTS:
+    - _target_: torchvision.transforms.RandomResizedCrop
+      size:
+        - 255
+        - 255
+    - _target_: torchvision.transforms.ToTensor
+    - _target_: torchvision.transforms.Normalize
+      mean:
+        - 0.485
+        - 0.456
+        - 0.406
+      std:
+        - 0.229
+        - 0.224
+        - 0.225
+
+VALID:
+  LOADER: pil_loader
+  NAME: TorchvisionTransform
+  ARGUMENTS:
+    - _target_: torchvision.transforms.Resize
+      size:
+        - 255
+        - 255
+    - _target_: torchvision.transforms.ToTensor
+    - _target_: torchvision.transforms.Normalize
+      mean:
+        - 0.485
+        - 0.456
+        - 0.406
+      std:
+        - 0.229
+        - 0.224
+        - 0.225

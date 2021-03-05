@@ -13,7 +13,7 @@ from torch.optim.optimizer import Optimizer, required
 
 from timm.optim import Lookahead, RAdam, RMSpropTF
 from fastcore.all import delegates
-from .common import Registry
+from .utils.common import Registry
 
 # Cell
 @delegates(RAdam)
@@ -351,6 +351,10 @@ from torch.optim import SGD, Adam, AdamW
 
 # Cell
 OPTIM_REGISTERY = Registry("OPTIMIZERS")
+OPTIM_REGISTERY.__doc__ = "Registery of Optimizers"
+
+# Cell
+#Register common optimizers
 OPTIM_REGISTERY.register(SGD)
 OPTIM_REGISTERY.register(SGDP)
 OPTIM_REGISTERY.register(Adam)
@@ -358,6 +362,7 @@ OPTIM_REGISTERY.register(AdamW)
 OPTIM_REGISTERY.register(AdamP)
 OPTIM_REGISTERY.register(Ranger)
 OPTIM_REGISTERY.register(RangerGC)
+OPTIM_REGISTERY.register(RMSpropTF)
 
 # Cell
 def create_optimizer(params: Iterable, cfg=None):

@@ -7,3 +7,8 @@ defaults:
   - model: default
   - optimizer: default
   - scheduler: default
+  - transforms: imagenet
+
+DATASETS:
+  TRAIN: " " # Name of registered train dataset
+  VALID: " " # Name of the registered validation dataset

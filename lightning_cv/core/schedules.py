@@ -5,7 +5,6 @@ __all__ = ['LRMultiplier', 'FlatCos', 'WarmupParamScheduler', 'WarmupCosineLR', 
 
 # Cell
 from typing import *
-import math
 import torch
 
 from fvcore.common.param_scheduler import *
@@ -60,7 +59,8 @@ class LRMultiplier(torch.optim.lr_scheduler._LRScheduler):
 def FlatCos(optimizer: torch.optim.Optimizer, pct_start: float, max_iters: int):
     """
     Schedule the LearningRate at flat `lr` for `pct_start` of `max_iters` before cosine annealing.
-    Inspired From - https://docs.fast.ai/callback.schedule.html#Learner.fit_flat_cos
+    Inspired From - https://docs.fast.ai/callback.schedule.html#Learner.fit_flat_cos.
+    > Note: If you want only `CosineAnnealing` instantiate this class with `pct_start = 0`
     """
 
     schedulers = [LinearParamScheduler(1, 1), CosineParamScheduler(1, 0)]
@@ -129,21 +129,22 @@ def WarmupConstantLR(optimizer: torch.optim.Optimizer, warmup_iters: int, max_it
 # Cell
 from torch.optim import Optimizer
 from omegaconf import DictConfig
-from .common import Registry
-from torch.optim.lr_scheduler import (OneCycleLR, CosineAnnealingWarmRestarts, StepLR, MultiStepLR, ExponentialLR, ReduceLROnPlateau, MultiplicativeLR)
+from torch.optim.lr_scheduler import (OneCycleLR, CosineAnnealingWarmRestarts, StepLR, MultiStepLR, ReduceLROnPlateau)
+
+from .utils.common import Registry
 
 # Cell
 LR_SCHEDULER_REGISTERY = Registry("LRSchedulers")
+LR_SCHEDULER_REGISTERY.__doc__ = "Registery of LearningRate Schedulers"
 
 # Cell
+# register common schedulers
 # torch schedulers
 LR_SCHEDULER_REGISTERY.register(OneCycleLR)
 LR_SCHEDULER_REGISTERY.register(CosineAnnealingWarmRestarts)
 LR_SCHEDULER_REGISTERY.register(StepLR)
 LR_SCHEDULER_REGISTERY.register(MultiStepLR)
-LR_SCHEDULER_REGISTERY.register(ExponentialLR)
 LR_SCHEDULER_REGISTERY.register(ReduceLROnPlateau)
-LR_SCHEDULER_REGISTERY.register(MultiplicativeLR)
 
 # custom schedulers
 LR_SCHEDULER_REGISTERY.register(FlatCos)

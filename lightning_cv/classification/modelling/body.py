@@ -17,8 +17,7 @@ from fastcore.all import use_kwargs_dict
 from torchvision import models
 
 from ...core.layers import *
-from ...core.common import Registry
-from ...core.layers import ActivationCatalog
+from ...core import Registry, ACTIVATION_REGISTERY
 
 # Cell
 def _is_pool_type(l):
@@ -55,7 +54,7 @@ class TimmCnnBody(nn.Module):
         # for different activation funtions
         # if act_layer is None then the default activations func will be used
         if act_layer is not None:
-            act_layer = ActivationCatalog.get(act_layer)
+            act_layer = ACTIVATION_REGISTERY.get(act_layer)
 
         net = timm.create_model(model_name, act_layer=act_layer, **kwargs)
 
