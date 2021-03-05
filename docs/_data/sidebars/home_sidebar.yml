@@ -17,7 +17,7 @@ entries:
       url: core.common.html
     - output: web,pdf
       title: Data Utility
-      url: core.data_utils.html
+      url: core.data.html
     - output: web,pdf
       title: Optimizers
       url: core.optim.html

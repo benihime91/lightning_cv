@@ -3,7 +3,7 @@
     "Overview": "/",
     "Config API": "config.html",
     "Common Utilities": "core.common.html",
-    "Data Utility": "core.data_utils.html",
+    "Data Utility": "core.data.html",
     "Optimizers": "core.optim.html",
     "Learning Rate Schedules": "core.schedules.html",
     "Layers": "core.layers.html",
