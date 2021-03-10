@@ -5,12 +5,11 @@ __all__ = ['logger', 'BaseClassificationDataset', 'ImageFolderDataset', 'ImageCs
 
 # Cell
 import os
-import pandas as pd
+from abc import *
 from typing import *
-from pathlib import Path
-from abc import ABC, abstractclassmethod
-from fastcore.all import store_attr, ifnone, delegates
 from omegaconf import DictConfig
+import pandas as pd
+from fastcore.all import store_attr, ifnone, delegates, Path
 
 import torch
 from torch.utils.data import Dataset
@@ -18,7 +17,11 @@ from torchvision.datasets.folder import make_dataset
 
 from ...core.utils.data import IMG_EXTENSIONS
 from ...core import default_logger, _DatasetCatalog, LOADER_REGISTERY
-from .transforms import ImageClassificationTransforms, create_transform, TransformOutput
+from .transforms import (
+    ImageClassificationTransforms,
+    create_transform,
+    TransformOutput,
+)
 
 logger = default_logger()
 
@@ -41,11 +44,11 @@ class BaseClassificationDataset(Dataset):
     def transforms(self, x: ImageClassificationTransforms):
         self._transforms = x
 
-    @abstractclassmethod
+    @abstractmethod
     def __getitem__(self, x):
         raise NotImplementedError
 
-    @abstractclassmethod
+    @abstractmethod
     def __len__(self, x):
         raise NotImplementedError
 
@@ -53,16 +56,24 @@ class BaseClassificationDataset(Dataset):
 class ImageFolderDataset(BaseClassificationDataset):
     "Create `Dataset` instance from `source` using `transforms`"
 
-    def __init__(self, source: Union[str, Path], cfg: DictConfig, classes: Dict = None, test : bool = False):
+    def __init__(
+        self,
+        source: Union[str, Path],
+        cfg: DictConfig,
+        classes: Dict = None,
+        test: bool = False,
+    ):
 
         store_attr("source, test")
 
         if not self.test:
             self.classes = ifnone(classes, self._find_classes(self.source))
-            samples  = make_dataset(self.source, self.classes, IMG_EXTENSIONS, None)
-            self.images  = [s[0] for s in samples]
+            samples = make_dataset(self.source, self.classes, IMG_EXTENSIONS, None)
+            self.images = [s[0] for s in samples]
             self.targets = [s[1] for s in samples]
-            logger.info(f"Found {len(self.images)} files belonging to {len(set(self.targets))} classes.")
+            logger.info(
+                f"Found {len(self.images)} files belonging to {len(set(self.targets))} classes."
+            )
 
         if self.test:
             samples = self.make_test(source)
@@ -94,7 +105,9 @@ class ImageFolderDataset(BaseClassificationDataset):
 
     @staticmethod
     def is_valid_file(x: str) -> bool:
-        return ImageFolderDataset.has_file_allowed_extension(x, cast(Tuple[str, ...], IMG_EXTENSIONS))
+        return ImageFolderDataset.has_file_allowed_extension(
+            x, cast(Tuple[str, ...], IMG_EXTENSIONS)
+        )
 
     @staticmethod
     def make_test(root: str):
@@ -110,13 +123,13 @@ class ImageFolderDataset(BaseClassificationDataset):
         return len(self.images)
 
     def __getitem__(self, index):
-        image  = self.images[index]
-        image  = self.loader(image)
+        image = self.images[index]
+        image = self.loader(image)
         aug_im = self._transforms(image)
         if self.test:
             return aug_im
         else:
-            label  = self.targets[index]
+            label = self.targets[index]
             return aug_im, torch.tensor(label, dtype=torch.long)
 
 # Cell
@@ -124,8 +137,15 @@ class ImageCsvDataset(BaseClassificationDataset):
     "Create `Dataset` instance from `csv` using `transforms`, `image_col` and `label_col`"
 
     @delegates(pd.read_csv)
-    def __init__(self, csv: str, image_col: str, cfg: DictConfig, label_col: Optional[str] = None,
-                 test: bool = False, **kwargs):
+    def __init__(
+        self,
+        csv: str,
+        image_col: str,
+        cfg: DictConfig,
+        label_col: Optional[str] = None,
+        test: bool = False,
+        **kwargs
+    ):
 
         store_attr("label_col, image_col, test")
         self.df = pd.read_csv(csv, **kwargs)
@@ -135,8 +155,8 @@ class ImageCsvDataset(BaseClassificationDataset):
         return len(self.df)
 
     def __getitem__(self, index):
-        image  = self.df[self.image_col][index]
-        image  = self.loader(image)
+        image = self.df[self.image_col][index]
+        image = self.loader(image)
         aug_im = self._transforms(image)
 
         if self.test:
@@ -171,10 +191,14 @@ def create_dataset(cfg: DictConfig) -> ClassificationDatasetOutput:
     train and validation datsets but if you do not have a validation dataset, then set
     `DATASETS.VALID = None`
     """
-    train_ds: BaseClassificationDataset = ClassificationDatasetCatalog.get(cfg.DATASETS.TRAIN)
+    train_ds: BaseClassificationDataset = ClassificationDatasetCatalog.get(
+        cfg.DATASETS.TRAIN, cfg=cfg.TRANSFORMS.TRAIN
+    )
 
     if cfg.DATASETS.VALID is not None or cfg.DATASETS.VALID != " ":
-        valid_ds: BaseClassificationDataset = ClassificationDatasetCatalog.get(cfg.DATASETS.VALID)
+        valid_ds: BaseClassificationDataset = ClassificationDatasetCatalog.get(
+            cfg.DATASETS.VALID, cfg=cfg.TRANSFORMS.VALID
+        )
     else:
         logger.warning("Validation Dataset not specified !")
         valid_ds = None

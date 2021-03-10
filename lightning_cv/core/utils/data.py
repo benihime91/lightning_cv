@@ -142,7 +142,7 @@ class _DatasetCatalog(UserDict):
         assert name not in self, "Dataset '{}' is already registered!".format(name)
         self[name] = func
 
-    def get(self, name):
+    def get(self, name, **kwargs):
         """
         Call the registered function and return its results.
         Args:
@@ -158,7 +158,7 @@ class _DatasetCatalog(UserDict):
                     name, ", ".join(list(self.keys()))
                 )
             ) from e
-        return f()
+        return f(**kwargs)
 
     def list(self) -> List[str]:
         """
