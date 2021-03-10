@@ -79,12 +79,12 @@ index = {"get_cfg": "00_config.ipynb",
          "ClassificationDatasetCatalog.__doc__": "01b_classification.data.datasets.ipynb",
          "ClassificationDatasetOutput": "01b_classification.data.datasets.ipynb",
          "create_dataset": "01b_classification.data.datasets.ipynb",
-         "has_pool_type": "01c_classification.modelling.body.ipynb",
-         "create_body": "01c_classification.modelling.body.ipynb",
-         "TimmCnnBody": "01c_classification.modelling.body.ipynb",
-         "TorchvisionCnnBody": "01c_classification.modelling.body.ipynb",
-         "CNN_BODY_REGISTRY": "01c_classification.modelling.body.ipynb",
-         "create_cnn_body": "01c_classification.modelling.body.ipynb"}
+         "has_pool_type": "01c_classification.modelling.backbones.ipynb",
+         "create_body": "01c_classification.modelling.backbones.ipynb",
+         "TimmCnnBody": "01c_classification.modelling.backbones.ipynb",
+         "TorchvisionCnnBody": "01c_classification.modelling.backbones.ipynb",
+         "CNN_BODY_REGISTRY": "01c_classification.modelling.backbones.ipynb",
+         "create_cnn_body": "01c_classification.modelling.backbones.ipynb"}
 
 modules = ["config.py",
            "core/utils/common.py",
@@ -94,7 +94,7 @@ modules = ["config.py",
            "core/layers.py",
            "classification/data/transforms.py",
            "classification/data/datasets.py",
-           "classification/modelling/body.py"]
+           "classification/modelling/backbone.py"]
 
 doc_url = "https://benihime91.github.io/lightning_cv/"
 
