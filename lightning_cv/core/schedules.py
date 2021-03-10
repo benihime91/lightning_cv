@@ -29,7 +29,13 @@ class LRMultiplier(torch.optim.lr_scheduler._LRScheduler):
     # where the relative scale among all LRs stay unchanged during training.  In this
     # case we only need a total of one scheduler that defines the relative LR multiplier.
 
-    def __init__(self, optimizer: torch.optim.Optimizer, multiplier: ParamScheduler, max_iter: int, last_iter: int = -1,):
+    def __init__(
+        self,
+        optimizer: torch.optim.Optimizer,
+        multiplier: ParamScheduler,
+        max_iter: int,
+        last_iter: int = -1,
+    ):
         """
         Args:
             optimizer, last_iter: See ``torch.optim.lr_scheduler._LRScheduler``.
@@ -60,13 +66,15 @@ def FlatCos(optimizer: torch.optim.Optimizer, pct_start: float, max_iters: int):
     """
     Schedule the LearningRate at flat `lr` for `pct_start` of `max_iters` before cosine annealing.
     Inspired From - https://docs.fast.ai/callback.schedule.html#Learner.fit_flat_cos.
-    > Note: If you want only `CosineAnnealing` instantiate this class with `pct_start = 0`
     """
 
     schedulers = [LinearParamScheduler(1, 1), CosineParamScheduler(1, 0)]
     # create CompositeParamScheduler Class
-    sched = CompositeParamScheduler(schedulers, lengths=[pct_start, 1-pct_start],
-                                    interval_scaling=['rescaled', 'rescaled'])
+    sched = CompositeParamScheduler(
+        schedulers,
+        lengths=[pct_start, 1 - pct_start],
+        interval_scaling=["rescaled", "rescaled"],
+    )
 
     # Wrap Param Scheduler under LRMultiplier class
     sched = LRMultiplier(optimizer, sched, max_iter=max_iters)
@@ -79,7 +87,13 @@ class WarmupParamScheduler(CompositeParamScheduler):
     From - https://github.com/facebookresearch/fvcore/blob/master/fvcore/common/param_scheduler.py
     """
 
-    def __init__(self, scheduler: ParamScheduler, warmup_factor: float, warmup_length: float, warmup_method: str = "linear",):
+    def __init__(
+        self,
+        scheduler: ParamScheduler,
+        warmup_factor: float,
+        warmup_length: float,
+        warmup_method: str = "linear",
+    ):
         """
         Args:
             scheduler: warmup will be added at the beginning of this scheduler
@@ -88,7 +102,7 @@ class WarmupParamScheduler(CompositeParamScheduler):
                 training, e.g. 0.01
             warmup_method: one of "linear" or "constant"
         """
-        end_value   = scheduler(warmup_length)  # the value to reach when warmup ends
+        end_value = scheduler(warmup_length)  # the value to reach when warmup ends
         start_value = warmup_factor * scheduler(0.0)
         if warmup_method == "constant":
             warmup = ConstantParamScheduler(start_value)
@@ -96,40 +110,60 @@ class WarmupParamScheduler(CompositeParamScheduler):
             warmup = LinearParamScheduler(start_value, end_value)
         else:
             raise ValueError("Unknown warmup method: {}".format(warmup_method))
-        super().__init__([warmup, scheduler], interval_scaling=["rescaled", "fixed"],
-                         lengths=[warmup_length, 1 - warmup_length],)
+        super().__init__(
+            [warmup, scheduler],
+            interval_scaling=["rescaled", "fixed"],
+            lengths=[warmup_length, 1 - warmup_length],
+        )
 
 # Cell
 def WarmupCosineLR(optimizer: torch.optim.Optimizer, warmup_iters: int, max_iters: int):
     "Linearly increase `lr` for `warmup_iters` before cosine annealing. "
     sched = CosineParamScheduler(1, 0)
-    sched = WarmupParamScheduler(sched, warmup_factor=(1.0 / 1000),
-                                 warmup_length=warmup_iters/max_iters,
-                                 warmup_method="linear")
+    sched = WarmupParamScheduler(
+        sched,
+        warmup_factor=(1.0 / 1000),
+        warmup_length=warmup_iters / max_iters,
+        warmup_method="linear",
+    )
     return LRMultiplier(optimizer, multiplier=sched, max_iter=max_iters)
 
 # Cell
 def WarmupLinearLR(optimizer: torch.optim.Optimizer, warmup_iters: int, max_iters: int):
     "Linearly increase `lr` for `warmup_iters` before linearly decreasing the `lr`"
     sched = LinearParamScheduler(1, 0)
-    sched = WarmupParamScheduler(sched, warmup_factor=(1.0 / 1000),
-                                 warmup_length=warmup_iters/max_iters,
-                                 warmup_method="linear")
+    sched = WarmupParamScheduler(
+        sched,
+        warmup_factor=(1.0 / 1000),
+        warmup_length=warmup_iters / max_iters,
+        warmup_method="linear",
+    )
     return LRMultiplier(optimizer, multiplier=sched, max_iter=max_iters)
 
 # Cell
-def WarmupConstantLR(optimizer: torch.optim.Optimizer, warmup_iters: int, max_iters: int):
+def WarmupConstantLR(
+    optimizer: torch.optim.Optimizer, warmup_iters: int, max_iters: int
+):
     "Linearly increase `lr` for `warmup_iters` after which keep `lr` at constant value"
     sched = LinearParamScheduler(1, 1)
-    sched = WarmupParamScheduler(sched, warmup_factor=(1.0 / 1000),
-                                 warmup_length=warmup_iters/max_iters,
-                                 warmup_method="linear")
+    sched = WarmupParamScheduler(
+        sched,
+        warmup_factor=(1.0 / 1000),
+        warmup_length=warmup_iters / max_iters,
+        warmup_method="linear",
+    )
     return LRMultiplier(optimizer, multiplier=sched, max_iter=max_iters)
 
 # Cell
 from torch.optim import Optimizer
 from omegaconf import DictConfig
-from torch.optim.lr_scheduler import (OneCycleLR, CosineAnnealingWarmRestarts, StepLR, MultiStepLR, ReduceLROnPlateau)
+from torch.optim.lr_scheduler import (
+    OneCycleLR,
+    CosineAnnealingWarmRestarts,
+    StepLR,
+    MultiStepLR,
+    ReduceLROnPlateau,
+)
 
 from .utils.common import Registry
 
@@ -153,13 +187,11 @@ LR_SCHEDULER_REGISTERY.register(WarmupLinearLR)
 LR_SCHEDULER_REGISTERY.register(WarmupConstantLR)
 
 # Cell
-def create_scheduler(opt: Optimizer,  cfg: DictConfig, n_epochs: int, n_steps: int) -> Dict:
+def create_scheduler(
+    opt: Optimizer, cfg: DictConfig, n_epochs: int, n_steps: int
+) -> Dict:
     """
     Instantiate a scheduler from `LR_SCHEDULER_REGISTERY` given `opt` from `cfg`, `n_epochs` & `n_steps`.
-
-    > Note: Returned scheduler will be in a format similar
-    [scheduler configuration](https://pytorch-lightning.readthedocs.io/en/latest/common/optimizers.html)
-    in pytorch lightning.
     """
     opt_cls = LR_SCHEDULER_REGISTERY.get(cfg.SCHEDULER.NAME)
 
@@ -180,5 +212,9 @@ def create_scheduler(opt: Optimizer,  cfg: DictConfig, n_epochs: int, n_steps: i
     sched = opt_cls(optimizer=opt, **cfg.SCHEDULER.ARGUMENTS)
 
     # convert scheduler to lightning format
-    return dict(scheduler=sched, monitor=cfg.SCHEDULER.MONITOR, interval=cfg.SCHEDULER.INTERVAL,
-                frequency=cfg.SCHEDULER.FREQUENCY)
+    return dict(
+        scheduler=sched,
+        monitor=cfg.SCHEDULER.MONITOR,
+        interval=cfg.SCHEDULER.INTERVAL,
+        frequency=cfg.SCHEDULER.FREQUENCY,
+    )

@@ -33,6 +33,7 @@ class AdaptiveConcatPool2d(Module):
     Layer that concats `AdaptiveAvgPool2d` and `AdaptiveMaxPool2d`.
     From : https://github.com/fastai/fastai/blob/master/fastai/layers.py
     """
+
     def __init__(self, size=None):
         super(AdaptiveConcatPool2d, self).__init__()
         self.size = size or 1
@@ -43,7 +44,7 @@ class AdaptiveConcatPool2d(Module):
         return torch.cat([self.mp(x), self.ap(x)], 1)
 
 # Cell
-NormType = Enum('NormType', 'Batch BatchZero Weight Spectral Instance InstanceZero')
+NormType = Enum("NormType", "Batch BatchZero Weight Spectral Instance InstanceZero")
 
 # Cell
 def _get_norm(prefix, nf, ndim=2, zero=False, **kwargs):
@@ -52,7 +53,7 @@ def _get_norm(prefix, nf, ndim=2, zero=False, **kwargs):
     bn = getattr(nn, f"{prefix}{ndim}d")(nf, **kwargs)
     if bn.affine:
         bn.bias.data.fill_(1e-3)
-        bn.weight.data.fill_(0. if zero else 1.)
+        bn.weight.data.fill_(0.0 if zero else 1.0)
     return bn
 
 # Cell
@@ -62,7 +63,9 @@ def BatchNorm(nf, ndim=2, norm_type=NormType.Batch, **kwargs):
     BatchNorm layer with `nf` features and `ndim` initialized depending on `norm_type`.
     From : https://github.com/fastai/fastai/blob/master/fastai/layers.py
     """
-    return _get_norm('BatchNorm', nf, ndim, zero=norm_type==NormType.BatchZero, **kwargs)
+    return _get_norm(
+        "BatchNorm", nf, ndim, zero=norm_type == NormType.BatchZero, **kwargs
+    )
 
 # Cell
 class LinBnDrop(nn.Sequential):
@@ -71,7 +74,7 @@ class LinBnDrop(nn.Sequential):
     From : https://github.com/fastai/fastai/blob/master/fastai/layers.py
     """
 
-    def __init__(self, n_in, n_out, bn=True, p=0., act=None, lin_first=False):
+    def __init__(self, n_in, n_out, bn=True, p=0.0, act=None, lin_first=False):
         layers = [BatchNorm(n_out if lin_first else n_in, ndim=1)] if bn else []
 
         if p != 0:
@@ -82,23 +85,25 @@ class LinBnDrop(nn.Sequential):
         if act is not None:
             lin.append(act)
 
-        layers = lin+layers if lin_first else layers+lin
+        layers = lin + layers if lin_first else layers + lin
 
         super().__init__(*layers)
 
 # Cell
-#hide
+# hide
 # Mish Activation Funtion
 # Souce code : https://github.com/fastai/fastai/blob/master/fastai/layers.py
 @script
 def _mish_jit_fwd(x):
     return x.mul(torch.tanh(F.softplus(x)))
 
+
 @script
 def _mish_jit_bwd(x, grad_output):
     x_sigmoid = torch.sigmoid(x)
     x_tanh_sp = F.softplus(x).tanh()
     return grad_output.mul(x_tanh_sp + x * x_sigmoid * (1 - x_tanh_sp * x_tanh_sp))
+
 
 class MishJitAutoFn(torch.autograd.Function):
     @staticmethod
@@ -111,12 +116,14 @@ class MishJitAutoFn(torch.autograd.Function):
         x = ctx.saved_variables[0]
         return _mish_jit_bwd(x, grad_output)
 
+
 def mish(x):
     return MishJitAutoFn.apply(x)
 
 # Cell
 class Mish(Module):
     "Mish Activation function"
+
     def __init__(self, inplace=True):
         # NOTE: inplace does nothing it is for compatibility with `timm`
         super(Mish, self).__init__()
@@ -149,7 +156,8 @@ def num_features_model(m, ch_int: int = 3):
             return dummy_out.shape[1]
         except Exception as e:
             sz *= 2
-            if sz > 2048: raise e
+            if sz > 2048:
+                raise e
 
 # Cell
 # hide
@@ -165,23 +173,37 @@ def requires_grad(m):
 def init_default(m, func=nn.init.kaiming_normal_):
     "Initialize `m` weights with `func` and set `bias` to 0."
     if func:
-        if hasattr(m, 'weight'): func(m.weight)
-        if hasattr(m, 'bias') and hasattr(m.bias, 'data'): m.bias.data.fill_(0.)
+        if hasattr(m, "weight"):
+            func(m.weight)
+        if hasattr(m, "bias") and hasattr(m.bias, "data"):
+            m.bias.data.fill_(0.0)
     return m
 
 # Cell
-norm_types = (nn.BatchNorm1d, nn.BatchNorm2d, nn.BatchNorm3d, nn.InstanceNorm1d, nn.InstanceNorm2d, nn.InstanceNorm3d, nn.LayerNorm,)
+norm_types = (
+    nn.BatchNorm1d,
+    nn.BatchNorm2d,
+    nn.BatchNorm3d,
+    nn.InstanceNorm1d,
+    nn.InstanceNorm2d,
+    nn.InstanceNorm3d,
+    nn.LayerNorm,
+)
+
 
 def cond_init(m, func):
     "Apply `init_default` to `m` unless it's a batchnorm module"
-    if (not isinstance(m, norm_types)) and requires_grad(m): init_default(m, func)
+    if (not isinstance(m, norm_types)) and requires_grad(m):
+        init_default(m, func)
 
 # Cell
 def apply_leaf(m, f):
     "Apply `f` to children of `m`."
     c = m.children()
-    if isinstance(m, nn.Module): f(m)
-    for l in c: apply_leaf(l,f)
+    if isinstance(m, nn.Module):
+        f(m)
+    for l in c:
+        apply_leaf(l, f)
 
 # Cell
 def apply_init(m, func=nn.init.kaiming_normal_):
@@ -190,6 +212,7 @@ def apply_init(m, func=nn.init.kaiming_normal_):
 
 # Cell
 bn_types = (nn.BatchNorm1d, nn.BatchNorm2d, nn.BatchNorm3d)
+
 
 def set_bn_eval(m: Module):
     "Set bn layers in eval mode for all recursive children of `m`."
