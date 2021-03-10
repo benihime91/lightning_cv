@@ -1,0 +1,11 @@
+# @package OPTIMIZER
+NAME: SGDP
+ARGUMENTS:
+  lr: 1e-03
+  momentum: 0
+  dampening: 0
+  weight_decay: 0
+  nesterov: false
+  eps: 1e-08
+  delta: 0.1
+  wd_ratio: 0.1

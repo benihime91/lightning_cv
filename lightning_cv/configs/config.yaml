@@ -1,13 +1,12 @@
 # Misc options
-VERSION: 1
 SEED: 42
 
 # Default Hydra Configs
 defaults:
   - model: default
-  - optimizer: default
-  - scheduler: default
-  - transforms: imagenet
+  - optimizer: Ranger
+  - scheduler: FlatCos
+  - transforms: GenericImageTransforms
 
 DATASETS:
   TRAIN: " " # Name of registered train dataset

@@ -2,8 +2,8 @@
 BACKBONE:
   NAME: TimmCnnBody
   ARGUMENTS:
-    model_name: resnet18
-    cut: -2
+    model_name: efficientnet_b0
+    cut: null
     act_layer: null
     pretrained: true
 CLASSIFIER:

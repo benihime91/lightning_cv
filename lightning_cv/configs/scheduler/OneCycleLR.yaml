@@ -1,0 +1,11 @@
+# @package SCHEDULER
+NAME: OneCycleLR
+ARGUMENTS:
+  max_lr: 1e-03
+  epochs: null
+  steps_per_epoch: null
+  anneal_strategy: cos
+  cycle_momentum: true
+INTERVAL: step
+FREQUENCY: 1
+MONITOR: null

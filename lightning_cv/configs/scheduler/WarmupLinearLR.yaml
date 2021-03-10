@@ -1,0 +1,8 @@
+# @package SCHEDULER
+NAME: WarmupLinearLR
+ARGUMENTS:
+  warmup_iters: 100
+  max_iters: null
+INTERVAL: step
+FREQUENCY: 1
+MONITOR: null
