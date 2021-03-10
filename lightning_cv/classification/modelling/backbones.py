@@ -132,6 +132,6 @@ CNN_BODY_REGISTRY.register(TorchvisionCnnBody)
 # Cell
 def create_cnn_body(cfg: DictConfig) -> nn.Module:
     "instante an obj from ModelBody registery using lightning_cv config"
-    body = CNN_BODY_REGISTRY.get(cfg.MODEL.BODY.NAME)
-    body = body.from_config(cfg.MODEL.BODY.ARGUMENTS)
+    body = CNN_BODY_REGISTRY.get(cfg.MODEL.BACKBONE.NAME)
+    body = body.from_config(cfg.MODEL.BACKBONE.ARGUMENTS)
     return body

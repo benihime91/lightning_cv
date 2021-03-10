@@ -84,7 +84,11 @@ index = {"get_cfg": "00_config.ipynb",
          "TimmCnnBody": "01c_classification.modelling.backbones.ipynb",
          "TorchvisionCnnBody": "01c_classification.modelling.backbones.ipynb",
          "CNN_BODY_REGISTRY": "01c_classification.modelling.backbones.ipynb",
-         "create_cnn_body": "01c_classification.modelling.backbones.ipynb"}
+         "create_cnn_body": "01c_classification.modelling.backbones.ipynb",
+         "GeneralClassifier": "01d_classification.modelling.classifiers.ipynb",
+         "FastaiClassifier": "01d_classification.modelling.classifiers.ipynb",
+         "CNN_CLASSIFIER_REGISTRY": "01d_classification.modelling.classifiers.ipynb",
+         "create_classifier_head": "01d_classification.modelling.classifiers.ipynb"}
 
 modules = ["config.py",
            "core/utils/common.py",
@@ -94,7 +98,8 @@ modules = ["config.py",
            "core/layers.py",
            "classification/data/transforms.py",
            "classification/data/datasets.py",
-           "classification/modelling/backbone.py"]
+           "classification/modelling/backbones.py",
+           "classification/modelling/classifiers.py"]
 
 doc_url = "https://benihime91.github.io/lightning_cv/"
 

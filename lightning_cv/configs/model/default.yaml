@@ -1,9 +1,16 @@
 # @package MODEL
-BODY:
+BACKBONE:
   NAME: TimmCnnBody
   ARGUMENTS:
     model_name: resnet18
     cut: -2
     act_layer: null
     pretrained: true
-HEAD:
+CLASSIFIER:
+  NAME: GeneralClassifier
+  ARGUMENTS:
+    num_features: ???
+    num_classes: ???
+    drop_rate: 0.25
+    pool_type: avg
+    use_conv: False
