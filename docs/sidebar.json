@@ -2,13 +2,14 @@
   "lightning_cv": {
     "Overview": "/",
     "Config API": "config.html",
-    "Common Utilities": "core.common.html",
-    "Data Utility": "core.data.html",
+    "Common Utilities": "core.utils.common.html",
+    "Data Utility": "core.utils.data.html",
     "Optimizers": "core.optim.html",
     "Learning Rate Schedules": "core.schedules.html",
     "Layers": "core.layers.html",
     "Transforms for ImageClassification": "classification.data.transforms.html",
     "Datasets": "classification.data.datasets.html",
-    "Model Body for Image Classification": "classification.modelling.body.html"
+    "Model Body for Image Classification": "classification.modelling.backbones.html",
+    "Image Classification heads": "classification.modelling.classifiers.html"
   }
 }

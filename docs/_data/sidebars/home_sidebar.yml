@@ -14,10 +14,10 @@ entries:
       url: config.html
     - output: web,pdf
       title: Common Utilities
-      url: core.common.html
+      url: core.utils.common.html
     - output: web,pdf
       title: Data Utility
-      url: core.data.html
+      url: core.utils.data.html
     - output: web,pdf
       title: Optimizers
       url: core.optim.html
@@ -35,7 +35,10 @@ entries:
       url: classification.data.datasets.html
     - output: web,pdf
       title: Model Body for Image Classification
-      url: classification.modelling.body.html
+      url: classification.modelling.backbones.html
+    - output: web,pdf
+      title: Image Classification heads
+      url: classification.modelling.classifiers.html
     output: web
     title: lightning_cv
   output: web
