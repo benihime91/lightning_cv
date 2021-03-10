@@ -6,8 +6,8 @@ title: Config API
 keywords: fastai
 sidebar: home_sidebar
 
-summary: "config API for instantiating `LightningModules`"
-description: "config API for instantiating `LightningModules`"
+summary: "config API for instantiating `objects` from `LightningCV`"
+description: "config API for instantiating `objects` from `LightningCV`"
 nb_path: "nbs/00_config.ipynb"
 ---
 <!--
@@ -44,18 +44,48 @@ nb_path: "nbs/00_config.ipynb"
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">omegaconf</span> <span class="kn">import</span> <span class="n">OmegaConf</span>
+<span class="kn">from</span> <span class="nn">fastcore.test</span> <span class="kn">import</span> <span class="n">test_eq</span>
 </pre></div>
 
     </div>
 </div>
 </div>
 
-</div>
-    {% endraw %}
+<div class="output_wrapper">
+<div class="output">
 
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
+<div class="output_area">
+
+
+
+
+<div id="b0b243b7-8dff-49e7-9a2c-26ef9279ab63"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#b0b243b7-8dff-49e7-9a2c-26ef9279ab63');
+
+            setTimeout(function() {
+                var nbb_cell_id = 5;
+                var nbb_unformatted_code = "# for tests\nfrom omegaconf import OmegaConf\nfrom fastcore.test import test_eq";
+                var nbb_formatted_code = "# for tests\nfrom omegaconf import OmegaConf\nfrom fastcore.test import test_eq";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            
+</script>
+</div>
+
+</div>
+
+</div>
+</div>
 
 </div>
     {% endraw %}
@@ -88,12 +118,55 @@ nb_path: "nbs/00_config.ipynb"
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+
+<div id="be74280a-2434-4a87-bdd8-a2d69c5791eb"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#be74280a-2434-4a87-bdd8-a2d69c5791eb');
+
+            setTimeout(function() {
+                var nbb_cell_id = 6;
+                var nbb_unformatted_code = "# export\n@delegates(compose)\ndef get_cfg(config_name=\"config\", strict=False, **kwargs) -> DictConfig:\n    \"Get a copy of the default config\"\n    with initialize_config_module(\"lightning_cv.configs\"):\n        cfg = compose(config_name=config_name, strict=False, **kwargs)\n    return cfg";
+                var nbb_formatted_code = "# export\n@delegates(compose)\ndef get_cfg(config_name=\"config\", strict=False, **kwargs) -> DictConfig:\n    \"Get a copy of the default config\"\n    with initialize_config_module(\"lightning_cv.configs\"):\n        cfg = compose(config_name=config_name, strict=False, **kwargs)\n    return cfg";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            
+</script>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">cfg</span> <span class="o">=</span> <span class="n">get_cfg</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">OmegaConf</span><span class="o">.</span><span class="n">to_yaml</span><span class="p">(</span><span class="n">cfg</span><span class="p">))</span>
+<span class="c1"># print(OmegaConf.to_yaml(cfg))</span>
 </pre></div>
 
     </div>
@@ -105,39 +178,32 @@ nb_path: "nbs/00_config.ipynb"
 
 <div class="output_area">
 
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>VERSION: 1
-SEED: 42
-MODEL:
-  BODY:
-    NAME: TimmCnnBody
-    ARGUMENTS:
-      model_name: resnet18
-      cut: -2
-      act_layer: null
-      pretrained: true
-  HEAD: null
-OPTIMIZER:
-  NAME: Ranger
-  ARGUMENTS:
-    betas:
-    - 0.95
-    - 0.999
-    eps: 1.0e-05
-    weight_decay: 0.01
-    k: 6
-    alpha: 0.5
-SCHEDULER:
-  NAME: FlatCos
-  ARGUMENTS:
-    pct_start: 0.72
-    max_iters: null
-  INTERVAL: step
-  FREQUENCY: 1
-  MONITOR: null
 
-</pre>
+
+
+<div id="f48a9123-6507-46bc-9023-9bb2cc63734f"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#f48a9123-6507-46bc-9023-9bb2cc63734f');
+
+            setTimeout(function() {
+                var nbb_cell_id = 7;
+                var nbb_unformatted_code = "cfg = get_cfg()\n# print(OmegaConf.to_yaml(cfg))";
+                var nbb_formatted_code = "cfg = get_cfg()\n# print(OmegaConf.to_yaml(cfg))";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            
+</script>
 </div>
+
 </div>
 
 </div>
@@ -146,13 +212,6 @@ SCHEDULER:
 </div>
     {% endraw %}
 
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>You can also modify like so -</p>
-
-</div>
-</div>
-</div>
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
@@ -161,7 +220,7 @@ SCHEDULER:
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">cfg</span><span class="o">.</span><span class="n">VERSION</span> <span class="o">=</span> <span class="s2">&quot;something&quot;</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">OmegaConf</span><span class="o">.</span><span class="n">to_yaml</span><span class="p">(</span><span class="n">cfg</span><span class="p">))</span>
+<span class="n">test_eq</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">VERSION</span><span class="p">,</span> <span class="s2">&quot;something&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -173,50 +232,36 @@ SCHEDULER:
 
 <div class="output_area">
 
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>VERSION: something
-SEED: 42
-MODEL:
-  BODY:
-    NAME: TimmCnnBody
-    ARGUMENTS:
-      model_name: resnet18
-      cut: -2
-      act_layer: null
-      pretrained: true
-  HEAD: null
-OPTIMIZER:
-  NAME: Ranger
-  ARGUMENTS:
-    betas:
-    - 0.95
-    - 0.999
-    eps: 1.0e-05
-    weight_decay: 0.01
-    k: 6
-    alpha: 0.5
-SCHEDULER:
-  NAME: FlatCos
-  ARGUMENTS:
-    pct_start: 0.72
-    max_iters: null
-  INTERVAL: step
-  FREQUENCY: 1
-  MONITOR: null
 
-</pre>
+
+
+<div id="736a998f-1c89-4a05-865b-aa005a58034e"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#736a998f-1c89-4a05-865b-aa005a58034e');
+
+            setTimeout(function() {
+                var nbb_cell_id = 8;
+                var nbb_unformatted_code = "# modify a existing key\ncfg.VERSION = \"something\"\ntest_eq(cfg.VERSION, \"something\")";
+                var nbb_formatted_code = "# modify a existing key\ncfg.VERSION = \"something\"\ntest_eq(cfg.VERSION, \"something\")";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            
+</script>
 </div>
+
 </div>
 
 </div>
 </div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
 
 </div>
     {% endraw %}
@@ -244,6 +289,182 @@ Assume that the given "cfg" has the key "KEY", after calling
 without having to pass the config object or the values deep into the code.
 This is a hacky feature introduced for quick prototyping / research exploration.</p>
 
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+
+<div id="10f0cbfd-d1d4-482e-9aab-d35231053ead"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#10f0cbfd-d1d4-482e-9aab-d35231053ead');
+
+            setTimeout(function() {
+                var nbb_cell_id = 9;
+                var nbb_unformatted_code = "# export\ndef set_global_cfg(cfg: DictConfig) -> None:\n    \"\"\"\n    Let the global config point to the given cfg.\n    Assume that the given \"cfg\" has the key \"KEY\", after calling\n    `set_global_cfg(cfg)`, the key can be accessed by:\n    ```python\n        from lightning_cv.config import global_cfg\n        print(global_cfg.KEY)\n    ```\n    By using a hacky global config, you can access these configs anywhere,\n    without having to pass the config object or the values deep into the code.\n    This is a hacky feature introduced for quick prototyping / research exploration.\n    \"\"\"\n    global global_cfg\n    global_cfg = cfg";
+                var nbb_formatted_code = "# export\ndef set_global_cfg(cfg: DictConfig) -> None:\n    \"\"\"\n    Let the global config point to the given cfg.\n    Assume that the given \"cfg\" has the key \"KEY\", after calling\n    `set_global_cfg(cfg)`, the key can be accessed by:\n    ```python\n        from lightning_cv.config import global_cfg\n        print(global_cfg.KEY)\n    ```\n    By using a hacky global config, you can access these configs anywhere,\n    without having to pass the config object or the values deep into the code.\n    This is a hacky feature introduced for quick prototyping / research exploration.\n    \"\"\"\n    global global_cfg\n    global_cfg = cfg";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            
+</script>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="get_class_path" class="doc_header"><code>get_class_path</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/config.py#L36" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_class_path</code>()</p>
+</blockquote>
+<p>utility for building the class path</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+
+<div id="516cf946-b635-4977-a414-21a50eaadb93"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#516cf946-b635-4977-a414-21a50eaadb93');
+
+            setTimeout(function() {
+                var nbb_cell_id = 10;
+                var nbb_unformatted_code = "# export\ndef get_class_path(cls):\n    \"utility for building the class path\"\n    return f\"{cls.__module__}.{cls.__name__}\"";
+                var nbb_formatted_code = "# export\ndef get_class_path(cls):\n    \"utility for building the class path\"\n    return f\"{cls.__module__}.{cls.__name__}\"";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            
+</script>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">timm.data</span> <span class="kn">import</span> <span class="n">RandomResizedCropAndInterpolation</span>
+
+<span class="n">get_class_path</span><span class="p">(</span><span class="n">RandomResizedCropAndInterpolation</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;timm.data.transforms.RandomResizedCropAndInterpolation&#39;</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+
+
+
+<div id="1d6aed38-6848-418b-8c6b-924174f9a52c"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#1d6aed38-6848-418b-8c6b-924174f9a52c');
+
+            setTimeout(function() {
+                var nbb_cell_id = 11;
+                var nbb_unformatted_code = "from timm.data import RandomResizedCropAndInterpolation\n\nget_class_path(RandomResizedCropAndInterpolation)";
+                var nbb_formatted_code = "from timm.data import RandomResizedCropAndInterpolation\n\nget_class_path(RandomResizedCropAndInterpolation)";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            
+</script>
 </div>
 
 </div>

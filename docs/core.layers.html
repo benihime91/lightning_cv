@@ -71,6 +71,42 @@ nb_path: "nbs/00e_core.layers.ipynb"
     
 <div class="cell border-box-sizing code_cell rendered">
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+
+<div id="c6013c00-48f3-4b8f-b7d0-b2a717f13d3c"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#c6013c00-48f3-4b8f-b7d0-b2a717f13d3c');
+
+            setTimeout(function() {
+                var nbb_cell_id = 6;
+                var nbb_unformatted_code = "# export\nclass Identity(Module):\n    \"Do nothing at all\"\n    \n    def __init__(self):\n        super(Identity, self).__init__()\n        \n    def forward(self, x):\n        return x";
+                var nbb_formatted_code = "# export\nclass Identity(Module):\n    \"Do nothing at all\"\n\n    def __init__(self):\n        super(Identity, self).__init__()\n\n    def forward(self, x):\n        return x";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            
+</script>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
     {% endraw %}
 
@@ -85,6 +121,42 @@ nb_path: "nbs/00e_core.layers.ipynb"
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+
+<div id="7e555e03-16a6-479c-8853-ba179d218ebc"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#7e555e03-16a6-479c-8853-ba179d218ebc');
+
+            setTimeout(function() {
+                var nbb_cell_id = 7;
+                var nbb_unformatted_code = "test_eq(Identity()(1), 1)";
+                var nbb_formatted_code = "test_eq(Identity()(1), 1)";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            
+</script>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -127,6 +199,42 @@ From : <a href="https://github.com/fastai/fastai/blob/master/fastai/layers.py">h
     
 <div class="cell border-box-sizing code_cell rendered">
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+
+<div id="e0a41b1c-29c9-4053-b118-647e7dab325e"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#e0a41b1c-29c9-4053-b118-647e7dab325e');
+
+            setTimeout(function() {
+                var nbb_cell_id = 8;
+                var nbb_unformatted_code = "# export\nclass AdaptiveConcatPool2d(Module):\n    \"\"\"\n    Layer that concats `AdaptiveAvgPool2d` and `AdaptiveMaxPool2d`.  \n    From : https://github.com/fastai/fastai/blob/master/fastai/layers.py\n    \"\"\"\n    def __init__(self, size=None):\n        super(AdaptiveConcatPool2d, self).__init__()\n        self.size = size or 1\n        self.ap = nn.AdaptiveAvgPool2d(self.size)\n        self.mp = nn.AdaptiveMaxPool2d(self.size)\n    \n    def forward(self, x): \n        return torch.cat([self.mp(x), self.ap(x)], 1)";
+                var nbb_formatted_code = "# export\nclass AdaptiveConcatPool2d(Module):\n    \"\"\"\n    Layer that concats `AdaptiveAvgPool2d` and `AdaptiveMaxPool2d`.\n    From : https://github.com/fastai/fastai/blob/master/fastai/layers.py\n    \"\"\"\n\n    def __init__(self, size=None):\n        super(AdaptiveConcatPool2d, self).__init__()\n        self.size = size or 1\n        self.ap = nn.AdaptiveAvgPool2d(self.size)\n        self.mp = nn.AdaptiveMaxPool2d(self.size)\n\n    def forward(self, x):\n        return torch.cat([self.mp(x), self.ap(x)], 1)";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            
+</script>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
     {% endraw %}
 
@@ -138,17 +246,53 @@ From : <a href="https://github.com/fastai/fastai/blob/master/fastai/layers.py">h
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">tst</span> <span class="o">=</span> <span class="n">AdaptiveConcatPool2d</span><span class="p">()</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
-<span class="n">test_eq</span><span class="p">(</span><span class="n">tst</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
-<span class="n">max1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">,</span>    <span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">test_eq</span><span class="p">(</span><span class="n">tst</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">max1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">maxp</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">max1</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">test_eq</span><span class="p">(</span><span class="n">tst</span><span class="p">(</span><span class="n">x</span><span class="p">)[:,:</span><span class="mi">5</span><span class="p">],</span> <span class="n">maxp</span><span class="p">)</span>
-<span class="n">test_eq</span><span class="p">(</span><span class="n">tst</span><span class="p">(</span><span class="n">x</span><span class="p">)[:,</span><span class="mi">5</span><span class="p">:],</span> <span class="n">x</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+<span class="n">test_eq</span><span class="p">(</span><span class="n">tst</span><span class="p">(</span><span class="n">x</span><span class="p">)[:,</span> <span class="p">:</span><span class="mi">5</span><span class="p">],</span> <span class="n">maxp</span><span class="p">)</span>
+<span class="n">test_eq</span><span class="p">(</span><span class="n">tst</span><span class="p">(</span><span class="n">x</span><span class="p">)[:,</span> <span class="mi">5</span><span class="p">:],</span> <span class="n">x</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
 <span class="n">tst</span> <span class="o">=</span> <span class="n">AdaptiveConcatPool2d</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">test_eq</span><span class="p">(</span><span class="n">tst</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">test_eq</span><span class="p">(</span><span class="n">tst</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+
+<div id="90342631-4229-4fe1-8761-15e224ca45d9"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#90342631-4229-4fe1-8761-15e224ca45d9');
+
+            setTimeout(function() {
+                var nbb_cell_id = 9;
+                var nbb_unformatted_code = "tst = AdaptiveConcatPool2d()\nx = torch.randn(10,5,4,4)\ntest_eq(tst(x).shape, [10,10,1,1])\nmax1 = torch.max(x,    dim=2, keepdim=True)[0]\nmaxp = torch.max(max1, dim=3, keepdim=True)[0]\ntest_eq(tst(x)[:,:5], maxp)\ntest_eq(tst(x)[:,5:], x.mean(dim=[2,3], keepdim=True))\ntst = AdaptiveConcatPool2d(2)\ntest_eq(tst(x).shape, [10,10,2,2])";
+                var nbb_formatted_code = "tst = AdaptiveConcatPool2d()\nx = torch.randn(10, 5, 4, 4)\ntest_eq(tst(x).shape, [10, 10, 1, 1])\nmax1 = torch.max(x, dim=2, keepdim=True)[0]\nmaxp = torch.max(max1, dim=3, keepdim=True)[0]\ntest_eq(tst(x)[:, :5], maxp)\ntest_eq(tst(x)[:, 5:], x.mean(dim=[2, 3], keepdim=True))\ntst = AdaptiveConcatPool2d(2)\ntest_eq(tst(x).shape, [10, 10, 2, 2])";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            
+</script>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -165,12 +309,84 @@ From : <a href="https://github.com/fastai/fastai/blob/master/fastai/layers.py">h
     
 <div class="cell border-box-sizing code_cell rendered">
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+
+<div id="1aa7c331-2fbb-488b-a75e-98e9f484acf8"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#1aa7c331-2fbb-488b-a75e-98e9f484acf8');
+
+            setTimeout(function() {
+                var nbb_cell_id = 10;
+                var nbb_unformatted_code = "# export\nNormType = Enum('NormType', 'Batch BatchZero Weight Spectral Instance InstanceZero')";
+                var nbb_formatted_code = "# export\nNormType = Enum(\"NormType\", \"Batch BatchZero Weight Spectral Instance InstanceZero\")";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            
+</script>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
     {% endraw %}
 
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+
+<div id="e0cc9570-d8b6-4f6e-8ae7-33921a2bff6d"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#e0cc9570-d8b6-4f6e-8ae7-33921a2bff6d');
+
+            setTimeout(function() {
+                var nbb_cell_id = 11;
+                var nbb_unformatted_code = "# export\ndef _get_norm(prefix, nf, ndim=2, zero=False, **kwargs):\n    \"Norm layer with `nf` features and `ndim` initialized depending on `norm_type`.\"\n    assert 1 <= ndim <= 3\n    bn = getattr(nn, f\"{prefix}{ndim}d\")(nf, **kwargs)\n    if bn.affine:\n        bn.bias.data.fill_(1e-3)\n        bn.weight.data.fill_(0. if zero else 1.)\n    return bn";
+                var nbb_formatted_code = "# export\ndef _get_norm(prefix, nf, ndim=2, zero=False, **kwargs):\n    \"Norm layer with `nf` features and `ndim` initialized depending on `norm_type`.\"\n    assert 1 <= ndim <= 3\n    bn = getattr(nn, f\"{prefix}{ndim}d\")(nf, **kwargs)\n    if bn.affine:\n        bn.bias.data.fill_(1e-3)\n        bn.weight.data.fill_(0.0 if zero else 1.0)\n    return bn";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            
+</script>
+</div>
+
+</div>
+
+</div>
+</div>
 
 </div>
     {% endraw %}
@@ -186,7 +402,7 @@ From : <a href="https://github.com/fastai/fastai/blob/master/fastai/layers.py">h
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="BatchNorm" class="doc_header"><code>BatchNorm</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/core/layers.py#L59" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>BatchNorm</code>(<strong><code>nf</code></strong>, <strong><code>ndim</code></strong>=<em><code>2</code></em>, <strong><code>norm_type</code></strong>=<em><code>&lt;NormType.Batch: 1&gt;</code></em>, <strong><code>eps</code></strong>=<em><code>1e-05</code></em>, <strong><code>momentum</code></strong>=<em><code>0.1</code></em>, <strong><code>affine</code></strong>=<em><code>True</code></em>, <strong><code>track_running_stats</code></strong>=<em><code>True</code></em>)</p>
+<h4 id="BatchNorm" class="doc_header"><code>BatchNorm</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/core/layers.py#L60" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>BatchNorm</code>(<strong><code>nf</code></strong>, <strong><code>ndim</code></strong>=<em><code>2</code></em>, <strong><code>norm_type</code></strong>=<em><code>&lt;NormType.Batch: 1&gt;</code></em>, <strong><code>eps</code></strong>=<em><code>1e-05</code></em>, <strong><code>momentum</code></strong>=<em><code>0.1</code></em>, <strong><code>affine</code></strong>=<em><code>True</code></em>, <strong><code>track_running_stats</code></strong>=<em><code>True</code></em>)</p>
 </blockquote>
 <p>BatchNorm layer with <code>nf</code> features and <code>ndim</code> initialized depending on <code>norm_type</code>.
 From : <a href="https://github.com/fastai/fastai/blob/master/fastai/layers.py">https://github.com/fastai/fastai/blob/master/fastai/layers.py</a></p>
@@ -204,6 +420,42 @@ From : <a href="https://github.com/fastai/fastai/blob/master/fastai/layers.py">h
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+
+<div id="c332d47e-e8df-4793-a62b-23f9e5d2a495"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#c332d47e-e8df-4793-a62b-23f9e5d2a495');
+
+            setTimeout(function() {
+                var nbb_cell_id = 12;
+                var nbb_unformatted_code = "#export\n@delegates(nn.BatchNorm2d)\ndef BatchNorm(nf, ndim=2, norm_type=NormType.Batch, **kwargs):\n    \"\"\"\n    BatchNorm layer with `nf` features and `ndim` initialized depending on `norm_type`.  \n    From : https://github.com/fastai/fastai/blob/master/fastai/layers.py\n    \"\"\"\n    return _get_norm('BatchNorm', nf, ndim, zero=norm_type==NormType.BatchZero, **kwargs)";
+                var nbb_formatted_code = "# export\n@delegates(nn.BatchNorm2d)\ndef BatchNorm(nf, ndim=2, norm_type=NormType.Batch, **kwargs):\n    \"\"\"\n    BatchNorm layer with `nf` features and `ndim` initialized depending on `norm_type`.\n    From : https://github.com/fastai/fastai/blob/master/fastai/layers.py\n    \"\"\"\n    return _get_norm(\n        \"BatchNorm\", nf, ndim, zero=norm_type == NormType.BatchZero, **kwargs\n    )";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            
+</script>
+</div>
+
+</div>
+
+</div>
+</div>
 
 </div>
     {% endraw %}
@@ -231,6 +483,42 @@ From : <a href="https://github.com/fastai/fastai/blob/master/fastai/layers.py">h
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+
+<div id="703df2a4-f9bd-4f65-9be1-ea2695cf9704"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#703df2a4-f9bd-4f65-9be1-ea2695cf9704');
+
+            setTimeout(function() {
+                var nbb_cell_id = 13;
+                var nbb_unformatted_code = "with torch.no_grad():\n    tst = BatchNorm(15)\n    assert isinstance(tst, nn.BatchNorm2d)\n    test_eq(tst.weight, torch.ones(15))\n    tst = BatchNorm(15, norm_type=NormType.BatchZero)\n    test_eq(tst.weight, torch.zeros(15))\n    tst = BatchNorm(15, ndim=1)\n    assert isinstance(tst, nn.BatchNorm1d)\n    tst = BatchNorm(15, ndim=3)\n    assert isinstance(tst, nn.BatchNorm3d)";
+                var nbb_formatted_code = "with torch.no_grad():\n    tst = BatchNorm(15)\n    assert isinstance(tst, nn.BatchNorm2d)\n    test_eq(tst.weight, torch.ones(15))\n    tst = BatchNorm(15, norm_type=NormType.BatchZero)\n    test_eq(tst.weight, torch.zeros(15))\n    tst = BatchNorm(15, ndim=1)\n    assert isinstance(tst, nn.BatchNorm1d)\n    tst = BatchNorm(15, ndim=3)\n    assert isinstance(tst, nn.BatchNorm3d)";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            
+</script>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
     {% endraw %}
 
@@ -245,7 +533,7 @@ From : <a href="https://github.com/fastai/fastai/blob/master/fastai/layers.py">h
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="LinBnDrop" class="doc_header"><code>class</code> <code>LinBnDrop</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/core/layers.py#L68" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>LinBnDrop</code>(<strong><code>n_in</code></strong>, <strong><code>n_out</code></strong>, <strong><code>bn</code></strong>=<em><code>True</code></em>, <strong><code>p</code></strong>=<em><code>0.0</code></em>, <strong><code>act</code></strong>=<em><code>None</code></em>, <strong><code>lin_first</code></strong>=<em><code>False</code></em>) :: <code>Sequential</code></p>
+<h2 id="LinBnDrop" class="doc_header"><code>class</code> <code>LinBnDrop</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/core/layers.py#L71" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>LinBnDrop</code>(<strong><code>n_in</code></strong>, <strong><code>n_out</code></strong>, <strong><code>bn</code></strong>=<em><code>True</code></em>, <strong><code>p</code></strong>=<em><code>0.0</code></em>, <strong><code>act</code></strong>=<em><code>None</code></em>, <strong><code>lin_first</code></strong>=<em><code>False</code></em>) :: <code>Sequential</code></p>
 </blockquote>
 <p>Module grouping <code>BatchNorm1d</code>, <code>Dropout</code> and <code>Linear</code> layers.
 From : <a href="https://github.com/fastai/fastai/blob/master/fastai/layers.py">https://github.com/fastai/fastai/blob/master/fastai/layers.py</a></p>
@@ -263,6 +551,42 @@ From : <a href="https://github.com/fastai/fastai/blob/master/fastai/layers.py">h
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+
+<div id="c12716dd-b554-4cce-b612-890a6a0010c0"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#c12716dd-b554-4cce-b612-890a6a0010c0');
+
+            setTimeout(function() {
+                var nbb_cell_id = 14;
+                var nbb_unformatted_code = "# export\nclass LinBnDrop(nn.Sequential):\n    \"\"\"\n    Module grouping `BatchNorm1d`, `Dropout` and `Linear` layers.\n    From : https://github.com/fastai/fastai/blob/master/fastai/layers.py\n    \"\"\"\n    \n    def __init__(self, n_in, n_out, bn=True, p=0., act=None, lin_first=False):\n        layers = [BatchNorm(n_out if lin_first else n_in, ndim=1)] if bn else []\n        \n        if p != 0: \n            layers.append(nn.Dropout(p))\n        \n        lin = [nn.Linear(n_in, n_out, bias=not bn)]\n        \n        if act is not None: \n            lin.append(act)\n        \n        layers = lin+layers if lin_first else layers+lin\n        \n        super().__init__(*layers)";
+                var nbb_formatted_code = "# export\nclass LinBnDrop(nn.Sequential):\n    \"\"\"\n    Module grouping `BatchNorm1d`, `Dropout` and `Linear` layers.\n    From : https://github.com/fastai/fastai/blob/master/fastai/layers.py\n    \"\"\"\n\n    def __init__(self, n_in, n_out, bn=True, p=0.0, act=None, lin_first=False):\n        layers = [BatchNorm(n_out if lin_first else n_in, ndim=1)] if bn else []\n\n        if p != 0:\n            layers.append(nn.Dropout(p))\n\n        lin = [nn.Linear(n_in, n_out, bias=not bn)]\n\n        if act is not None:\n            lin.append(act)\n\n        layers = lin + layers if lin_first else layers + lin\n\n        super().__init__(*layers)";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            
+</script>
+</div>
+
+</div>
+
+</div>
+</div>
 
 </div>
     {% endraw %}
@@ -305,6 +629,42 @@ From : <a href="https://github.com/fastai/fastai/blob/master/fastai/layers.py">h
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+
+<div id="372df52c-14ab-4d08-841c-0569eac0cfcf"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#372df52c-14ab-4d08-841c-0569eac0cfcf');
+
+            setTimeout(function() {
+                var nbb_cell_id = 15;
+                var nbb_unformatted_code = "with torch.no_grad():\n    tst = LinBnDrop(10, 20)\n    mods = list(tst.children())\n    test_eq(len(mods), 2)\n    assert isinstance(mods[0], nn.BatchNorm1d)\n    assert isinstance(mods[1], nn.Linear)\n\n    tst = LinBnDrop(10, 20, p=0.1)\n    mods = list(tst.children())\n    test_eq(len(mods), 3)\n    assert isinstance(mods[0], nn.BatchNorm1d)\n    assert isinstance(mods[1], nn.Dropout)\n    assert isinstance(mods[2], nn.Linear)\n\n    tst = LinBnDrop(10, 20, act=nn.ReLU(), lin_first=True)\n    mods = list(tst.children())\n    test_eq(len(mods), 3)\n    assert isinstance(mods[0], nn.Linear)\n    assert isinstance(mods[1], nn.ReLU)\n    assert isinstance(mods[2], nn.BatchNorm1d)\n\n    tst = LinBnDrop(10, 20, bn=False)\n    mods = list(tst.children())\n    test_eq(len(mods), 1)\n    assert isinstance(mods[0], nn.Linear)";
+                var nbb_formatted_code = "with torch.no_grad():\n    tst = LinBnDrop(10, 20)\n    mods = list(tst.children())\n    test_eq(len(mods), 2)\n    assert isinstance(mods[0], nn.BatchNorm1d)\n    assert isinstance(mods[1], nn.Linear)\n\n    tst = LinBnDrop(10, 20, p=0.1)\n    mods = list(tst.children())\n    test_eq(len(mods), 3)\n    assert isinstance(mods[0], nn.BatchNorm1d)\n    assert isinstance(mods[1], nn.Dropout)\n    assert isinstance(mods[2], nn.Linear)\n\n    tst = LinBnDrop(10, 20, act=nn.ReLU(), lin_first=True)\n    mods = list(tst.children())\n    test_eq(len(mods), 3)\n    assert isinstance(mods[0], nn.Linear)\n    assert isinstance(mods[1], nn.ReLU)\n    assert isinstance(mods[2], nn.BatchNorm1d)\n\n    tst = LinBnDrop(10, 20, bn=False)\n    mods = list(tst.children())\n    test_eq(len(mods), 1)\n    assert isinstance(mods[0], nn.Linear)";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            
+</script>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
     {% endraw %}
 
@@ -325,7 +685,7 @@ From : <a href="https://github.com/fastai/fastai/blob/master/fastai/layers.py">h
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="Mish" class="doc_header"><code>class</code> <code>Mish</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/core/layers.py#L118" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Mish</code>(<strong><code>inplace</code></strong>=<em><code>True</code></em>) :: <code>Module</code></p>
+<h2 id="Mish" class="doc_header"><code>class</code> <code>Mish</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/core/layers.py#L124" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Mish</code>(<strong><code>inplace</code></strong>=<em><code>True</code></em>) :: <code>Module</code></p>
 </blockquote>
 <p>Mish Activation function</p>
 
@@ -342,6 +702,42 @@ From : <a href="https://github.com/fastai/fastai/blob/master/fastai/layers.py">h
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+
+<div id="f106d2ff-a3cc-47e7-9219-72ee22db6d7b"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#f106d2ff-a3cc-47e7-9219-72ee22db6d7b');
+
+            setTimeout(function() {
+                var nbb_cell_id = 17;
+                var nbb_unformatted_code = "#export\nclass Mish(Module):\n    \"Mish Activation function\"\n    def __init__(self, inplace=True):\n        # NOTE: inplace does nothing it is for compatibility with `timm`\n        super(Mish, self).__init__()\n        \n    def forward(self, x): \n        return MishJitAutoFn.apply(x)";
+                var nbb_formatted_code = "# export\nclass Mish(Module):\n    \"Mish Activation function\"\n\n    def __init__(self, inplace=True):\n        # NOTE: inplace does nothing it is for compatibility with `timm`\n        super(Mish, self).__init__()\n\n    def forward(self, x):\n        return MishJitAutoFn.apply(x)";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            
+</script>
+</div>
+
+</div>
+
+</div>
+</div>
 
 </div>
     {% endraw %}
@@ -361,6 +757,42 @@ From : <a href="https://github.com/fastai/fastai/blob/master/fastai/layers.py">h
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+
+<div id="45b8b3d5-557a-4266-a53c-b838535f6d3d"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#45b8b3d5-557a-4266-a53c-b838535f6d3d');
+
+            setTimeout(function() {
+                var nbb_cell_id = 18;
+                var nbb_unformatted_code = "# export\nACTIVATION_REGISTERY = Registry(\"ACTIVATIONS\")\nACTIVATION_REGISTERY.__doc__ = \"Registery of Activation Functions\"\nACTIVATION_REGISTERY.register(Mish)\nACTIVATION_REGISTERY.register(torch.nn.LeakyReLU)\nACTIVATION_REGISTERY.register(torch.nn.ReLU)\nACTIVATION_REGISTERY.register(torch.nn.GELU)\nACTIVATION_REGISTERY.register(torch.nn.Sigmoid)\nACTIVATION_REGISTERY.register(torch.nn.SiLU)\nACTIVATION_REGISTERY.register(torch.nn.Tanh)\nACTIVATION_REGISTERY.register(torch.nn.LogSoftmax)\nACTIVATION_REGISTERY.register(torch.nn.Softmax)";
+                var nbb_formatted_code = "# export\nACTIVATION_REGISTERY = Registry(\"ACTIVATIONS\")\nACTIVATION_REGISTERY.__doc__ = \"Registery of Activation Functions\"\nACTIVATION_REGISTERY.register(Mish)\nACTIVATION_REGISTERY.register(torch.nn.LeakyReLU)\nACTIVATION_REGISTERY.register(torch.nn.ReLU)\nACTIVATION_REGISTERY.register(torch.nn.GELU)\nACTIVATION_REGISTERY.register(torch.nn.Sigmoid)\nACTIVATION_REGISTERY.register(torch.nn.SiLU)\nACTIVATION_REGISTERY.register(torch.nn.Tanh)\nACTIVATION_REGISTERY.register(torch.nn.LogSoftmax)\nACTIVATION_REGISTERY.register(torch.nn.Softmax)";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            
+</script>
+</div>
+
+</div>
+
+</div>
+</div>
 
 </div>
     {% endraw %}
@@ -401,6 +833,36 @@ From : <a href="https://github.com/fastai/fastai/blob/master/fastai/layers.py">h
 </div>
 </div>
 
+<div class="output_area">
+
+
+
+
+<div id="893e8ffd-b4eb-4906-a08f-b5aa884cc2c7"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#893e8ffd-b4eb-4906-a08f-b5aa884cc2c7');
+
+            setTimeout(function() {
+                var nbb_cell_id = 19;
+                var nbb_unformatted_code = "#hide-input\nprint(ACTIVATION_REGISTERY)";
+                var nbb_formatted_code = "# hide-input\nprint(ACTIVATION_REGISTERY)";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            
+</script>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -424,7 +886,7 @@ From : <a href="https://github.com/fastai/fastai/blob/master/fastai/layers.py">h
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="num_features_model" class="doc_header"><code>num_features_model</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/core/layers.py#L141" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>num_features_model</code>(<strong><code>m</code></strong>, <strong><code>ch_int</code></strong>:<code>int</code>=<em><code>3</code></em>)</p>
+<h4 id="num_features_model" class="doc_header"><code>num_features_model</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/core/layers.py#L148" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>num_features_model</code>(<strong><code>m</code></strong>, <strong><code>ch_int</code></strong>:<code>int</code>=<em><code>3</code></em>)</p>
 </blockquote>
 <p>Return the number of output features for <code>m</code>.</p>
 
@@ -442,6 +904,42 @@ From : <a href="https://github.com/fastai/fastai/blob/master/fastai/layers.py">h
     
 <div class="cell border-box-sizing code_cell rendered">
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+
+<div id="61aa0853-d056-4c50-b4dc-7484e0e574ae"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#61aa0853-d056-4c50-b4dc-7484e0e574ae');
+
+            setTimeout(function() {
+                var nbb_cell_id = 20;
+                var nbb_unformatted_code = "#export\n@torch.no_grad()\ndef num_features_model(m, ch_int: int = 3):\n    \"Return the number of output features for `m`.\"\n    sz = 32\n    while True:\n        try:\n            x = torch.zeros((8, ch_int, sz, sz))\n            dummy_out = m.eval()(x)\n            return dummy_out.shape[1]\n        except Exception as e:\n            sz *= 2\n            if sz > 2048: raise e";
+                var nbb_formatted_code = "# export\n@torch.no_grad()\ndef num_features_model(m, ch_int: int = 3):\n    \"Return the number of output features for `m`.\"\n    sz = 32\n    while True:\n        try:\n            x = torch.zeros((8, ch_int, sz, sz))\n            dummy_out = m.eval()(x)\n            return dummy_out.shape[1]\n        except Exception as e:\n            sz *= 2\n            if sz > 2048:\n                raise e";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            
+</script>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
     {% endraw %}
 
@@ -452,11 +950,47 @@ From : <a href="https://github.com/fastai/fastai/blob/master/fastai/layers.py">h
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
 <span class="n">test_eq</span><span class="p">(</span><span class="n">num_features_model</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">ch_int</span><span class="o">=</span><span class="mi">3</span><span class="p">),</span> <span class="mi">11</span><span class="p">)</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+
+<div id="7adc02c4-ce85-4f30-9b40-f6f289f8d67c"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#7adc02c4-ce85-4f30-9b40-f6f289f8d67c');
+
+            setTimeout(function() {
+                var nbb_cell_id = 21;
+                var nbb_unformatted_code = "m = nn.Sequential(nn.Conv2d(3,5,3), nn.Conv2d(5,11,3))\ntest_eq(num_features_model(m, ch_int=3), 11)";
+                var nbb_formatted_code = "m = nn.Sequential(nn.Conv2d(3, 5, 3), nn.Conv2d(5, 11, 3))\ntest_eq(num_features_model(m, ch_int=3), 11)";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            
+</script>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -480,7 +1014,7 @@ From : <a href="https://github.com/fastai/fastai/blob/master/fastai/layers.py">h
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="requires_grad" class="doc_header"><code>requires_grad</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/core/layers.py#L159" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>requires_grad</code>(<strong><code>m</code></strong>)</p>
+<h4 id="requires_grad" class="doc_header"><code>requires_grad</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/core/layers.py#L167" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>requires_grad</code>(<strong><code>m</code></strong>)</p>
 </blockquote>
 <p>Check if the first parameter of <code>m</code> requires grad or not</p>
 
@@ -498,6 +1032,42 @@ From : <a href="https://github.com/fastai/fastai/blob/master/fastai/layers.py">h
     
 <div class="cell border-box-sizing code_cell rendered">
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+
+<div id="31a6add0-1e82-4720-b406-29a38851b124"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#31a6add0-1e82-4720-b406-29a38851b124');
+
+            setTimeout(function() {
+                var nbb_cell_id = 23;
+                var nbb_unformatted_code = "# export\ndef requires_grad(m):\n    \"Check if the first parameter of `m` requires grad or not\"\n    ps = list(m.parameters())\n    return ps[0].requires_grad if len(ps) > 0 else False";
+                var nbb_formatted_code = "# export\ndef requires_grad(m):\n    \"Check if the first parameter of `m` requires grad or not\"\n    ps = list(m.parameters())\n    return ps[0].requires_grad if len(ps) > 0 else False";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            
+</script>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
     {% endraw %}
 
@@ -508,13 +1078,50 @@ From : <a href="https://github.com/fastai/fastai/blob/master/fastai/layers.py">h
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tst</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tst</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 <span class="k">assert</span> <span class="n">requires_grad</span><span class="p">(</span><span class="n">tst</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">tst</span><span class="o">.</span><span class="n">parameters</span><span class="p">():</span> <span class="n">p</span><span class="o">.</span><span class="n">requires_grad_</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">tst</span><span class="o">.</span><span class="n">parameters</span><span class="p">():</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">requires_grad_</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 <span class="k">assert</span> <span class="ow">not</span> <span class="n">requires_grad</span><span class="p">(</span><span class="n">tst</span><span class="p">)</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+
+<div id="1e6c6517-cc5b-4737-91b2-cc715049b96e"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#1e6c6517-cc5b-4737-91b2-cc715049b96e');
+
+            setTimeout(function() {
+                var nbb_cell_id = 24;
+                var nbb_unformatted_code = "tst = nn.Linear(4,5)\nassert requires_grad(tst)\nfor p in tst.parameters(): p.requires_grad_(False)\nassert not requires_grad(tst)";
+                var nbb_formatted_code = "tst = nn.Linear(4, 5)\nassert requires_grad(tst)\nfor p in tst.parameters():\n    p.requires_grad_(False)\nassert not requires_grad(tst)";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            
+</script>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -532,7 +1139,7 @@ From : <a href="https://github.com/fastai/fastai/blob/master/fastai/layers.py">h
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="init_default" class="doc_header"><code>init_default</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/core/layers.py#L165" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>init_default</code>(<strong><code>m</code></strong>, <strong><code>func</code></strong>=<em><code>kaiming_normal_</code></em>)</p>
+<h4 id="init_default" class="doc_header"><code>init_default</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/core/layers.py#L173" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>init_default</code>(<strong><code>m</code></strong>, <strong><code>func</code></strong>=<em><code>kaiming_normal_</code></em>)</p>
 </blockquote>
 <p>Initialize <code>m</code> weights with <code>func</code> and set <code>bias</code> to 0.</p>
 
@@ -550,6 +1157,42 @@ From : <a href="https://github.com/fastai/fastai/blob/master/fastai/layers.py">h
     
 <div class="cell border-box-sizing code_cell rendered">
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+
+<div id="5c98a5c5-5666-4ed0-8ca2-cc72e4736958"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#5c98a5c5-5666-4ed0-8ca2-cc72e4736958');
+
+            setTimeout(function() {
+                var nbb_cell_id = 25;
+                var nbb_unformatted_code = "#export\ndef init_default(m, func=nn.init.kaiming_normal_):\n    \"Initialize `m` weights with `func` and set `bias` to 0.\"\n    if func:\n        if hasattr(m, 'weight'): func(m.weight)\n        if hasattr(m, 'bias') and hasattr(m.bias, 'data'): m.bias.data.fill_(0.)\n    return m";
+                var nbb_formatted_code = "# export\ndef init_default(m, func=nn.init.kaiming_normal_):\n    \"Initialize `m` weights with `func` and set `bias` to 0.\"\n    if func:\n        if hasattr(m, \"weight\"):\n            func(m.weight)\n        if hasattr(m, \"bias\") and hasattr(m.bias, \"data\"):\n            m.bias.data.fill_(0.0)\n    return m";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            
+</script>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
     {% endraw %}
 
@@ -561,15 +1204,51 @@ From : <a href="https://github.com/fastai/fastai/blob/master/fastai/layers.py">h
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
-    <span class="n">tst</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
-    <span class="n">tst</span><span class="o">.</span><span class="n">weight</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">uniform_</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">tst</span><span class="o">.</span><span class="n">bias</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">uniform_</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">tst</span> <span class="o">=</span> <span class="n">init_default</span><span class="p">(</span><span class="n">tst</span><span class="p">,</span> <span class="n">func</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">fill_</span><span class="p">(</span><span class="mf">1.</span><span class="p">))</span>
-    <span class="n">test_eq</span><span class="p">(</span><span class="n">tst</span><span class="o">.</span><span class="n">weight</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+    <span class="n">tst</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+    <span class="n">tst</span><span class="o">.</span><span class="n">weight</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">uniform_</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">tst</span><span class="o">.</span><span class="n">bias</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">uniform_</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">tst</span> <span class="o">=</span> <span class="n">init_default</span><span class="p">(</span><span class="n">tst</span><span class="p">,</span> <span class="n">func</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">fill_</span><span class="p">(</span><span class="mf">1.0</span><span class="p">))</span>
+    <span class="n">test_eq</span><span class="p">(</span><span class="n">tst</span><span class="o">.</span><span class="n">weight</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
     <span class="n">test_eq</span><span class="p">(</span><span class="n">tst</span><span class="o">.</span><span class="n">bias</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+
+<div id="ffa2ec7b-759d-435b-8db5-8b3da1613bd9"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#ffa2ec7b-759d-435b-8db5-8b3da1613bd9');
+
+            setTimeout(function() {
+                var nbb_cell_id = 26;
+                var nbb_unformatted_code = "with torch.no_grad():\n    tst = nn.Linear(4,5)\n    tst.weight.data.uniform_(-1,1)\n    tst.bias.data.uniform_(-1,1)\n    tst = init_default(tst, func = lambda x: x.data.fill_(1.))\n    test_eq(tst.weight, torch.ones(5,4))\n    test_eq(tst.bias, torch.zeros(5))";
+                var nbb_formatted_code = "with torch.no_grad():\n    tst = nn.Linear(4, 5)\n    tst.weight.data.uniform_(-1, 1)\n    tst.bias.data.uniform_(-1, 1)\n    tst = init_default(tst, func=lambda x: x.data.fill_(1.0))\n    test_eq(tst.weight, torch.ones(5, 4))\n    test_eq(tst.bias, torch.zeros(5))";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            
+</script>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -587,7 +1266,7 @@ From : <a href="https://github.com/fastai/fastai/blob/master/fastai/layers.py">h
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="cond_init" class="doc_header"><code>cond_init</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/core/layers.py#L175" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>cond_init</code>(<strong><code>m</code></strong>, <strong><code>func</code></strong>)</p>
+<h4 id="cond_init" class="doc_header"><code>cond_init</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/core/layers.py#L194" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>cond_init</code>(<strong><code>m</code></strong>, <strong><code>func</code></strong>)</p>
 </blockquote>
 <p>Apply <a href="/lightning_cv/core.layers.html#init_default"><code>init_default</code></a> to <code>m</code> unless it's a batchnorm module</p>
 
@@ -605,6 +1284,42 @@ From : <a href="https://github.com/fastai/fastai/blob/master/fastai/layers.py">h
     
 <div class="cell border-box-sizing code_cell rendered">
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+
+<div id="7f0c59b7-d9b2-46d5-98c0-9e2fae63f82c"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#7f0c59b7-d9b2-46d5-98c0-9e2fae63f82c');
+
+            setTimeout(function() {
+                var nbb_cell_id = 27;
+                var nbb_unformatted_code = "#export\nnorm_types = (nn.BatchNorm1d, nn.BatchNorm2d, nn.BatchNorm3d, nn.InstanceNorm1d, nn.InstanceNorm2d, nn.InstanceNorm3d, nn.LayerNorm,)\n\ndef cond_init(m, func):\n    \"Apply `init_default` to `m` unless it's a batchnorm module\"\n    if (not isinstance(m, norm_types)) and requires_grad(m): init_default(m, func)";
+                var nbb_formatted_code = "# export\nnorm_types = (\n    nn.BatchNorm1d,\n    nn.BatchNorm2d,\n    nn.BatchNorm3d,\n    nn.InstanceNorm1d,\n    nn.InstanceNorm2d,\n    nn.InstanceNorm3d,\n    nn.LayerNorm,\n)\n\n\ndef cond_init(m, func):\n    \"Apply `init_default` to `m` unless it's a batchnorm module\"\n    if (not isinstance(m, norm_types)) and requires_grad(m):\n        init_default(m, func)";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            
+</script>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
     {% endraw %}
 
@@ -616,21 +1331,57 @@ From : <a href="https://github.com/fastai/fastai/blob/master/fastai/layers.py">h
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
-    <span class="n">tst</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
-    <span class="n">tst</span><span class="o">.</span><span class="n">weight</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">uniform_</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">tst</span><span class="o">.</span><span class="n">bias</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">uniform_</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">cond_init</span><span class="p">(</span><span class="n">tst</span><span class="p">,</span> <span class="n">func</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">fill_</span><span class="p">(</span><span class="mf">1.</span><span class="p">))</span>
-    <span class="n">test_eq</span><span class="p">(</span><span class="n">tst</span><span class="o">.</span><span class="n">weight</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+    <span class="n">tst</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+    <span class="n">tst</span><span class="o">.</span><span class="n">weight</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">uniform_</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">tst</span><span class="o">.</span><span class="n">bias</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">uniform_</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">cond_init</span><span class="p">(</span><span class="n">tst</span><span class="p">,</span> <span class="n">func</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">fill_</span><span class="p">(</span><span class="mf">1.0</span><span class="p">))</span>
+    <span class="n">test_eq</span><span class="p">(</span><span class="n">tst</span><span class="o">.</span><span class="n">weight</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
     <span class="n">test_eq</span><span class="p">(</span><span class="n">tst</span><span class="o">.</span><span class="n">bias</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
 
     <span class="n">tst</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm2d</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
     <span class="n">init</span> <span class="o">=</span> <span class="p">[</span><span class="n">tst</span><span class="o">.</span><span class="n">weight</span><span class="o">.</span><span class="n">clone</span><span class="p">(),</span> <span class="n">tst</span><span class="o">.</span><span class="n">bias</span><span class="o">.</span><span class="n">clone</span><span class="p">()]</span>
-    <span class="n">cond_init</span><span class="p">(</span><span class="n">tst</span><span class="p">,</span> <span class="n">func</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">fill_</span><span class="p">(</span><span class="mf">1.</span><span class="p">))</span>
+    <span class="n">cond_init</span><span class="p">(</span><span class="n">tst</span><span class="p">,</span> <span class="n">func</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">fill_</span><span class="p">(</span><span class="mf">1.0</span><span class="p">))</span>
     <span class="n">test_eq</span><span class="p">(</span><span class="n">tst</span><span class="o">.</span><span class="n">weight</span><span class="p">,</span> <span class="n">init</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
     <span class="n">test_eq</span><span class="p">(</span><span class="n">tst</span><span class="o">.</span><span class="n">bias</span><span class="p">,</span> <span class="n">init</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+
+<div id="fbb521a7-799e-4602-b6e2-4b459d73efab"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#fbb521a7-799e-4602-b6e2-4b459d73efab');
+
+            setTimeout(function() {
+                var nbb_cell_id = 28;
+                var nbb_unformatted_code = "with torch.no_grad():\n    tst = nn.Linear(4,5)\n    tst.weight.data.uniform_(-1,1)\n    tst.bias.data.uniform_(-1,1)\n    cond_init(tst, func = lambda x: x.data.fill_(1.))\n    test_eq(tst.weight, torch.ones(5,4))\n    test_eq(tst.bias, torch.zeros(5))\n\n    tst = nn.BatchNorm2d(5)\n    init = [tst.weight.clone(), tst.bias.clone()]\n    cond_init(tst, func = lambda x: x.data.fill_(1.))\n    test_eq(tst.weight, init[0])\n    test_eq(tst.bias, init[1])";
+                var nbb_formatted_code = "with torch.no_grad():\n    tst = nn.Linear(4, 5)\n    tst.weight.data.uniform_(-1, 1)\n    tst.bias.data.uniform_(-1, 1)\n    cond_init(tst, func=lambda x: x.data.fill_(1.0))\n    test_eq(tst.weight, torch.ones(5, 4))\n    test_eq(tst.bias, torch.zeros(5))\n\n    tst = nn.BatchNorm2d(5)\n    init = [tst.weight.clone(), tst.bias.clone()]\n    cond_init(tst, func=lambda x: x.data.fill_(1.0))\n    test_eq(tst.weight, init[0])\n    test_eq(tst.bias, init[1])";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            
+</script>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -648,7 +1399,7 @@ From : <a href="https://github.com/fastai/fastai/blob/master/fastai/layers.py">h
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="apply_leaf" class="doc_header"><code>apply_leaf</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/core/layers.py#L180" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>apply_leaf</code>(<strong><code>m</code></strong>, <strong><code>f</code></strong>)</p>
+<h4 id="apply_leaf" class="doc_header"><code>apply_leaf</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/core/layers.py#L200" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>apply_leaf</code>(<strong><code>m</code></strong>, <strong><code>f</code></strong>)</p>
 </blockquote>
 <p>Apply <code>f</code> to children of <code>m</code>.</p>
 
@@ -666,6 +1417,42 @@ From : <a href="https://github.com/fastai/fastai/blob/master/fastai/layers.py">h
     
 <div class="cell border-box-sizing code_cell rendered">
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+
+<div id="5c2bd419-fa51-438d-83ad-86895608db9b"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#5c2bd419-fa51-438d-83ad-86895608db9b');
+
+            setTimeout(function() {
+                var nbb_cell_id = 29;
+                var nbb_unformatted_code = "#export\ndef apply_leaf(m, f):\n    \"Apply `f` to children of `m`.\"\n    c = m.children()\n    if isinstance(m, nn.Module): f(m)\n    for l in c: apply_leaf(l,f)";
+                var nbb_formatted_code = "# export\ndef apply_leaf(m, f):\n    \"Apply `f` to children of `m`.\"\n    c = m.children()\n    if isinstance(m, nn.Module):\n        f(m)\n    for l in c:\n        apply_leaf(l, f)";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            
+</script>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
     {% endraw %}
 
@@ -677,13 +1464,53 @@ From : <a href="https://github.com/fastai/fastai/blob/master/fastai/layers.py">h
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
-    <span class="n">tst</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">)))</span>
-    <span class="n">apply_leaf</span><span class="p">(</span><span class="n">tst</span><span class="p">,</span> <span class="n">partial</span><span class="p">(</span><span class="n">init_default</span><span class="p">,</span> <span class="n">func</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">fill_</span><span class="p">(</span><span class="mf">1.</span><span class="p">)))</span>
-    <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="p">[</span><span class="n">tst</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">*</span><span class="n">tst</span><span class="p">[</span><span class="mi">1</span><span class="p">]]:</span> <span class="n">test_eq</span><span class="p">(</span><span class="n">l</span><span class="o">.</span><span class="n">weight</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
-    <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="p">[</span><span class="n">tst</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">*</span><span class="n">tst</span><span class="p">[</span><span class="mi">1</span><span class="p">]]:</span> <span class="n">test_eq</span><span class="p">(</span><span class="n">l</span><span class="o">.</span><span class="n">bias</span><span class="p">,</span>   <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+    <span class="n">tst</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+        <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+    <span class="p">)</span>
+    <span class="n">apply_leaf</span><span class="p">(</span><span class="n">tst</span><span class="p">,</span> <span class="n">partial</span><span class="p">(</span><span class="n">init_default</span><span class="p">,</span> <span class="n">func</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">fill_</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)))</span>
+    <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="p">[</span><span class="n">tst</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">*</span><span class="n">tst</span><span class="p">[</span><span class="mi">1</span><span class="p">]]:</span>
+        <span class="n">test_eq</span><span class="p">(</span><span class="n">l</span><span class="o">.</span><span class="n">weight</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="p">[</span><span class="n">tst</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">*</span><span class="n">tst</span><span class="p">[</span><span class="mi">1</span><span class="p">]]:</span>
+        <span class="n">test_eq</span><span class="p">(</span><span class="n">l</span><span class="o">.</span><span class="n">bias</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+
+<div id="3e79d38d-039f-494b-93fd-47c47ce7c7ad"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#3e79d38d-039f-494b-93fd-47c47ce7c7ad');
+
+            setTimeout(function() {
+                var nbb_cell_id = 30;
+                var nbb_unformatted_code = "with torch.no_grad():\n    tst = nn.Sequential(nn.Linear(4,5), nn.Sequential(nn.Linear(4,5), nn.Linear(4,5)))\n    apply_leaf(tst, partial(init_default, func=lambda x: x.data.fill_(1.)))\n    for l in [tst[0], *tst[1]]: test_eq(l.weight, torch.ones(5,4))\n    for l in [tst[0], *tst[1]]: test_eq(l.bias,   torch.zeros(5))";
+                var nbb_formatted_code = "with torch.no_grad():\n    tst = nn.Sequential(\n        nn.Linear(4, 5), nn.Sequential(nn.Linear(4, 5), nn.Linear(4, 5))\n    )\n    apply_leaf(tst, partial(init_default, func=lambda x: x.data.fill_(1.0)))\n    for l in [tst[0], *tst[1]]:\n        test_eq(l.weight, torch.ones(5, 4))\n    for l in [tst[0], *tst[1]]:\n        test_eq(l.bias, torch.zeros(5))";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            
+</script>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -701,7 +1528,7 @@ From : <a href="https://github.com/fastai/fastai/blob/master/fastai/layers.py">h
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="apply_init" class="doc_header"><code>apply_init</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/core/layers.py#L187" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>apply_init</code>(<strong><code>m</code></strong>, <strong><code>func</code></strong>=<em><code>kaiming_normal_</code></em>)</p>
+<h4 id="apply_init" class="doc_header"><code>apply_init</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/core/layers.py#L209" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>apply_init</code>(<strong><code>m</code></strong>, <strong><code>func</code></strong>=<em><code>kaiming_normal_</code></em>)</p>
 </blockquote>
 <p>Initialize all non-batchnorm layers of <code>m</code> with <code>func</code>.</p>
 
@@ -719,6 +1546,42 @@ From : <a href="https://github.com/fastai/fastai/blob/master/fastai/layers.py">h
     
 <div class="cell border-box-sizing code_cell rendered">
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+
+<div id="5d053a7a-fa96-4514-8b52-ab0cb6c10e9b"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#5d053a7a-fa96-4514-8b52-ab0cb6c10e9b');
+
+            setTimeout(function() {
+                var nbb_cell_id = 31;
+                var nbb_unformatted_code = "#export\ndef apply_init(m, func=nn.init.kaiming_normal_):\n    \"Initialize all non-batchnorm layers of `m` with `func`.\"\n    apply_leaf(m, partial(cond_init, func=func))";
+                var nbb_formatted_code = "# export\ndef apply_init(m, func=nn.init.kaiming_normal_):\n    \"Initialize all non-batchnorm layers of `m` with `func`.\"\n    apply_leaf(m, partial(cond_init, func=func))";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            
+</script>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
     {% endraw %}
 
@@ -730,16 +1593,56 @@ From : <a href="https://github.com/fastai/fastai/blob/master/fastai/layers.py">h
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
-    <span class="n">tst</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm1d</span><span class="p">(</span><span class="mi">5</span><span class="p">)))</span>
+    <span class="n">tst</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+        <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm1d</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+    <span class="p">)</span>
     <span class="n">init</span> <span class="o">=</span> <span class="p">[</span><span class="n">tst</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">weight</span><span class="o">.</span><span class="n">clone</span><span class="p">(),</span> <span class="n">tst</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">bias</span><span class="o">.</span><span class="n">clone</span><span class="p">()]</span>
-    <span class="n">apply_init</span><span class="p">(</span><span class="n">tst</span><span class="p">,</span> <span class="n">func</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">fill_</span><span class="p">(</span><span class="mf">1.</span><span class="p">))</span>
-    <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="p">[</span><span class="n">tst</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">tst</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]]:</span> <span class="n">test_eq</span><span class="p">(</span><span class="n">l</span><span class="o">.</span><span class="n">weight</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
-    <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="p">[</span><span class="n">tst</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">tst</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]]:</span> <span class="n">test_eq</span><span class="p">(</span><span class="n">l</span><span class="o">.</span><span class="n">bias</span><span class="p">,</span>   <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+    <span class="n">apply_init</span><span class="p">(</span><span class="n">tst</span><span class="p">,</span> <span class="n">func</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">fill_</span><span class="p">(</span><span class="mf">1.0</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="p">[</span><span class="n">tst</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">tst</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]]:</span>
+        <span class="n">test_eq</span><span class="p">(</span><span class="n">l</span><span class="o">.</span><span class="n">weight</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="p">[</span><span class="n">tst</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">tst</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]]:</span>
+        <span class="n">test_eq</span><span class="p">(</span><span class="n">l</span><span class="o">.</span><span class="n">bias</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
     <span class="n">test_eq</span><span class="p">(</span><span class="n">tst</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">weight</span><span class="p">,</span> <span class="n">init</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-    <span class="n">test_eq</span><span class="p">(</span><span class="n">tst</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">bias</span><span class="p">,</span>   <span class="n">init</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">test_eq</span><span class="p">(</span><span class="n">tst</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">bias</span><span class="p">,</span> <span class="n">init</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+
+<div id="3eadd742-aa55-4532-91c1-00b37a76fb39"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#3eadd742-aa55-4532-91c1-00b37a76fb39');
+
+            setTimeout(function() {
+                var nbb_cell_id = 32;
+                var nbb_unformatted_code = "with torch.no_grad():\n    tst = nn.Sequential(nn.Linear(4,5), nn.Sequential(nn.Linear(4,5), nn.BatchNorm1d(5)))\n    init = [tst[1][1].weight.clone(), tst[1][1].bias.clone()]\n    apply_init(tst, func=lambda x: x.data.fill_(1.))\n    for l in [tst[0], tst[1][0]]: test_eq(l.weight, torch.ones(5,4))\n    for l in [tst[0], tst[1][0]]: test_eq(l.bias,   torch.zeros(5))\n    test_eq(tst[1][1].weight, init[0])\n    test_eq(tst[1][1].bias,   init[1])";
+                var nbb_formatted_code = "with torch.no_grad():\n    tst = nn.Sequential(\n        nn.Linear(4, 5), nn.Sequential(nn.Linear(4, 5), nn.BatchNorm1d(5))\n    )\n    init = [tst[1][1].weight.clone(), tst[1][1].bias.clone()]\n    apply_init(tst, func=lambda x: x.data.fill_(1.0))\n    for l in [tst[0], tst[1][0]]:\n        test_eq(l.weight, torch.ones(5, 4))\n    for l in [tst[0], tst[1][0]]:\n        test_eq(l.bias, torch.zeros(5))\n    test_eq(tst[1][1].weight, init[0])\n    test_eq(tst[1][1].bias, init[1])";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            
+</script>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -757,7 +1660,7 @@ From : <a href="https://github.com/fastai/fastai/blob/master/fastai/layers.py">h
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="set_bn_eval" class="doc_header"><code>set_bn_eval</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/core/layers.py#L194" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>set_bn_eval</code>(<strong><code>m</code></strong>:<code>Module</code>)</p>
+<h4 id="set_bn_eval" class="doc_header"><code>set_bn_eval</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/core/layers.py#L217" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>set_bn_eval</code>(<strong><code>m</code></strong>:<code>Module</code>)</p>
 </blockquote>
 <p>Set bn layers in eval mode for all recursive children of <code>m</code>.</p>
 
@@ -774,6 +1677,42 @@ From : <a href="https://github.com/fastai/fastai/blob/master/fastai/layers.py">h
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+
+<div id="ae2421a3-7c6f-451e-8031-bb5afa7c305d"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#ae2421a3-7c6f-451e-8031-bb5afa7c305d');
+
+            setTimeout(function() {
+                var nbb_cell_id = 33;
+                var nbb_unformatted_code = "# export\nbn_types = (nn.BatchNorm1d, nn.BatchNorm2d, nn.BatchNorm3d)\n\ndef set_bn_eval(m: Module):\n    \"Set bn layers in eval mode for all recursive children of `m`.\"\n    for l in m.children():\n        if isinstance(l, bn_types) and not next(l.parameters()).requires_grad:\n            l.eval()\n            for param in l.parameters(): \n                param.requires_grad = False\n        set_bn_eval(l)";
+                var nbb_formatted_code = "# export\nbn_types = (nn.BatchNorm1d, nn.BatchNorm2d, nn.BatchNorm3d)\n\n\ndef set_bn_eval(m: Module):\n    \"Set bn layers in eval mode for all recursive children of `m`.\"\n    for l in m.children():\n        if isinstance(l, bn_types) and not next(l.parameters()).requires_grad:\n            l.eval()\n            for param in l.parameters():\n                param.requires_grad = False\n        set_bn_eval(l)";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            
+</script>
+</div>
+
+</div>
+
+</div>
+</div>
 
 </div>
     {% endraw %}
@@ -795,7 +1734,7 @@ From : <a href="https://github.com/fastai/fastai/blob/master/fastai/layers.py">h
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="trainable_params" class="doc_header"><code>trainable_params</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/core/layers.py#L204" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>trainable_params</code>(<strong><code>m</code></strong>)</p>
+<h4 id="trainable_params" class="doc_header"><code>trainable_params</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/core/layers.py#L227" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>trainable_params</code>(<strong><code>m</code></strong>)</p>
 </blockquote>
 <p>Return all trainable parameters of <code>m</code></p>
 
@@ -813,6 +1752,42 @@ From : <a href="https://github.com/fastai/fastai/blob/master/fastai/layers.py">h
     
 <div class="cell border-box-sizing code_cell rendered">
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+
+<div id="3550d46d-91ff-4c9d-811d-73a3e5221fa5"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#3550d46d-91ff-4c9d-811d-73a3e5221fa5');
+
+            setTimeout(function() {
+                var nbb_cell_id = 34;
+                var nbb_unformatted_code = "#export\ndef trainable_params(m):\n    \"Return all trainable parameters of `m`\"\n    return [p for p in m.parameters() if p.requires_grad]";
+                var nbb_formatted_code = "# export\ndef trainable_params(m):\n    \"Return all trainable parameters of `m`\"\n    return [p for p in m.parameters() if p.requires_grad]";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            
+</script>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
     {% endraw %}
 
@@ -827,7 +1802,7 @@ From : <a href="https://github.com/fastai/fastai/blob/master/fastai/layers.py">h
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="params" class="doc_header"><code>params</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/core/layers.py#L209" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>params</code>(<strong><code>m</code></strong>)</p>
+<h4 id="params" class="doc_header"><code>params</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/core/layers.py#L232" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>params</code>(<strong><code>m</code></strong>)</p>
 </blockquote>
 <p>Return all parameters of <code>m</code></p>
 
@@ -845,6 +1820,42 @@ From : <a href="https://github.com/fastai/fastai/blob/master/fastai/layers.py">h
     
 <div class="cell border-box-sizing code_cell rendered">
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+
+<div id="14c74a82-8a5c-4c55-8230-75a57b52eca6"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#14c74a82-8a5c-4c55-8230-75a57b52eca6');
+
+            setTimeout(function() {
+                var nbb_cell_id = 35;
+                var nbb_unformatted_code = "#export\ndef params(m):\n    \"Return all parameters of `m`\"\n    return [p for p in m.parameters()]";
+                var nbb_formatted_code = "# export\ndef params(m):\n    \"Return all parameters of `m`\"\n    return [p for p in m.parameters()]";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            
+</script>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
     {% endraw %}
 
@@ -856,13 +1867,49 @@ From : <a href="https://github.com/fastai/fastai/blob/master/fastai/layers.py">h
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
-    <span class="n">m</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
     <span class="n">test_eq</span><span class="p">(</span><span class="n">trainable_params</span><span class="p">(</span><span class="n">m</span><span class="p">),</span> <span class="p">[</span><span class="n">m</span><span class="o">.</span><span class="n">weight</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">bias</span><span class="p">])</span>
     <span class="n">m</span><span class="o">.</span><span class="n">weight</span><span class="o">.</span><span class="n">requires_grad_</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
     <span class="n">test_eq</span><span class="p">(</span><span class="n">trainable_params</span><span class="p">(</span><span class="n">m</span><span class="p">),</span> <span class="p">[</span><span class="n">m</span><span class="o">.</span><span class="n">bias</span><span class="p">])</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+
+<div id="a9c7a00c-d40f-46e0-88b5-67038b78ff79"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#a9c7a00c-d40f-46e0-88b5-67038b78ff79');
+
+            setTimeout(function() {
+                var nbb_cell_id = 36;
+                var nbb_unformatted_code = "with torch.no_grad():\n    m = nn.Linear(4,5)\n    test_eq(trainable_params(m), [m.weight, m.bias])\n    m.weight.requires_grad_(False)\n    test_eq(trainable_params(m), [m.bias])";
+                var nbb_formatted_code = "with torch.no_grad():\n    m = nn.Linear(4, 5)\n    test_eq(trainable_params(m), [m.weight, m.bias])\n    m.weight.requires_grad_(False)\n    test_eq(trainable_params(m), [m.bias])";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            
+</script>
+</div>
+
+</div>
+
 </div>
 </div>
 
