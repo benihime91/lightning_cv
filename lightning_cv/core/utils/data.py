@@ -4,8 +4,6 @@ __all__ = ['logger', 'Urls', 'download_data', 'LOADER_REGISTERY', 'pil_loader', 
            'stratify_df']
 
 # Cell
-import copy
-import types
 from collections import UserDict
 from typing import *
 
@@ -32,7 +30,7 @@ logger = default_logger()
 # a thin wrapper over the original fastai.URLs
 class Urls:
     "Global constants for dataset and model URLs."
-    LOCAL_PATH = Path.cwd()/"data"
+    LOCAL_PATH = Path.cwd() / "data"
     DOGS = "https://storage.googleapis.com/mledu-datasets/cats_and_dogs_filtered.zip"
     BEES = "https://download.pytorch.org/tutorial/hymenoptera_data.zip"
 
@@ -47,7 +45,7 @@ def download_data(url: str, data_path: str = None, **kwargs):
 
 # Cell
 LOADER_REGISTERY = Registry("LOADERS")
-LOADER_REGISTERY.__doc__ = "Registery of Loaders, this loaders are used to load in Images"
+LOADER_REGISTERY.__doc__ = "Registery of Loaders, `Loaders` are used to load in Images"
 
 # Cell
 @LOADER_REGISTERY.register()
@@ -69,7 +67,7 @@ def folder2df(folder: str, extension: list = None, shuffle: bool = False):
     "parses all the images in a folder into a pandas dataframe."
     extensions = ifnone(extension, IMG_EXTENSIONS)
 
-    image_list  = []
+    image_list = []
     target_list = []
 
     for f in os.listdir(folder):
@@ -82,7 +80,9 @@ def folder2df(folder: str, extension: list = None, shuffle: bool = False):
                     image_list.append(image_path)
                     target_list.append(image_tgt)
 
-    logger.info(f"Found {len(image_list)} files belonging to {len(set(target_list))} classes.")
+    logger.info(
+        f"Found {len(image_list)} files belonging to {len(set(target_list))} classes."
+    )
     dataframe = pd.DataFrame()
     dataframe["image_id"] = image_list
     dataframe["target"] = target_list
@@ -92,14 +92,20 @@ def folder2df(folder: str, extension: list = None, shuffle: bool = False):
 
 # Cell
 @delegates(StratifiedKFold)
-def stratify_df(df: pd.DataFrame, y: str = None, fold_col: str = None, shuffle: bool = False, **kwargs):
+def stratify_df(
+    df: pd.DataFrame,
+    y: str = None,
+    fold_col: str = None,
+    shuffle: bool = False,
+    **kwargs
+):
     """makes stratified folds in `df`. The Id of the OOF Validation
     fold will be inserted in `fold_col`. `y` is the name of the column to
     the dependent variable.
     """
     # preserve the original copy of the dataframe
     data = df.copy()
-    skf  = StratifiedKFold(**kwargs)
+    skf = StratifiedKFold(**kwargs)
     fold_col = ifnone(fold_col, "kfold")
 
     ys = data[y]
@@ -108,7 +114,8 @@ def stratify_df(df: pd.DataFrame, y: str = None, fold_col: str = None, shuffle: 
     for i, (train_index, test_index) in enumerate(skf.split(X=data, y=ys)):
         data.loc[test_index, "kfold"] = i
 
-    if shuffle:  data = data.sample(frac=1).reset_index(drop=True)
+    if shuffle:
+        data = data.sample(frac=1).reset_index(drop=True)
     return data
 
 # Cell
@@ -129,7 +136,9 @@ class _DatasetCatalog(UserDict):
             func (callable): a callable which takes no arguments and returns a list of dicts.
                 It must return the same results if called multiple times.
         """
-        assert callable(func), "You must register a function with `DatasetCatalog.register`!"
+        assert callable(
+            func
+        ), "You must register a function with `DatasetCatalog.register`!"
         assert name not in self, "Dataset '{}' is already registered!".format(name)
         self[name] = func
 
