@@ -5,10 +5,10 @@ __all__ = ['logger', 'BaseClassificationDataset', 'ImageFolderDataset', 'ImageCs
 
 # Cell
 import os
-from abc import *
+import abc
 from typing import *
-from omegaconf import DictConfig
 import pandas as pd
+from omegaconf import DictConfig
 from fastcore.all import store_attr, ifnone, delegates, Path
 
 import torch
@@ -44,11 +44,11 @@ class BaseClassificationDataset(Dataset):
     def transforms(self, x: ImageClassificationTransforms):
         self._transforms = x
 
-    @abstractmethod
+    @abc.abstractmethod
     def __getitem__(self, x):
         raise NotImplementedError
 
-    @abstractmethod
+    @abc.abstractmethod
     def __len__(self, x):
         raise NotImplementedError
 
@@ -125,7 +125,8 @@ class ImageFolderDataset(BaseClassificationDataset):
     def __getitem__(self, index):
         image = self.images[index]
         image = self.loader(image)
-        aug_im = self._transforms(image)
+        aug_im = self.transforms(image)
+
         if self.test:
             return aug_im
         else:
@@ -157,7 +158,7 @@ class ImageCsvDataset(BaseClassificationDataset):
     def __getitem__(self, index):
         image = self.df[self.image_col][index]
         image = self.loader(image)
-        aug_im = self._transforms(image)
+        aug_im = self.transforms(image)
 
         if self.test:
             return aug_im
@@ -179,6 +180,7 @@ ClassificationDatasetCatalog.__doc__ = (
 
 # Cell
 class ClassificationDatasetOutput(NamedTuple):
+    "Tuple for storing TRAIN and VALID datasets generated from `create_dataset`"
     TRAIN: Union[BaseClassificationDataset, Dataset] = None
     VALID: Union[BaseClassificationDataset, Dataset, None] = None
 
@@ -191,12 +193,12 @@ def create_dataset(cfg: DictConfig) -> ClassificationDatasetOutput:
     train and validation datsets but if you do not have a validation dataset, then set
     `DATASETS.VALID = None`
     """
-    train_ds: BaseClassificationDataset = ClassificationDatasetCatalog.get(
+    train_ds = ClassificationDatasetCatalog.get(
         cfg.DATASETS.TRAIN, cfg=cfg.TRANSFORMS.TRAIN
     )
 
     if cfg.DATASETS.VALID is not None or cfg.DATASETS.VALID != " ":
-        valid_ds: BaseClassificationDataset = ClassificationDatasetCatalog.get(
+        valid_ds = ClassificationDatasetCatalog.get(
             cfg.DATASETS.VALID, cfg=cfg.TRANSFORMS.VALID
         )
     else:
