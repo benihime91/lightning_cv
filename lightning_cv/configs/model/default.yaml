@@ -1,11 +1,12 @@
 # @package MODEL
 BACKBONE:
-  NAME: TimmCnnBody
+  NAME: TimmBackBoneBase
   ARGUMENTS:
     model_name: efficientnet_b0
     cut: null
     act_layer: null
     pretrained: true
+    drop_path_rate: 0.3
 CLASSIFIER:
   NAME: GeneralClassifier
   ARGUMENTS:

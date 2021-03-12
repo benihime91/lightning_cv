@@ -86,7 +86,8 @@ index = {"get_cfg": "00_config.ipynb",
          "create_cnn_backbone": "01c_classification.modelling.backbones.ipynb",
          "GeneralClassifier": "01d_classification.modelling.classifiers.ipynb",
          "FastaiClassifier": "01d_classification.modelling.classifiers.ipynb",
-         "CNN_CLASSIFIER_REGISTRY": "01d_classification.modelling.classifiers.ipynb",
+         "CLASSIFICATION_CLASSIFIER_REGISTRY": "01d_classification.modelling.classifiers.ipynb",
+         "CLASSIFICATION_CLASSIFIER_REGISTRY.__doc__": "01d_classification.modelling.classifiers.ipynb",
          "create_classifier_head": "01d_classification.modelling.classifiers.ipynb"}
 
 modules = ["config.py",

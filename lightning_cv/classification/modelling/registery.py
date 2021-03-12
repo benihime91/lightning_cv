@@ -1,2 +1,2 @@
-from .classifiers import CNN_CLASSIFIER_REGISTRY
+from .classifiers import CLASSIFICATION_CLASSIFIER_REGISTRY
 from .backbones import CLASSIFICATION_BACKBONE_REGISTRY
