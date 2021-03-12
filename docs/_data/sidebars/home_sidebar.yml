@@ -37,7 +37,7 @@ entries:
       title: Model Body for Image Classification
       url: classification.modelling.backbones.html
     - output: web,pdf
-      title: Image Classification heads
+      title: Image Classification Classifiers
       url: classification.modelling.classifiers.html
     output: web
     title: lightning_cv

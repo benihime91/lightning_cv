@@ -1,13 +1,13 @@
 ---
 
-title: Image Classification heads
+title: Image Classification Classifiers
 
 
 keywords: fastai
 sidebar: home_sidebar
 
-summary: "Set of Image classification head architectures."
-description: "Set of Image classification head architectures."
+summary: "Set of Classifiers for Image Classification."
+description: "Set of Classifiers for Image Classification."
 nb_path: "nbs/01d_classification.modelling.classifiers.ipynb"
 ---
 <!--
@@ -80,13 +80,13 @@ nb_path: "nbs/01d_classification.modelling.classifiers.ipynb"
 
 
 
-<div id="11a8882f-df26-4a5c-bea3-c2b27ced6b34"></div>
+<div id="3e6371c6-5620-458b-b96d-55acf8150500"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#11a8882f-df26-4a5c-bea3-c2b27ced6b34');
+var element = $('#3e6371c6-5620-458b-b96d-55acf8150500');
 
             setTimeout(function() {
-                var nbb_cell_id = 6;
+                var nbb_cell_id = 8;
                 var nbb_unformatted_code = "# export\nclass GeneralClassifier(nn.Module):\n    \"A classification head w/ configurable global pooling and dropout that is similar to the one created by the timm library\"\n\n    @delegates(create_classifier)\n    def __init__(\n        self, num_features: int, num_classes: int, drop_rate: float = 0.0, **kwargs\n    ):\n        super(GeneralClassifier, self).__init__()\n        self.global_pool, self.fc = create_classifier(\n            num_features, num_classes, **kwargs\n        )\n        self.drop_rate = drop_rate\n\n    def forward(self, x):\n        x = self.global_pool(x)\n        if self.drop_rate:\n            x = F.dropout(x, p=float(self.drop_rate), training=self.training)\n        x = self.fc(x)\n        return x\n\n    @classmethod\n    def from_config(cls, cfg: DictConfig):\n        return cls(**cfg)";
                 var nbb_formatted_code = "# export\nclass GeneralClassifier(nn.Module):\n    \"A classification head w/ configurable global pooling and dropout that is similar to the one created by the timm library\"\n\n    @delegates(create_classifier)\n    def __init__(\n        self, num_features: int, num_classes: int, drop_rate: float = 0.0, **kwargs\n    ):\n        super(GeneralClassifier, self).__init__()\n        self.global_pool, self.fc = create_classifier(\n            num_features, num_classes, **kwargs\n        )\n        self.drop_rate = drop_rate\n\n    def forward(self, x):\n        x = self.global_pool(x)\n        if self.drop_rate:\n            x = F.dropout(x, p=float(self.drop_rate), training=self.training)\n        x = self.fc(x)\n        return x\n\n    @classmethod\n    def from_config(cls, cfg: DictConfig):\n        return cls(**cfg)";
                 var nbb_cells = Jupyter.notebook.get_cells();
@@ -119,11 +119,13 @@ var element = $('#11a8882f-df26-4a5c-bea3-c2b27ced6b34');
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">lightning_cv.config</span> <span class="kn">import</span> <span class="n">get_cfg</span>
-<span class="kn">from</span> <span class="nn">lightning_cv.classification.modelling.backbones</span> <span class="kn">import</span> <span class="n">create_cnn_body</span>
+<span class="kn">from</span> <span class="nn">lightning_cv.classification.modelling.backbones</span> <span class="kn">import</span> <span class="n">create_cnn_backbone</span>
 
 <span class="n">cfg</span> <span class="o">=</span> <span class="n">get_cfg</span><span class="p">()</span>
-<span class="n">cfg</span><span class="o">.</span><span class="n">MODEL</span><span class="o">.</span><span class="n">BACKBONE</span><span class="o">.</span><span class="n">NAME</span> <span class="o">=</span> <span class="s2">&quot;TimmCnnBody&quot;</span>
-<span class="n">cfg</span><span class="o">.</span><span class="n">MODEL</span><span class="o">.</span><span class="n">BACKBONE</span><span class="o">.</span><span class="n">ARGUMENTS</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;efficientnet_b0&quot;</span><span class="p">,</span> <span class="n">pretrained</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cut</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">act_layer</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">MODEL</span><span class="o">.</span><span class="n">BACKBONE</span><span class="o">.</span><span class="n">NAME</span> <span class="o">=</span> <span class="s2">&quot;TimmBackBoneBase&quot;</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">MODEL</span><span class="o">.</span><span class="n">BACKBONE</span><span class="o">.</span><span class="n">ARGUMENTS</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+    <span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;efficientnet_b0&quot;</span><span class="p">,</span> <span class="n">pretrained</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cut</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">act_layer</span><span class="o">=</span><span class="kc">None</span>
+<span class="p">)</span>
 </pre></div>
 
     </div>
@@ -138,15 +140,15 @@ var element = $('#11a8882f-df26-4a5c-bea3-c2b27ced6b34');
 
 
 
-<div id="9d9182d7-ba08-4e7f-afbd-eefd15b67383"></div>
+<div id="dcfee64b-e5b1-4ca4-8a81-ade915a04d68"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#9d9182d7-ba08-4e7f-afbd-eefd15b67383');
+var element = $('#dcfee64b-e5b1-4ca4-8a81-ade915a04d68');
 
             setTimeout(function() {
-                var nbb_cell_id = 7;
-                var nbb_unformatted_code = "from lightning_cv.config import get_cfg\nfrom lightning_cv.classification.modelling.backbones import create_cnn_body\n\ncfg = get_cfg()\ncfg.MODEL.BACKBONE.NAME = \"TimmCnnBody\"\ncfg.MODEL.BACKBONE.ARGUMENTS = dict(\n    model_name=\"efficientnet_b0\", pretrained=True, cut=None, act_layer=None\n)";
-                var nbb_formatted_code = "from lightning_cv.config import get_cfg\nfrom lightning_cv.classification.modelling.backbones import create_cnn_body\n\ncfg = get_cfg()\ncfg.MODEL.BACKBONE.NAME = \"TimmCnnBody\"\ncfg.MODEL.BACKBONE.ARGUMENTS = dict(\n    model_name=\"efficientnet_b0\", pretrained=True, cut=None, act_layer=None\n)";
+                var nbb_cell_id = 9;
+                var nbb_unformatted_code = "from lightning_cv.config import get_cfg\nfrom lightning_cv.classification.modelling.backbones import create_cnn_backbone\n\ncfg = get_cfg()\ncfg.MODEL.BACKBONE.NAME = \"TimmBackBoneBase\"\ncfg.MODEL.BACKBONE.ARGUMENTS = dict(\n    model_name=\"efficientnet_b0\", pretrained=True, cut=None, act_layer=None\n)";
+                var nbb_formatted_code = "from lightning_cv.config import get_cfg\nfrom lightning_cv.classification.modelling.backbones import create_cnn_backbone\n\ncfg = get_cfg()\ncfg.MODEL.BACKBONE.NAME = \"TimmBackBoneBase\"\ncfg.MODEL.BACKBONE.ARGUMENTS = dict(\n    model_name=\"efficientnet_b0\", pretrained=True, cut=None, act_layer=None\n)";
                 var nbb_cells = Jupyter.notebook.get_cells();
                 for (var i = 0; i < nbb_cells.length; ++i) {
                     if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
@@ -176,7 +178,7 @@ var element = $('#9d9182d7-ba08-4e7f-afbd-eefd15b67383');
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">backbone</span> <span class="o">=</span> <span class="n">create_cnn_body</span><span class="p">(</span><span class="n">cfg</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">backbone</span> <span class="o">=</span> <span class="n">create_cnn_backbone</span><span class="p">(</span><span class="n">cfg</span><span class="p">)</span>
 <span class="n">features</span> <span class="o">=</span> <span class="n">num_features_model</span><span class="p">(</span><span class="n">backbone</span><span class="p">)</span>
 
 <span class="n">cfg</span><span class="o">.</span><span class="n">MODEL</span><span class="o">.</span><span class="n">CLASSIFIER</span><span class="o">.</span><span class="n">ARGUMENTS</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
@@ -213,15 +215,15 @@ var element = $('#9d9182d7-ba08-4e7f-afbd-eefd15b67383');
 
 
 
-<div id="cac41cc0-5af5-4adf-be0b-f1ac44c3254c"></div>
+<div id="132b1ec6-d774-4d21-a1fb-189ea5b6fe29"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#cac41cc0-5af5-4adf-be0b-f1ac44c3254c');
+var element = $('#132b1ec6-d774-4d21-a1fb-189ea5b6fe29');
 
             setTimeout(function() {
-                var nbb_cell_id = 8;
-                var nbb_unformatted_code = "backbone = create_cnn_body(cfg)\nfeatures = num_features_model(backbone)\n\ncfg.MODEL.CLASSIFIER.ARGUMENTS = dict(num_features=features, num_classes=1000, drop_rate=0.25, pool_type=\"avg\")\ntst = GeneralClassifier.from_config(cfg.MODEL.CLASSIFIER.ARGUMENTS)\n\nprint(tst)\n\nmods = list(tst.children())\ntest_eq(len(mods), 2)";
-                var nbb_formatted_code = "backbone = create_cnn_body(cfg)\nfeatures = num_features_model(backbone)\n\ncfg.MODEL.CLASSIFIER.ARGUMENTS = dict(\n    num_features=features, num_classes=1000, drop_rate=0.25, pool_type=\"avg\"\n)\ntst = GeneralClassifier.from_config(cfg.MODEL.CLASSIFIER.ARGUMENTS)\n\nprint(tst)\n\nmods = list(tst.children())\ntest_eq(len(mods), 2)";
+                var nbb_cell_id = 10;
+                var nbb_unformatted_code = "backbone = create_cnn_backbone(cfg)\nfeatures = num_features_model(backbone)\n\ncfg.MODEL.CLASSIFIER.ARGUMENTS = dict(\n    num_features=features, num_classes=1000, drop_rate=0.25, pool_type=\"avg\"\n)\ntst = GeneralClassifier.from_config(cfg.MODEL.CLASSIFIER.ARGUMENTS)\n\nprint(tst)\n\nmods = list(tst.children())\ntest_eq(len(mods), 2)";
+                var nbb_formatted_code = "backbone = create_cnn_backbone(cfg)\nfeatures = num_features_model(backbone)\n\ncfg.MODEL.CLASSIFIER.ARGUMENTS = dict(\n    num_features=features, num_classes=1000, drop_rate=0.25, pool_type=\"avg\"\n)\ntst = GeneralClassifier.from_config(cfg.MODEL.CLASSIFIER.ARGUMENTS)\n\nprint(tst)\n\nmods = list(tst.children())\ntest_eq(len(mods), 2)";
                 var nbb_cells = Jupyter.notebook.get_cells();
                 for (var i = 0; i < nbb_cells.length; ++i) {
                     if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
@@ -251,7 +253,7 @@ var element = $('#cac41cc0-5af5-4adf-be0b-f1ac44c3254c');
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">backbone</span> <span class="o">=</span> <span class="n">create_cnn_body</span><span class="p">(</span><span class="n">cfg</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">backbone</span> <span class="o">=</span> <span class="n">create_cnn_backbone</span><span class="p">(</span><span class="n">cfg</span><span class="p">)</span>
 <span class="n">features</span> <span class="o">=</span> <span class="n">num_features_model</span><span class="p">(</span><span class="n">backbone</span><span class="p">)</span>
 
 <span class="n">cfg</span><span class="o">.</span><span class="n">MODEL</span><span class="o">.</span><span class="n">CLASSIFIER</span><span class="o">.</span><span class="n">ARGUMENTS</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
@@ -288,15 +290,15 @@ var element = $('#cac41cc0-5af5-4adf-be0b-f1ac44c3254c');
 
 
 
-<div id="59ad45c0-98a5-497e-934b-1021d459afb8"></div>
+<div id="983455dc-12af-4af3-b742-62c6f77e5e23"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#59ad45c0-98a5-497e-934b-1021d459afb8');
+var element = $('#983455dc-12af-4af3-b742-62c6f77e5e23');
 
             setTimeout(function() {
-                var nbb_cell_id = 10;
-                var nbb_unformatted_code = "backbone = create_cnn_body(cfg)\nfeatures = num_features_model(backbone)\n\ncfg.MODEL.CLASSIFIER.ARGUMENTS = dict(\n    num_features=features, num_classes=1000, drop_rate=0.25, pool_type=\"catavgmax\"\n)\ntst = GeneralClassifier.from_config(cfg.MODEL.CLASSIFIER.ARGUMENTS)\n\nprint(tst)\n\nmods = list(tst.children())\ntest_eq(len(mods), 2)";
-                var nbb_formatted_code = "backbone = create_cnn_body(cfg)\nfeatures = num_features_model(backbone)\n\ncfg.MODEL.CLASSIFIER.ARGUMENTS = dict(\n    num_features=features, num_classes=1000, drop_rate=0.25, pool_type=\"catavgmax\"\n)\ntst = GeneralClassifier.from_config(cfg.MODEL.CLASSIFIER.ARGUMENTS)\n\nprint(tst)\n\nmods = list(tst.children())\ntest_eq(len(mods), 2)";
+                var nbb_cell_id = 11;
+                var nbb_unformatted_code = "backbone = create_cnn_backbone(cfg)\nfeatures = num_features_model(backbone)\n\ncfg.MODEL.CLASSIFIER.ARGUMENTS = dict(\n    num_features=features, num_classes=1000, drop_rate=0.25, pool_type=\"catavgmax\"\n)\ntst = GeneralClassifier.from_config(cfg.MODEL.CLASSIFIER.ARGUMENTS)\n\nprint(tst)\n\nmods = list(tst.children())\ntest_eq(len(mods), 2)";
+                var nbb_formatted_code = "backbone = create_cnn_backbone(cfg)\nfeatures = num_features_model(backbone)\n\ncfg.MODEL.CLASSIFIER.ARGUMENTS = dict(\n    num_features=features, num_classes=1000, drop_rate=0.25, pool_type=\"catavgmax\"\n)\ntst = GeneralClassifier.from_config(cfg.MODEL.CLASSIFIER.ARGUMENTS)\n\nprint(tst)\n\nmods = list(tst.children())\ntest_eq(len(mods), 2)";
                 var nbb_cells = Jupyter.notebook.get_cells();
                 for (var i = 0; i < nbb_cells.length; ++i) {
                     if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
@@ -356,13 +358,13 @@ var element = $('#59ad45c0-98a5-497e-934b-1021d459afb8');
 
 
 
-<div id="648dad30-81b6-4018-ba1a-aed0a891db73"></div>
+<div id="a8bae1b1-93c1-4a19-b9a4-32e7635b0ab1"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#648dad30-81b6-4018-ba1a-aed0a891db73');
+var element = $('#a8bae1b1-93c1-4a19-b9a4-32e7635b0ab1');
 
             setTimeout(function() {
-                var nbb_cell_id = 11;
+                var nbb_cell_id = 12;
                 var nbb_unformatted_code = "# export\nclass FastaiClassifier(nn.Sequential):\n    \"A classification head same as head generated from : https://github.com/fastai/fastai/blob/master/fastai/vision/learner.py#L76\"\n\n    def __init__(\n        self,\n        num_features: int,\n        num_classes: int,\n        lin_ftrs: Optional[List] = None,\n        ps: float = 0.5,\n        concat_pool: bool = True,\n        first_bn: bool = True,\n        bn_final: bool = False,\n        lin_first: bool = False,\n        act_layer: str = \"ReLU\",\n    ):\n\n        # if using concat_pool then mult the number of features\n        if concat_pool:\n            num_features *= 2\n\n        # features of the linear layers\n        lin_ftrs = (\n            [num_features, 512, num_classes]\n            if lin_ftrs is None\n            else [num_features] + lin_ftrs + [num_classes]\n        )\n\n        bns = [first_bn] + [True] * len(lin_ftrs[1:])\n\n        ps = L(ps)\n\n        if len(ps) == 1:\n            ps = [ps[0] / 2] * (len(lin_ftrs) - 2) + ps\n\n        act_layer = [ACTIVATION_REGISTERY.get(act_layer)(inplace=True)]\n        actns = act_layer * (len(lin_ftrs) - 2) + [None]\n        pool = AdaptiveConcatPool2d() if concat_pool else nn.AdaptiveAvgPool2d(1)\n\n        layers = [pool, nn.Flatten()]\n\n        if lin_first:\n            layers.append(nn.Dropout(ps.pop(0)))\n\n        for ni, no, bn, p, actn in zip(lin_ftrs[:-1], lin_ftrs[1:], bns, ps, actns):\n            layers += LinBnDrop(ni, no, bn=bn, p=p, act=actn, lin_first=lin_first)\n\n        if lin_first:\n            layers.append(nn.Linear(lin_ftrs[-2], num_classes))\n\n        if bn_final:\n            layers.append(nn.BatchNorm1d(lin_ftrs[-1], momentum=0.01))\n\n        super(FastaiClassifier, self).__init__(*layers)\n\n    @classmethod\n    def from_config(cls, cfg: DictConfig):\n        return cls(**cfg)";
                 var nbb_formatted_code = "# export\nclass FastaiClassifier(nn.Sequential):\n    \"A classification head same as head generated from : https://github.com/fastai/fastai/blob/master/fastai/vision/learner.py#L76\"\n\n    def __init__(\n        self,\n        num_features: int,\n        num_classes: int,\n        lin_ftrs: Optional[List] = None,\n        ps: float = 0.5,\n        concat_pool: bool = True,\n        first_bn: bool = True,\n        bn_final: bool = False,\n        lin_first: bool = False,\n        act_layer: str = \"ReLU\",\n    ):\n\n        # if using concat_pool then mult the number of features\n        if concat_pool:\n            num_features *= 2\n\n        # features of the linear layers\n        lin_ftrs = (\n            [num_features, 512, num_classes]\n            if lin_ftrs is None\n            else [num_features] + lin_ftrs + [num_classes]\n        )\n\n        bns = [first_bn] + [True] * len(lin_ftrs[1:])\n\n        ps = L(ps)\n\n        if len(ps) == 1:\n            ps = [ps[0] / 2] * (len(lin_ftrs) - 2) + ps\n\n        act_layer = [ACTIVATION_REGISTERY.get(act_layer)(inplace=True)]\n        actns = act_layer * (len(lin_ftrs) - 2) + [None]\n        pool = AdaptiveConcatPool2d() if concat_pool else nn.AdaptiveAvgPool2d(1)\n\n        layers = [pool, nn.Flatten()]\n\n        if lin_first:\n            layers.append(nn.Dropout(ps.pop(0)))\n\n        for ni, no, bn, p, actn in zip(lin_ftrs[:-1], lin_ftrs[1:], bns, ps, actns):\n            layers += LinBnDrop(ni, no, bn=bn, p=p, act=actn, lin_first=lin_first)\n\n        if lin_first:\n            layers.append(nn.Linear(lin_ftrs[-2], num_classes))\n\n        if bn_final:\n            layers.append(nn.BatchNorm1d(lin_ftrs[-1], momentum=0.01))\n\n        super(FastaiClassifier, self).__init__(*layers)\n\n    @classmethod\n    def from_config(cls, cfg: DictConfig):\n        return cls(**cfg)";
                 var nbb_cells = Jupyter.notebook.get_cells();
@@ -443,13 +445,13 @@ var element = $('#648dad30-81b6-4018-ba1a-aed0a891db73');
 
 
 
-<div id="d060ec5a-d81c-4536-80b7-fd8f79dd7204"></div>
+<div id="e6963212-ba3b-4353-8a9e-e84933183491"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#d060ec5a-d81c-4536-80b7-fd8f79dd7204');
+var element = $('#e6963212-ba3b-4353-8a9e-e84933183491');
 
             setTimeout(function() {
-                var nbb_cell_id = 12;
+                var nbb_cell_id = 13;
                 var nbb_unformatted_code = "tst = FastaiClassifier(features, 10)\ntst";
                 var nbb_formatted_code = "tst = FastaiClassifier(features, 10)\ntst";
                 var nbb_cells = Jupyter.notebook.get_cells();
@@ -524,13 +526,13 @@ var element = $('#d060ec5a-d81c-4536-80b7-fd8f79dd7204');
 
 
 
-<div id="35c474a5-488e-4498-9341-bb52edab5d36"></div>
+<div id="913b88bf-6cf9-47aa-8535-88a1d82f4aae"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#35c474a5-488e-4498-9341-bb52edab5d36');
+var element = $('#913b88bf-6cf9-47aa-8535-88a1d82f4aae');
 
             setTimeout(function() {
-                var nbb_cell_id = 14;
+                var nbb_cell_id = 15;
                 var nbb_unformatted_code = "tst = FastaiClassifier(features, 10, act_layer=\"Mish\", lin_ftrs=[512, 155])\ntst";
                 var nbb_formatted_code = "tst = FastaiClassifier(features, 10, act_layer=\"Mish\", lin_ftrs=[512, 155])\ntst";
                 var nbb_cells = Jupyter.notebook.get_cells();
@@ -573,75 +575,15 @@ var element = $('#35c474a5-488e-4498-9341-bb52edab5d36');
 
 
 
-<div id="d60b43cc-5fa5-4d12-81f9-f1ac90d65adc"></div>
+<div id="041cc137-3405-4f68-8a48-e0fa21ef0b5c"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#d60b43cc-5fa5-4d12-81f9-f1ac90d65adc');
+var element = $('#041cc137-3405-4f68-8a48-e0fa21ef0b5c');
 
             setTimeout(function() {
-                var nbb_cell_id = 15;
-                var nbb_unformatted_code = "# export\nCNN_CLASSIFIER_REGISTRY = Registry(\"CNN_Classifiers\")\nCNN_CLASSIFIER_REGISTRY.register(FastaiClassifier)\nCNN_CLASSIFIER_REGISTRY.register(GeneralClassifier)";
-                var nbb_formatted_code = "# export\nCNN_CLASSIFIER_REGISTRY = Registry(\"CNN_Classifiers\")\nCNN_CLASSIFIER_REGISTRY.register(FastaiClassifier)\nCNN_CLASSIFIER_REGISTRY.register(GeneralClassifier)";
-                var nbb_cells = Jupyter.notebook.get_cells();
-                for (var i = 0; i < nbb_cells.length; ++i) {
-                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
-                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
-                             nbb_cells[i].set_text(nbb_formatted_code);
-                        }
-                        break;
-                    }
-                }
-            }, 500);
-            
-</script>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>Registry of CNN_Classifiers:
-╒═══════════════════╤══════════════════════════════════════╕
-│ Names             │ Objects                              │
-╞═══════════════════╪══════════════════════════════════════╡
-│ FastaiClassifier  │ &lt;class &#39;__main__.FastaiClassifier&#39;&gt;  │
-├───────────────────┼──────────────────────────────────────┤
-│ GeneralClassifier │ &lt;class &#39;__main__.GeneralClassifier&#39;&gt; │
-╘═══════════════════╧══════════════════════════════════════╛</pre>
-</div>
-
-</div>
-
-<div class="output_area">
-
-
-
-
-<div id="c320c84f-ed69-4118-bea4-6240ddcbb349"></div>
-<div class="output_subarea output_javascript ">
-<script type="text/javascript">
-var element = $('#c320c84f-ed69-4118-bea4-6240ddcbb349');
-
-            setTimeout(function() {
-                var nbb_cell_id = 16;
-                var nbb_unformatted_code = "# hide-input\nCNN_CLASSIFIER_REGISTRY";
-                var nbb_formatted_code = "# hide-input\nCNN_CLASSIFIER_REGISTRY";
+                var nbb_cell_id = 21;
+                var nbb_unformatted_code = "# export\nCLASSIFICATION_CLASSIFIER_REGISTRY = Registry(\n    \"Classification Classifiers\"\n)\n\nCLASSIFICATION_CLASSIFIER_REGISTRY.__doc__ = \"Registry of Classifiers for Image Classification\"\nCLASSIFICATION_CLASSIFIER_REGISTRY.register(FastaiClassifier)\nCLASSIFICATION_CLASSIFIER_REGISTRY.register(GeneralClassifier)";
+                var nbb_formatted_code = "# export\nCLASSIFICATION_CLASSIFIER_REGISTRY = Registry(\"Classification Classifiers\")\n\nCLASSIFICATION_CLASSIFIER_REGISTRY.__doc__ = (\n    \"Registry of Classifiers for Image Classification\"\n)\nCLASSIFICATION_CLASSIFIER_REGISTRY.register(FastaiClassifier)\nCLASSIFICATION_CLASSIFIER_REGISTRY.register(GeneralClassifier)";
                 var nbb_cells = Jupyter.notebook.get_cells();
                 for (var i = 0; i < nbb_cells.length; ++i) {
                     if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
@@ -675,9 +617,106 @@ var element = $('#c320c84f-ed69-4118-bea4-6240ddcbb349');
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="create_classifier_head" class="doc_header"><code>create_classifier_head</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/classification/modelling/classifiers.py#L112" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>create_classifier_head</code>(<strong><code>cfg</code></strong>:<code>DictConfig</code>)</p>
+<h4 id="Classification Classifiers" class="doc_header"><code>Classification Classifiers</code><a href="" class="source_link" style="float:right">[source]</a></h4><p>Registry of Classifiers for Image Classification</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">CLASSIFICATION_CLASSIFIER_REGISTRY</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+<details class="description">
+      <summary data-open="Hide Output" data-close="Show Output"></summary>
+        <summary></summary>
+        
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Registry of Classification Classifiers:
+╒═══════════════════╤══════════════════════════════════════╕
+│ Names             │ Objects                              │
+╞═══════════════════╪══════════════════════════════════════╡
+│ FastaiClassifier  │ &lt;class &#39;__main__.FastaiClassifier&#39;&gt;  │
+├───────────────────┼──────────────────────────────────────┤
+│ GeneralClassifier │ &lt;class &#39;__main__.GeneralClassifier&#39;&gt; │
+╘═══════════════════╧══════════════════════════════════════╛</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+
+
+
+<div id="f1de0e4d-9406-4577-815c-131fd97d8195"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#f1de0e4d-9406-4577-815c-131fd97d8195');
+
+            setTimeout(function() {
+                var nbb_cell_id = 23;
+                var nbb_unformatted_code = "# collapse-output\nCLASSIFICATION_CLASSIFIER_REGISTRY";
+                var nbb_formatted_code = "# collapse-output\nCLASSIFICATION_CLASSIFIER_REGISTRY";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            
+</script>
+</div>
+
+</div>
+
+</div>
+</div>
+
+    </details>
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="create_classifier_head" class="doc_header"><code>create_classifier_head</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/classification/modelling/classifiers.py#L116" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>create_classifier_head</code>(<strong><code>cfg</code></strong>:<code>DictConfig</code>)</p>
 </blockquote>
-<p>instante an obj from <a href="/lightning_cv/classification.modelling.classifiers.html#CNN_CLASSIFIER_REGISTRY"><code>CNN_CLASSIFIER_REGISTRY</code></a> registery using lightning_cv.config</p>
+<p>instante an obj from <code>CNN_CLASSIFIER_REGISTRY</code> registery using lightning_cv.config</p>
 
 </div>
 
@@ -701,15 +740,15 @@ var element = $('#c320c84f-ed69-4118-bea4-6240ddcbb349');
 
 
 
-<div id="d5984ee8-c35e-4346-ac51-c4a282aa1973"></div>
+<div id="4860d360-41ed-4660-af12-5b0bc7677137"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#d5984ee8-c35e-4346-ac51-c4a282aa1973');
+var element = $('#4860d360-41ed-4660-af12-5b0bc7677137');
 
             setTimeout(function() {
-                var nbb_cell_id = 17;
-                var nbb_unformatted_code = "# export\ndef create_classifier_head(cfg: DictConfig):\n    \"instante an obj from `CNN_CLASSIFIER_REGISTRY` registery using lightning_cv.config\"\n    classifier = CNN_CLASSIFIER_REGISTRY.get(cfg.MODEL.CLASSIFIER.NAME)\n    classifier = classifier.from_config(cfg.MODEL.CLASSIFIER.ARGUMENTS)\n    return classifier";
-                var nbb_formatted_code = "# export\ndef create_classifier_head(cfg: DictConfig):\n    \"instante an obj from `CNN_CLASSIFIER_REGISTRY` registery using lightning_cv.config\"\n    classifier = CNN_CLASSIFIER_REGISTRY.get(cfg.MODEL.CLASSIFIER.NAME)\n    classifier = classifier.from_config(cfg.MODEL.CLASSIFIER.ARGUMENTS)\n    return classifier";
+                var nbb_cell_id = 24;
+                var nbb_unformatted_code = "# export\ndef create_classifier_head(cfg: DictConfig):\n    \"instante an obj from `CNN_CLASSIFIER_REGISTRY` registery using lightning_cv.config\"\n    classifier_cls = CLASSIFICATION_CLASSIFIER_REGISTRY.get(cfg.MODEL.CLASSIFIER.NAME)\n    classifier = classifier_cls.from_config(cfg.MODEL.CLASSIFIER.ARGUMENTS)\n    return classifier";
+                var nbb_formatted_code = "# export\ndef create_classifier_head(cfg: DictConfig):\n    \"instante an obj from `CNN_CLASSIFIER_REGISTRY` registery using lightning_cv.config\"\n    classifier_cls = CLASSIFICATION_CLASSIFIER_REGISTRY.get(cfg.MODEL.CLASSIFIER.NAME)\n    classifier = classifier_cls.from_config(cfg.MODEL.CLASSIFIER.ARGUMENTS)\n    return classifier";
                 var nbb_cells = Jupyter.notebook.get_cells();
                 for (var i = 0; i < nbb_cells.length; ++i) {
                     if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
@@ -750,11 +789,6 @@ var element = $('#d5984ee8-c35e-4346-ac51-c4a282aa1973');
 <span class="kn">from</span> <span class="nn">omegaconf</span> <span class="kn">import</span> <span class="n">OmegaConf</span>
 
 <span class="n">cfg</span> <span class="o">=</span> <span class="n">get_cfg</span><span class="p">()</span>
-
-<span class="n">cfg</span><span class="o">.</span><span class="n">MODEL</span><span class="o">.</span><span class="n">BACKBONE</span><span class="o">.</span><span class="n">NAME</span> <span class="o">=</span> <span class="s2">&quot;TimmCnnBody&quot;</span>
-<span class="n">cfg</span><span class="o">.</span><span class="n">MODEL</span><span class="o">.</span><span class="n">BACKBONE</span><span class="o">.</span><span class="n">ARGUMENTS</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
-    <span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;efficientnet_b0&quot;</span><span class="p">,</span> <span class="n">pretrained</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cut</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">in_chans</span><span class="o">=</span><span class="mi">3</span>
-<span class="p">)</span>
 <span class="n">cfg</span><span class="o">.</span><span class="n">MODEL</span><span class="o">.</span><span class="n">CLASSIFIER</span><span class="o">.</span><span class="n">NAME</span> <span class="o">=</span> <span class="s2">&quot;GeneralClassifier&quot;</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">OmegaConf</span><span class="o">.</span><span class="n">to_yaml</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">MODEL</span><span class="p">))</span>
 </pre></div>
@@ -770,12 +804,13 @@ var element = $('#d5984ee8-c35e-4346-ac51-c4a282aa1973');
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>BACKBONE:
-  NAME: TimmCnnBody
+  NAME: TimmBackBoneBase
   ARGUMENTS:
     model_name: efficientnet_b0
-    pretrained: true
     cut: null
-    in_chans: 3
+    act_layer: null
+    pretrained: true
+    drop_path_rate: 0.3
 CLASSIFIER:
   NAME: GeneralClassifier
   ARGUMENTS:
@@ -794,15 +829,15 @@ CLASSIFIER:
 
 
 
-<div id="033afeae-b524-441a-9312-7af27d8afdb6"></div>
+<div id="b12e7e12-787b-4779-84c9-ba89005f1151"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#033afeae-b524-441a-9312-7af27d8afdb6');
+var element = $('#b12e7e12-787b-4779-84c9-ba89005f1151');
 
             setTimeout(function() {
-                var nbb_cell_id = 18;
-                var nbb_unformatted_code = "from lightning_cv.config import get_cfg\nfrom omegaconf import OmegaConf\n\ncfg = get_cfg()\n\ncfg.MODEL.BACKBONE.NAME = \"TimmCnnBody\"\ncfg.MODEL.BACKBONE.ARGUMENTS = dict(\n    model_name=\"efficientnet_b0\", pretrained=True, cut=None, in_chans=3\n)\ncfg.MODEL.CLASSIFIER.NAME = \"GeneralClassifier\"\nprint(OmegaConf.to_yaml(cfg.MODEL))";
-                var nbb_formatted_code = "from lightning_cv.config import get_cfg\nfrom omegaconf import OmegaConf\n\ncfg = get_cfg()\n\ncfg.MODEL.BACKBONE.NAME = \"TimmCnnBody\"\ncfg.MODEL.BACKBONE.ARGUMENTS = dict(\n    model_name=\"efficientnet_b0\", pretrained=True, cut=None, in_chans=3\n)\ncfg.MODEL.CLASSIFIER.NAME = \"GeneralClassifier\"\nprint(OmegaConf.to_yaml(cfg.MODEL))";
+                var nbb_cell_id = 29;
+                var nbb_unformatted_code = "from lightning_cv.config import get_cfg\nfrom omegaconf import OmegaConf\n\ncfg = get_cfg()\ncfg.MODEL.CLASSIFIER.NAME = \"GeneralClassifier\"\nprint(OmegaConf.to_yaml(cfg.MODEL))";
+                var nbb_formatted_code = "from lightning_cv.config import get_cfg\nfrom omegaconf import OmegaConf\n\ncfg = get_cfg()\ncfg.MODEL.CLASSIFIER.NAME = \"GeneralClassifier\"\nprint(OmegaConf.to_yaml(cfg.MODEL))";
                 var nbb_cells = Jupyter.notebook.get_cells();
                 for (var i = 0; i < nbb_cells.length; ++i) {
                     if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
@@ -839,15 +874,14 @@ var element = $('#033afeae-b524-441a-9312-7af27d8afdb6');
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">lightning_cv.classification.modelling.backbones</span> <span class="kn">import</span> <span class="n">create_cnn_body</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">lightning_cv.classification.modelling.backbones</span> <span class="kn">import</span> <span class="n">create_cnn_backbone</span>
 
-<span class="n">backbone</span> <span class="o">=</span> <span class="n">create_cnn_body</span><span class="p">(</span><span class="n">cfg</span><span class="p">)</span>
+<span class="n">backbone</span> <span class="o">=</span> <span class="n">create_cnn_backbone</span><span class="p">(</span><span class="n">cfg</span><span class="p">)</span>
 <span class="n">features</span> <span class="o">=</span> <span class="n">num_features_model</span><span class="p">(</span><span class="n">backbone</span><span class="p">)</span>
 
 <span class="n">cfg</span><span class="o">.</span><span class="n">MODEL</span><span class="o">.</span><span class="n">CLASSIFIER</span><span class="o">.</span><span class="n">NAME</span> <span class="o">=</span> <span class="s2">&quot;GeneralClassifier&quot;</span>
-<span class="n">cfg</span><span class="o">.</span><span class="n">MODEL</span><span class="o">.</span><span class="n">CLASSIFIER</span><span class="o">.</span><span class="n">ARGUMENTS</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
-    <span class="n">num_features</span><span class="o">=</span><span class="n">features</span><span class="p">,</span> <span class="n">num_classes</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">drop_rate</span><span class="o">=</span><span class="mf">0.25</span>
-<span class="p">)</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">MODEL</span><span class="o">.</span><span class="n">CLASSIFIER</span><span class="o">.</span><span class="n">ARGUMENTS</span><span class="o">.</span><span class="n">num_features</span> <span class="o">=</span> <span class="n">features</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">MODEL</span><span class="o">.</span><span class="n">CLASSIFIER</span><span class="o">.</span><span class="n">ARGUMENTS</span><span class="o">.</span><span class="n">num_classes</span> <span class="o">=</span> <span class="mi">10</span>
 
 <span class="n">classifier</span> <span class="o">=</span> <span class="n">create_classifier_head</span><span class="p">(</span><span class="n">cfg</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">classifier</span><span class="p">)</span>
@@ -876,15 +910,15 @@ var element = $('#033afeae-b524-441a-9312-7af27d8afdb6');
 
 
 
-<div id="3f0a5133-6b3f-4b2c-8428-8c3be2a572a7"></div>
+<div id="c97f7e1d-c64f-402f-9d4d-27247822b92b"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#3f0a5133-6b3f-4b2c-8428-8c3be2a572a7');
+var element = $('#c97f7e1d-c64f-402f-9d4d-27247822b92b');
 
             setTimeout(function() {
-                var nbb_cell_id = 19;
-                var nbb_unformatted_code = "from lightning_cv.classification.modelling.backbones import create_cnn_body\n\nbackbone = create_cnn_body(cfg)\nfeatures = num_features_model(backbone)\n\ncfg.MODEL.CLASSIFIER.NAME = \"GeneralClassifier\"\ncfg.MODEL.CLASSIFIER.ARGUMENTS = dict(num_features=features, num_classes=10, drop_rate=0.25)\n\nclassifier = create_classifier_head(cfg)\nprint(classifier)";
-                var nbb_formatted_code = "from lightning_cv.classification.modelling.backbones import create_cnn_body\n\nbackbone = create_cnn_body(cfg)\nfeatures = num_features_model(backbone)\n\ncfg.MODEL.CLASSIFIER.NAME = \"GeneralClassifier\"\ncfg.MODEL.CLASSIFIER.ARGUMENTS = dict(\n    num_features=features, num_classes=10, drop_rate=0.25\n)\n\nclassifier = create_classifier_head(cfg)\nprint(classifier)";
+                var nbb_cell_id = 30;
+                var nbb_unformatted_code = "from lightning_cv.classification.modelling.backbones import create_cnn_backbone\n\nbackbone = create_cnn_backbone(cfg)\nfeatures = num_features_model(backbone)\n\ncfg.MODEL.CLASSIFIER.NAME = \"GeneralClassifier\"\ncfg.MODEL.CLASSIFIER.ARGUMENTS.num_features = features\ncfg.MODEL.CLASSIFIER.ARGUMENTS.num_classes = 10\n\nclassifier = create_classifier_head(cfg)\nprint(classifier)";
+                var nbb_formatted_code = "from lightning_cv.classification.modelling.backbones import create_cnn_backbone\n\nbackbone = create_cnn_backbone(cfg)\nfeatures = num_features_model(backbone)\n\ncfg.MODEL.CLASSIFIER.NAME = \"GeneralClassifier\"\ncfg.MODEL.CLASSIFIER.ARGUMENTS.num_features = features\ncfg.MODEL.CLASSIFIER.ARGUMENTS.num_classes = 10\n\nclassifier = create_classifier_head(cfg)\nprint(classifier)";
                 var nbb_cells = Jupyter.notebook.get_cells();
                 for (var i = 0; i < nbb_cells.length; ++i) {
                     if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
@@ -932,13 +966,13 @@ var element = $('#3f0a5133-6b3f-4b2c-8428-8c3be2a572a7');
 
 
 
-<div id="69430fff-8b44-4712-95f2-ed8bb3f2499b"></div>
+<div id="8adb5b7e-c817-4047-9cb1-4bd9cd285f3d"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#69430fff-8b44-4712-95f2-ed8bb3f2499b');
+var element = $('#8adb5b7e-c817-4047-9cb1-4bd9cd285f3d');
 
             setTimeout(function() {
-                var nbb_cell_id = 20;
+                var nbb_cell_id = 31;
                 var nbb_unformatted_code = "inputs = torch.randn(1, 3, 255, 255)\ntst = nn.Sequential(backbone, classifier)\noutput = tst(inputs)\ntest_eq(output.shape, [1, 10])";
                 var nbb_formatted_code = "inputs = torch.randn(1, 3, 255, 255)\ntst = nn.Sequential(backbone, classifier)\noutput = tst(inputs)\ntest_eq(output.shape, [1, 10])";
                 var nbb_cells = Jupyter.notebook.get_cells();
@@ -977,7 +1011,7 @@ var element = $('#69430fff-8b44-4712-95f2-ed8bb3f2499b');
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nd">@CNN_CLASSIFIER_REGISTRY</span><span class="o">.</span><span class="n">register</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nd">@CLASSIFICATION_CLASSIFIER_REGISTRY</span><span class="o">.</span><span class="n">register</span><span class="p">()</span>
 <span class="k">class</span> <span class="nc">MyCustomClassifier</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_features</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
         <span class="n">fc1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">num_features</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -1000,15 +1034,15 @@ var element = $('#69430fff-8b44-4712-95f2-ed8bb3f2499b');
 
 
 
-<div id="64d75975-c16c-4264-ad68-7da06f1fffd3"></div>
+<div id="d0c86426-96b0-42c2-b9df-c44c6a103084"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#64d75975-c16c-4264-ad68-7da06f1fffd3');
+var element = $('#d0c86426-96b0-42c2-b9df-c44c6a103084');
 
             setTimeout(function() {
-                var nbb_cell_id = 21;
-                var nbb_unformatted_code = "@CNN_CLASSIFIER_REGISTRY.register()\nclass MyCustomClassifier(nn.Sequential):\n    def __init__(self, num_features: int, num_classes: int):\n        fc1 = nn.Linear(num_features, num_classes, bias=False)\n        super(MyCustomClassifier, self).__init__(fc1)\n\n    @classmethod\n    def from_config(cls, cfg: DictConfig):\n        return cls(**cfg)";
-                var nbb_formatted_code = "@CNN_CLASSIFIER_REGISTRY.register()\nclass MyCustomClassifier(nn.Sequential):\n    def __init__(self, num_features: int, num_classes: int):\n        fc1 = nn.Linear(num_features, num_classes, bias=False)\n        super(MyCustomClassifier, self).__init__(fc1)\n\n    @classmethod\n    def from_config(cls, cfg: DictConfig):\n        return cls(**cfg)";
+                var nbb_cell_id = 32;
+                var nbb_unformatted_code = "@CLASSIFICATION_CLASSIFIER_REGISTRY.register()\nclass MyCustomClassifier(nn.Sequential):\n    def __init__(self, num_features: int, num_classes: int):\n        fc1 = nn.Linear(num_features, num_classes, bias=False)\n        super(MyCustomClassifier, self).__init__(fc1)\n\n    @classmethod\n    def from_config(cls, cfg: DictConfig):\n        return cls(**cfg)";
+                var nbb_formatted_code = "@CLASSIFICATION_CLASSIFIER_REGISTRY.register()\nclass MyCustomClassifier(nn.Sequential):\n    def __init__(self, num_features: int, num_classes: int):\n        fc1 = nn.Linear(num_features, num_classes, bias=False)\n        super(MyCustomClassifier, self).__init__(fc1)\n\n    @classmethod\n    def from_config(cls, cfg: DictConfig):\n        return cls(**cfg)";
                 var nbb_cells = Jupyter.notebook.get_cells();
                 for (var i = 0; i < nbb_cells.length; ++i) {
                     if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
@@ -1074,13 +1108,13 @@ var element = $('#64d75975-c16c-4264-ad68-7da06f1fffd3');
 
 
 
-<div id="23c66a00-3629-4fc2-b2f4-720f35ddacb4"></div>
+<div id="2f614b7d-4ac0-4f15-8cc5-9ad026b84777"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#23c66a00-3629-4fc2-b2f4-720f35ddacb4');
+var element = $('#2f614b7d-4ac0-4f15-8cc5-9ad026b84777');
 
             setTimeout(function() {
-                var nbb_cell_id = 22;
+                var nbb_cell_id = 33;
                 var nbb_unformatted_code = "cfg.MODEL.CLASSIFIER.NAME = \"MyCustomClassifier\"\ncfg.MODEL.CLASSIFIER.ARGUMENTS = dict(num_features=5, num_classes=10)\ncreate_classifier_head(cfg)";
                 var nbb_formatted_code = "cfg.MODEL.CLASSIFIER.NAME = \"MyCustomClassifier\"\ncfg.MODEL.CLASSIFIER.ARGUMENTS = dict(num_features=5, num_classes=10)\ncreate_classifier_head(cfg)";
                 var nbb_cells = Jupyter.notebook.get_cells();

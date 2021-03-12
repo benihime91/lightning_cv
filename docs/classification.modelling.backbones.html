@@ -54,15 +54,70 @@ nb_path: "nbs/01c_classification.modelling.backbones.ipynb"
 
 
 
-<div id="88012115-7f22-4074-bb36-e5dd69a58653"></div>
+<div id="20c7ce06-9d03-4b59-a217-a29f6e112d95"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#88012115-7f22-4074-bb36-e5dd69a58653');
+var element = $('#20c7ce06-9d03-4b59-a217-a29f6e112d95');
 
             setTimeout(function() {
                 var nbb_cell_id = 6;
                 var nbb_unformatted_code = "# export\ndef _is_pool_type(l):\n    return re.search(r\"Pool[123]d$\", l.__class__.__name__)";
                 var nbb_formatted_code = "# export\ndef _is_pool_type(l):\n    return re.search(r\"Pool[123]d$\", l.__class__.__name__)";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            
+</script>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">AdaptiveAvgPool2d</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">nn</span><span class="o">.</span><span class="n">MaxPool3d</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+
+<span class="n">test_eq</span><span class="p">([</span><span class="nb">bool</span><span class="p">(</span><span class="n">_is_pool_type</span><span class="p">(</span><span class="n">m_</span><span class="p">))</span> <span class="k">for</span> <span class="n">m_</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">children</span><span class="p">()],</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+
+<div id="19701742-8bb3-4fb2-9b2b-1a19703a26eb"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#19701742-8bb3-4fb2-9b2b-1a19703a26eb');
+
+            setTimeout(function() {
+                var nbb_cell_id = 8;
+                var nbb_unformatted_code = "m = nn.Sequential(\n    nn.AdaptiveAvgPool2d(5), nn.Linear(2, 3), nn.Conv2d(2, 3, 1), nn.MaxPool3d(5)\n)\ntest_eq([bool(_is_pool_type(m_)) for m_ in m.children()], [True, False, False, True])";
+                var nbb_formatted_code = "m = nn.Sequential(\n    nn.AdaptiveAvgPool2d(5), nn.Linear(2, 3), nn.Conv2d(2, 3, 1), nn.MaxPool3d(5)\n)\ntest_eq([bool(_is_pool_type(m_)) for m_ in m.children()], [True, False, False, True])";
                 var nbb_cells = Jupyter.notebook.get_cells();
                 for (var i = 0; i < nbb_cells.length; ++i) {
                     if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
@@ -103,7 +158,7 @@ var element = $('#88012115-7f22-4074-bb36-e5dd69a58653');
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="has_pool_type" class="doc_header"><code>has_pool_type</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/classification/modelling/backbones.py#L27" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>has_pool_type</code>(<strong><code>m</code></strong>)</p>
+<h4 id="has_pool_type" class="doc_header"><code>has_pool_type</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/classification/modelling/backbones.py#L28" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>has_pool_type</code>(<strong><code>m</code></strong>)</p>
 </blockquote>
 <p>Return <code>True</code> if <code>m</code> is a pooling layer or has one in its children</p>
 
@@ -129,13 +184,13 @@ var element = $('#88012115-7f22-4074-bb36-e5dd69a58653');
 
 
 
-<div id="c97492cd-cc96-4c3f-99ee-9aeb65dd99f8"></div>
+<div id="9d3a5cf1-ef59-461b-80da-04791d24d106"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#c97492cd-cc96-4c3f-99ee-9aeb65dd99f8');
+var element = $('#9d3a5cf1-ef59-461b-80da-04791d24d106');
 
             setTimeout(function() {
-                var nbb_cell_id = 8;
+                var nbb_cell_id = 9;
                 var nbb_unformatted_code = "# export\ndef has_pool_type(m):\n    \"Return `True` if `m` is a pooling layer or has one in its children\"\n    if _is_pool_type(m):\n        return True\n    for l in m.children():\n        if has_pool_type(l):\n            return True\n    return False";
                 var nbb_formatted_code = "# export\ndef has_pool_type(m):\n    \"Return `True` if `m` is a pooling layer or has one in its children\"\n    if _is_pool_type(m):\n        return True\n    for l in m.children():\n        if has_pool_type(l):\n            return True\n    return False";
                 var nbb_cells = Jupyter.notebook.get_cells();
@@ -170,6 +225,7 @@ var element = $('#c97492cd-cc96-4c3f-99ee-9aeb65dd99f8');
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
     <span class="n">nn</span><span class="o">.</span><span class="n">AdaptiveAvgPool2d</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">nn</span><span class="o">.</span><span class="n">MaxPool3d</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 <span class="p">)</span>
+
 <span class="k">assert</span> <span class="n">has_pool_type</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
 <span class="n">test_eq</span><span class="p">([</span><span class="n">has_pool_type</span><span class="p">(</span><span class="n">m_</span><span class="p">)</span> <span class="k">for</span> <span class="n">m_</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">children</span><span class="p">()],</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">])</span>
 </pre></div>
@@ -186,15 +242,15 @@ var element = $('#c97492cd-cc96-4c3f-99ee-9aeb65dd99f8');
 
 
 
-<div id="1fbb88a0-b37b-449a-95de-77c98df522b3"></div>
+<div id="30f71b1a-a960-4932-8c6c-116fca5ad941"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#1fbb88a0-b37b-449a-95de-77c98df522b3');
+var element = $('#30f71b1a-a960-4932-8c6c-116fca5ad941');
 
             setTimeout(function() {
-                var nbb_cell_id = 9;
-                var nbb_unformatted_code = "m = nn.Sequential(\n    nn.AdaptiveAvgPool2d(5), nn.Linear(2, 3), nn.Conv2d(2, 3, 1), nn.MaxPool3d(5)\n)\nassert has_pool_type(m)\ntest_eq([has_pool_type(m_) for m_ in m.children()], [True, False, False, True])";
-                var nbb_formatted_code = "m = nn.Sequential(\n    nn.AdaptiveAvgPool2d(5), nn.Linear(2, 3), nn.Conv2d(2, 3, 1), nn.MaxPool3d(5)\n)\nassert has_pool_type(m)\ntest_eq([has_pool_type(m_) for m_ in m.children()], [True, False, False, True])";
+                var nbb_cell_id = 10;
+                var nbb_unformatted_code = "m = nn.Sequential(nn.AdaptiveAvgPool2d(5), nn.Linear(2, 3), nn.Conv2d(2, 3, 1), nn.MaxPool3d(5))\n\nassert has_pool_type(m)\ntest_eq([has_pool_type(m_) for m_ in m.children()], [True, False, False, True])";
+                var nbb_formatted_code = "m = nn.Sequential(\n    nn.AdaptiveAvgPool2d(5), nn.Linear(2, 3), nn.Conv2d(2, 3, 1), nn.MaxPool3d(5)\n)\n\nassert has_pool_type(m)\ntest_eq([has_pool_type(m_) for m_ in m.children()], [True, False, False, True])";
                 var nbb_cells = Jupyter.notebook.get_cells();
                 for (var i = 0; i < nbb_cells.length; ++i) {
                     if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
@@ -228,7 +284,7 @@ var element = $('#1fbb88a0-b37b-449a-95de-77c98df522b3');
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="create_body" class="doc_header"><code>create_body</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/classification/modelling/backbones.py#L37" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>create_body</code>(<strong><code>model</code></strong>:<code>Module</code>, <strong><code>cut</code></strong>:<code>Union</code>[<code>int</code>, <code>Callable</code>, <code>NoneType</code>]=<em><code>None</code></em>)</p>
+<h4 id="create_body" class="doc_header"><code>create_body</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/classification/modelling/backbones.py#L38" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>create_body</code>(<strong><code>model</code></strong>:<code>Module</code>, <strong><code>cut</code></strong>:<code>Union</code>[<code>int</code>, <code>Callable</code>, <code>NoneType</code>]=<em><code>None</code></em>)</p>
 </blockquote>
 <p>Cut off the body of a <code>model</code> as determined by <code>cut</code></p>
 
@@ -254,13 +310,13 @@ var element = $('#1fbb88a0-b37b-449a-95de-77c98df522b3');
 
 
 
-<div id="bfdabca0-c888-49ab-b5f2-9ffca378737e"></div>
+<div id="09de9f64-e1ca-450d-9153-80e73bbbf410"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#bfdabca0-c888-49ab-b5f2-9ffca378737e');
+var element = $('#09de9f64-e1ca-450d-9153-80e73bbbf410');
 
             setTimeout(function() {
-                var nbb_cell_id = 10;
+                var nbb_cell_id = 11;
                 var nbb_unformatted_code = "# export\ndef create_body(model: nn.Module, cut: Optional[Union[int, Callable]] = None):\n    \"Cut off the body of a `model` as determined by `cut`\"\n    if cut is None:\n        ll = list(enumerate(model.children()))\n        cut = next(i for i, o in reversed(ll) if has_pool_type(o))\n    if isinstance(cut, int):\n        return nn.Sequential(*list(model.children())[:cut])\n    elif callable(cut):\n        return cut(model)\n    else:\n        raise NamedError(\"cut must be either integer or a function\")";
                 var nbb_formatted_code = "# export\ndef create_body(model: nn.Module, cut: Optional[Union[int, Callable]] = None):\n    \"Cut off the body of a `model` as determined by `cut`\"\n    if cut is None:\n        ll = list(enumerate(model.children()))\n        cut = next(i for i, o in reversed(ll) if has_pool_type(o))\n    if isinstance(cut, int):\n        return nn.Sequential(*list(model.children())[:cut])\n    elif callable(cut):\n        return cut(model)\n    else:\n        raise NamedError(\"cut must be either integer or a function\")";
                 var nbb_cells = Jupyter.notebook.get_cells();
@@ -292,9 +348,8 @@ var element = $('#bfdabca0-c888-49ab-b5f2-9ffca378737e');
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tst</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
-    <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm2d</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span> <span class="n">nn</span><span class="o">.</span><span class="n">AvgPool2d</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
-<span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tst</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm2d</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span> <span class="n">nn</span><span class="o">.</span><span class="n">AvgPool2d</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
 <span class="n">m</span> <span class="o">=</span> <span class="n">create_body</span><span class="p">(</span><span class="n">tst</span><span class="p">)</span>
 <span class="n">test_eq</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">m</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
 
@@ -314,15 +369,15 @@ var element = $('#bfdabca0-c888-49ab-b5f2-9ffca378737e');
 
 
 
-<div id="89f89a73-f09d-4366-bffc-33a8d9a5a7cf"></div>
+<div id="a24c3a36-8110-4ee8-8de9-7f8881f6324b"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#89f89a73-f09d-4366-bffc-33a8d9a5a7cf');
+var element = $('#a24c3a36-8110-4ee8-8de9-7f8881f6324b');
 
             setTimeout(function() {
-                var nbb_cell_id = 11;
-                var nbb_unformatted_code = "tst = nn.Sequential(\n    nn.Conv2d(3, 5, 3), nn.BatchNorm2d(5), nn.AvgPool2d(1), nn.Linear(3, 4)\n)\nm = create_body(tst)\ntest_eq(len(m), 2)\n\nm = create_body(tst, cut=3)\ntest_eq(len(m), 3)";
-                var nbb_formatted_code = "tst = nn.Sequential(\n    nn.Conv2d(3, 5, 3), nn.BatchNorm2d(5), nn.AvgPool2d(1), nn.Linear(3, 4)\n)\nm = create_body(tst)\ntest_eq(len(m), 2)\n\nm = create_body(tst, cut=3)\ntest_eq(len(m), 3)";
+                var nbb_cell_id = 12;
+                var nbb_unformatted_code = "tst = nn.Sequential(nn.Conv2d(3, 5, 3), nn.BatchNorm2d(5), nn.AvgPool2d(1), nn.Linear(3, 4))\n\nm = create_body(tst)\ntest_eq(len(m), 2)\n\nm = create_body(tst, cut=3)\ntest_eq(len(m), 3)";
+                var nbb_formatted_code = "tst = nn.Sequential(\n    nn.Conv2d(3, 5, 3), nn.BatchNorm2d(5), nn.AvgPool2d(1), nn.Linear(3, 4)\n)\n\nm = create_body(tst)\ntest_eq(len(m), 2)\n\nm = create_body(tst, cut=3)\ntest_eq(len(m), 3)";
                 var nbb_cells = Jupyter.notebook.get_cells();
                 for (var i = 0; i < nbb_cells.length; ++i) {
                     if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
@@ -348,6 +403,164 @@ var element = $('#89f89a73-f09d-4366-bffc-33a8d9a5a7cf');
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tst</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+<details class="description">
+      <summary data-open="Hide Output" data-close="Show Output"></summary>
+        <summary></summary>
+        
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>TimmBackBoneBase(
+  (net): Sequential(
+    (0): Conv2d(1, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False)
+    (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): Mish()
+    (3): MaxPool2d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
+    (4): Sequential(
+      (0): BasicBlock(
+        (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (act1): Mish()
+        (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (act2): Mish()
+      )
+      (1): BasicBlock(
+        (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (act1): Mish()
+        (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (act2): Mish()
+      )
+    )
+    (5): Sequential(
+      (0): BasicBlock(
+        (conv1): Conv2d(64, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (act1): Mish()
+        (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (act2): Mish()
+        (downsample): Sequential(
+          (0): Conv2d(64, 128, kernel_size=(1, 1), stride=(2, 2), bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (1): BasicBlock(
+        (conv1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (act1): Mish()
+        (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (act2): Mish()
+      )
+    )
+    (6): Sequential(
+      (0): BasicBlock(
+        (conv1): Conv2d(128, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (act1): Mish()
+        (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (act2): Mish()
+        (downsample): Sequential(
+          (0): Conv2d(128, 256, kernel_size=(1, 1), stride=(2, 2), bias=False)
+          (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (1): BasicBlock(
+        (conv1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (act1): Mish()
+        (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (act2): Mish()
+      )
+    )
+    (7): Sequential(
+      (0): BasicBlock(
+        (conv1): Conv2d(256, 512, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (act1): Mish()
+        (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (act2): Mish()
+        (downsample): Sequential(
+          (0): Conv2d(256, 512, kernel_size=(1, 1), stride=(2, 2), bias=False)
+          (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (1): BasicBlock(
+        (conv1): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (act1): Mish()
+        (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (act2): Mish()
+      )
+    )
+  )
+)</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+
+
+
+<div id="1a2dd912-73b2-4b67-9251-5d0de7551fa6"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#1a2dd912-73b2-4b67-9251-5d0de7551fa6');
+
+            setTimeout(function() {
+                var nbb_cell_id = 21;
+                var nbb_unformatted_code = "#collapse-output\ntst";
+                var nbb_formatted_code = "# collapse-output\ntst";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            
+</script>
+</div>
+
+</div>
+
+</div>
+</div>
+
+    </details>
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
 
 <div class="output_wrapper">
 <div class="output">
@@ -356,7 +569,7 @@ var element = $('#89f89a73-f09d-4366-bffc-33a8d9a5a7cf');
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="TimmCnnBody" class="doc_header"><code>class</code> <code>TimmCnnBody</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/classification/modelling/backbones.py#L50" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>TimmCnnBody</code>(<strong><code>model_name</code></strong>:<code>str</code>, <strong><code>cut</code></strong>=<em><code>None</code></em>, <strong><code>act_layer</code></strong>:<code>str</code>=<em><code>None</code></em>, <strong><code>pretrained</code></strong>=<em><code>False</code></em>, <strong><code>num_classes</code></strong>=<em><code>0</code></em>, <strong><code>global_pool</code></strong>=<em><code>''</code></em>, <strong>**<code>kwargs</code></strong>) :: <code>Module</code></p>
+<h2 id="TimmBackBoneBase" class="doc_header"><code>class</code> <code>TimmBackBoneBase</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/classification/modelling/backbones.py#L51" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>TimmBackBoneBase</code>(<strong><code>model_name</code></strong>:<code>str</code>, <strong><code>cut</code></strong>=<em><code>None</code></em>, <strong><code>act_layer</code></strong>:<code>str</code>=<em><code>None</code></em>, <strong><code>pretrained</code></strong>=<em><code>False</code></em>, <strong><code>num_classes</code></strong>=<em><code>0</code></em>, <strong><code>global_pool</code></strong>=<em><code>''</code></em>, <strong>**<code>kwargs</code></strong>) :: <code>Module</code></p>
 </blockquote>
 <p>default <code>nn.Module</code> to create a body for vision applications from <code>timm</code></p>
 
@@ -382,15 +595,15 @@ var element = $('#89f89a73-f09d-4366-bffc-33a8d9a5a7cf');
 
 
 
-<div id="a519cf24-3876-4de0-ba39-30800a78feac"></div>
+<div id="12cfdaab-1dc7-402c-b043-e293146fa8d1"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#a519cf24-3876-4de0-ba39-30800a78feac');
+var element = $('#12cfdaab-1dc7-402c-b043-e293146fa8d1');
 
             setTimeout(function() {
-                var nbb_cell_id = 13;
-                var nbb_unformatted_code = "# export\nclass TimmCnnBody(nn.Module):\n    \"default `nn.Module` to create a body for vision applications from `timm`\"\n\n    @use_kwargs_dict(keep=True, pretrained=False, num_classes=0, global_pool=\"\")\n    def __init__(self, model_name: str, cut=None, act_layer: str = None, **kwargs):\n        super(TimmCnnBody, self).__init__()\n        # for different activation funtions\n        # if act_layer is None then the default activations func will be used\n        if act_layer is not None:\n            act_layer = ACTIVATION_REGISTERY.get(act_layer)\n\n        net = timm.create_model(model_name, act_layer=act_layer, **kwargs)\n\n        # prepare body\n        self.net = create_body(net, cut)\n\n    def forward(self, xb):\n        return self.net(xb)\n\n    @classmethod\n    def from_config(cls, config: DictConfig):\n        \"create from a `Omegaconf/ Hydra` config\"\n        return cls(**config)";
-                var nbb_formatted_code = "# export\nclass TimmCnnBody(nn.Module):\n    \"default `nn.Module` to create a body for vision applications from `timm`\"\n\n    @use_kwargs_dict(keep=True, pretrained=False, num_classes=0, global_pool=\"\")\n    def __init__(self, model_name: str, cut=None, act_layer: str = None, **kwargs):\n        super(TimmCnnBody, self).__init__()\n        # for different activation funtions\n        # if act_layer is None then the default activations func will be used\n        if act_layer is not None:\n            act_layer = ACTIVATION_REGISTERY.get(act_layer)\n\n        net = timm.create_model(model_name, act_layer=act_layer, **kwargs)\n\n        # prepare body\n        self.net = create_body(net, cut)\n\n    def forward(self, xb):\n        return self.net(xb)\n\n    @classmethod\n    def from_config(cls, config: DictConfig):\n        \"create from a `Omegaconf/ Hydra` config\"\n        return cls(**config)";
+                var nbb_cell_id = 15;
+                var nbb_unformatted_code = "# export\nclass TimmBackBoneBase(nn.Module):\n    \"default `nn.Module` to create a body for vision applications from `timm`\"\n\n    @use_kwargs_dict(keep=True, pretrained=False, num_classes=0, global_pool=\"\")\n    def __init__(self, model_name: str, cut=None, act_layer: str = None, **kwargs):\n        super(TimmBackBoneBase, self).__init__()\n        # for different activation funtions\n        # if act_layer is None then the default activations func will be used\n        if act_layer is not None:\n            act_layer = ACTIVATION_REGISTERY.get(act_layer)\n\n        net = timm.create_model(model_name, act_layer=act_layer, **kwargs)\n\n        # prepare body\n        self.net = create_body(net, cut)\n\n    def forward(self, xb):\n        return self.net(xb)\n\n    @classmethod\n    def from_config(cls, config: DictConfig):\n        \"create from a `Omegaconf/ Hydra` config\"\n        return cls(**config)";
+                var nbb_formatted_code = "# export\nclass TimmBackBoneBase(nn.Module):\n    \"default `nn.Module` to create a body for vision applications from `timm`\"\n\n    @use_kwargs_dict(keep=True, pretrained=False, num_classes=0, global_pool=\"\")\n    def __init__(self, model_name: str, cut=None, act_layer: str = None, **kwargs):\n        super(TimmBackBoneBase, self).__init__()\n        # for different activation funtions\n        # if act_layer is None then the default activations func will be used\n        if act_layer is not None:\n            act_layer = ACTIVATION_REGISTERY.get(act_layer)\n\n        net = timm.create_model(model_name, act_layer=act_layer, **kwargs)\n\n        # prepare body\n        self.net = create_body(net, cut)\n\n    def forward(self, xb):\n        return self.net(xb)\n\n    @classmethod\n    def from_config(cls, config: DictConfig):\n        \"create from a `Omegaconf/ Hydra` config\"\n        return cls(**config)";
                 var nbb_cells = Jupyter.notebook.get_cells();
                 for (var i = 0; i < nbb_cells.length; ++i) {
                     if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
@@ -421,8 +634,10 @@ var element = $('#a519cf24-3876-4de0-ba39-30800a78feac');
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">m1</span> <span class="o">=</span> <span class="n">timm</span><span class="o">.</span><span class="n">create_model</span><span class="p">(</span><span class="s2">&quot;resnet18&quot;</span><span class="p">,</span> <span class="n">pretrained</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">act_layer</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
-<span class="n">m2</span> <span class="o">=</span> <span class="n">timm</span><span class="o">.</span><span class="n">create_model</span><span class="p">(</span><span class="s2">&quot;resnet18&quot;</span><span class="p">,</span> <span class="n">pretrained</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">act_layer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">global_pool</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">num_classes</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">tst</span> <span class="o">=</span> <span class="n">TimmCnnBody</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;resnet18&quot;</span><span class="p">,</span> <span class="n">cut</span><span class="o">=-</span><span class="mi">2</span><span class="p">,</span> <span class="n">act_layer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pretrained</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">m2</span> <span class="o">=</span> <span class="n">timm</span><span class="o">.</span><span class="n">create_model</span><span class="p">(</span>
+    <span class="s2">&quot;resnet18&quot;</span><span class="p">,</span> <span class="n">pretrained</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">act_layer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">global_pool</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">num_classes</span><span class="o">=</span><span class="mi">0</span>
+<span class="p">)</span>
+<span class="n">tst</span> <span class="o">=</span> <span class="n">TimmBackBoneBase</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;resnet18&quot;</span><span class="p">,</span> <span class="n">cut</span><span class="o">=-</span><span class="mi">2</span><span class="p">,</span> <span class="n">act_layer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pretrained</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 
 <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
@@ -447,15 +662,15 @@ var element = $('#a519cf24-3876-4de0-ba39-30800a78feac');
 
 
 
-<div id="23dcb514-7cd6-486a-96c8-0330afa6e385"></div>
+<div id="b93205df-ae9b-41a4-9b0f-1c856c414415"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#23dcb514-7cd6-486a-96c8-0330afa6e385');
+var element = $('#b93205df-ae9b-41a4-9b0f-1c856c414415');
 
             setTimeout(function() {
-                var nbb_cell_id = 14;
-                var nbb_unformatted_code = "m1 = timm.create_model(\"resnet18\", pretrained=True, act_layer=None)\nm2 = timm.create_model(\n    \"resnet18\", pretrained=True, act_layer=None, global_pool=\"\", num_classes=0\n)\ntst = TimmCnnBody(model_name=\"resnet18\", cut=-2, act_layer=None, pretrained=True)\n\n\nwith torch.no_grad():\n    i = torch.randn(2, 3, 299, 299)\n    o1 = m1.forward_features(i)\n    o2 = m2(i)\n    o3 = tst(i)\n\ntest_eq(o1, o3)\ntest_eq(o2, o3)";
-                var nbb_formatted_code = "m1 = timm.create_model(\"resnet18\", pretrained=True, act_layer=None)\nm2 = timm.create_model(\n    \"resnet18\", pretrained=True, act_layer=None, global_pool=\"\", num_classes=0\n)\ntst = TimmCnnBody(model_name=\"resnet18\", cut=-2, act_layer=None, pretrained=True)\n\n\nwith torch.no_grad():\n    i = torch.randn(2, 3, 299, 299)\n    o1 = m1.forward_features(i)\n    o2 = m2(i)\n    o3 = tst(i)\n\ntest_eq(o1, o3)\ntest_eq(o2, o3)";
+                var nbb_cell_id = 17;
+                var nbb_unformatted_code = "m1 = timm.create_model(\"resnet18\", pretrained=True, act_layer=None)\nm2 = timm.create_model(\"resnet18\", pretrained=True, act_layer=None, global_pool=\"\", num_classes=0)\ntst = TimmBackBoneBase(model_name=\"resnet18\", cut=-2, act_layer=None, pretrained=True)\n\n\nwith torch.no_grad():\n    i = torch.randn(2, 3, 299, 299)\n    o1 = m1.forward_features(i)\n    o2 = m2(i)\n    o3 = tst(i)\n\ntest_eq(o1, o3)\ntest_eq(o2, o3)";
+                var nbb_formatted_code = "m1 = timm.create_model(\"resnet18\", pretrained=True, act_layer=None)\nm2 = timm.create_model(\n    \"resnet18\", pretrained=True, act_layer=None, global_pool=\"\", num_classes=0\n)\ntst = TimmBackBoneBase(model_name=\"resnet18\", cut=-2, act_layer=None, pretrained=True)\n\n\nwith torch.no_grad():\n    i = torch.randn(2, 3, 299, 299)\n    o1 = m1.forward_features(i)\n    o2 = m2(i)\n    o3 = tst(i)\n\ntest_eq(o1, o3)\ntest_eq(o2, o3)";
                 var nbb_cells = Jupyter.notebook.get_cells();
                 for (var i = 0; i < nbb_cells.length; ++i) {
                     if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
@@ -493,8 +708,10 @@ var element = $('#23dcb514-7cd6-486a-96c8-0330afa6e385');
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">m1</span> <span class="o">=</span> <span class="n">timm</span><span class="o">.</span><span class="n">create_model</span><span class="p">(</span><span class="s2">&quot;resnet18&quot;</span><span class="p">,</span> <span class="n">pretrained</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">act_layer</span><span class="o">=</span><span class="n">Mish</span><span class="p">)</span>
-<span class="n">m2</span> <span class="o">=</span> <span class="n">timm</span><span class="o">.</span><span class="n">create_model</span><span class="p">(</span><span class="s2">&quot;resnet18&quot;</span><span class="p">,</span> <span class="n">pretrained</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">act_layer</span><span class="o">=</span><span class="n">Mish</span><span class="p">,</span> <span class="n">global_pool</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">num_classes</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">tst</span> <span class="o">=</span> <span class="n">TimmCnnBody</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;resnet18&quot;</span><span class="p">,</span> <span class="n">cut</span><span class="o">=-</span><span class="mi">2</span><span class="p">,</span> <span class="n">act_layer</span><span class="o">=</span><span class="s2">&quot;Mish&quot;</span><span class="p">,</span> <span class="n">pretrained</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">m2</span> <span class="o">=</span> <span class="n">timm</span><span class="o">.</span><span class="n">create_model</span><span class="p">(</span>
+    <span class="s2">&quot;resnet18&quot;</span><span class="p">,</span> <span class="n">pretrained</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">act_layer</span><span class="o">=</span><span class="n">Mish</span><span class="p">,</span> <span class="n">global_pool</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">num_classes</span><span class="o">=</span><span class="mi">0</span>
+<span class="p">)</span>
+<span class="n">tst</span> <span class="o">=</span> <span class="n">TimmBackBoneBase</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;resnet18&quot;</span><span class="p">,</span> <span class="n">cut</span><span class="o">=-</span><span class="mi">2</span><span class="p">,</span> <span class="n">act_layer</span><span class="o">=</span><span class="s2">&quot;Mish&quot;</span><span class="p">,</span> <span class="n">pretrained</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 
 <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
@@ -519,15 +736,15 @@ var element = $('#23dcb514-7cd6-486a-96c8-0330afa6e385');
 
 
 
-<div id="3cbb0c9d-3733-4f0f-9877-a77415f6ca35"></div>
+<div id="2e7d0a77-7c65-4fbd-b430-ae8dc8285d09"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#3cbb0c9d-3733-4f0f-9877-a77415f6ca35');
+var element = $('#2e7d0a77-7c65-4fbd-b430-ae8dc8285d09');
 
             setTimeout(function() {
-                var nbb_cell_id = 15;
-                var nbb_unformatted_code = "m1 = timm.create_model(\"resnet18\", pretrained=True, act_layer=Mish)\nm2 = timm.create_model(\"resnet18\", pretrained=True, act_layer=Mish, global_pool=\"\", num_classes=0)\ntst = TimmCnnBody(model_name=\"resnet18\", cut=-2, act_layer=\"Mish\", pretrained=True)\n\n\nwith torch.no_grad():\n    i = torch.randn(2, 3, 299, 299)\n    o1 = m1.forward_features(i)\n    o2 = m2(i)\n    o3 = tst(i)\n\ntest_eq(o1, o3)\ntest_eq(o2, o3)";
-                var nbb_formatted_code = "m1 = timm.create_model(\"resnet18\", pretrained=True, act_layer=Mish)\nm2 = timm.create_model(\n    \"resnet18\", pretrained=True, act_layer=Mish, global_pool=\"\", num_classes=0\n)\ntst = TimmCnnBody(model_name=\"resnet18\", cut=-2, act_layer=\"Mish\", pretrained=True)\n\n\nwith torch.no_grad():\n    i = torch.randn(2, 3, 299, 299)\n    o1 = m1.forward_features(i)\n    o2 = m2(i)\n    o3 = tst(i)\n\ntest_eq(o1, o3)\ntest_eq(o2, o3)";
+                var nbb_cell_id = 18;
+                var nbb_unformatted_code = "m1 = timm.create_model(\"resnet18\", pretrained=True, act_layer=Mish)\nm2 = timm.create_model(\"resnet18\", pretrained=True, act_layer=Mish, global_pool=\"\", num_classes=0)\ntst = TimmBackBoneBase(model_name=\"resnet18\", cut=-2, act_layer=\"Mish\", pretrained=True)\n\n\nwith torch.no_grad():\n    i = torch.randn(2, 3, 299, 299)\n    o1 = m1.forward_features(i)\n    o2 = m2(i)\n    o3 = tst(i)\n\ntest_eq(o1, o3)\ntest_eq(o2, o3)";
+                var nbb_formatted_code = "m1 = timm.create_model(\"resnet18\", pretrained=True, act_layer=Mish)\nm2 = timm.create_model(\n    \"resnet18\", pretrained=True, act_layer=Mish, global_pool=\"\", num_classes=0\n)\ntst = TimmBackBoneBase(model_name=\"resnet18\", cut=-2, act_layer=\"Mish\", pretrained=True)\n\n\nwith torch.no_grad():\n    i = torch.randn(2, 3, 299, 299)\n    o1 = m1.forward_features(i)\n    o2 = m2(i)\n    o3 = tst(i)\n\ntest_eq(o1, o3)\ntest_eq(o2, o3)";
                 var nbb_cells = Jupyter.notebook.get_cells();
                 for (var i = 0; i < nbb_cells.length; ++i) {
                     if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
@@ -566,7 +783,9 @@ var element = $('#3cbb0c9d-3733-4f0f-9877-a77415f6ca35');
     <span class="n">num_classes</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
     <span class="n">in_chans</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="n">tst</span> <span class="o">=</span> <span class="n">TimmCnnBody</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;resnet18&quot;</span><span class="p">,</span> <span class="n">cut</span><span class="o">=-</span><span class="mi">2</span><span class="p">,</span> <span class="n">act_layer</span><span class="o">=</span><span class="s2">&quot;Mish&quot;</span><span class="p">,</span> <span class="n">pretrained</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">in_chans</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">tst</span> <span class="o">=</span> <span class="n">TimmBackBoneBase</span><span class="p">(</span>
+    <span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;resnet18&quot;</span><span class="p">,</span> <span class="n">cut</span><span class="o">=-</span><span class="mi">2</span><span class="p">,</span> <span class="n">act_layer</span><span class="o">=</span><span class="s2">&quot;Mish&quot;</span><span class="p">,</span> <span class="n">pretrained</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">in_chans</span><span class="o">=</span><span class="mi">1</span>
+<span class="p">)</span>
 
 <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
     <span class="n">i</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">299</span><span class="p">,</span> <span class="mi">299</span><span class="p">)</span>
@@ -590,15 +809,15 @@ var element = $('#3cbb0c9d-3733-4f0f-9877-a77415f6ca35');
 
 
 
-<div id="80767b01-0b88-4e38-9e17-9be13ba49cce"></div>
+<div id="25f3500a-e958-434e-aaaa-83c3f808e985"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#80767b01-0b88-4e38-9e17-9be13ba49cce');
+var element = $('#25f3500a-e958-434e-aaaa-83c3f808e985');
 
             setTimeout(function() {
-                var nbb_cell_id = 16;
-                var nbb_unformatted_code = "m1 = timm.create_model(\"resnet18\", pretrained=True, act_layer=Mish, in_chans=1)\nm2 = timm.create_model(\n    \"resnet18\",\n    pretrained=True,\n    act_layer=Mish,\n    global_pool=\"\",\n    num_classes=0,\n    in_chans=1,\n)\ntst = TimmCnnBody(\n    model_name=\"resnet18\", cut=-2, act_layer=\"Mish\", pretrained=True, in_chans=1\n)\n\n\nwith torch.no_grad():\n    i = torch.randn(2, 1, 299, 299)\n    o1 = m1.forward_features(i)\n    o2 = m2(i)\n    o3 = tst(i)\n\ntest_eq(o1, o3)\ntest_eq(o2, o3)";
-                var nbb_formatted_code = "m1 = timm.create_model(\"resnet18\", pretrained=True, act_layer=Mish, in_chans=1)\nm2 = timm.create_model(\n    \"resnet18\",\n    pretrained=True,\n    act_layer=Mish,\n    global_pool=\"\",\n    num_classes=0,\n    in_chans=1,\n)\ntst = TimmCnnBody(\n    model_name=\"resnet18\", cut=-2, act_layer=\"Mish\", pretrained=True, in_chans=1\n)\n\n\nwith torch.no_grad():\n    i = torch.randn(2, 1, 299, 299)\n    o1 = m1.forward_features(i)\n    o2 = m2(i)\n    o3 = tst(i)\n\ntest_eq(o1, o3)\ntest_eq(o2, o3)";
+                var nbb_cell_id = 19;
+                var nbb_unformatted_code = "m1 = timm.create_model(\"resnet18\", pretrained=True, act_layer=Mish, in_chans=1)\nm2 = timm.create_model(\n    \"resnet18\",\n    pretrained=True,\n    act_layer=Mish,\n    global_pool=\"\",\n    num_classes=0,\n    in_chans=1,\n)\ntst = TimmBackBoneBase(model_name=\"resnet18\", cut=-2, act_layer=\"Mish\", pretrained=True, in_chans=1)\n\nwith torch.no_grad():\n    i = torch.randn(2, 1, 299, 299)\n    o1 = m1.forward_features(i)\n    o2 = m2(i)\n    o3 = tst(i)\n\ntest_eq(o1, o3)\ntest_eq(o2, o3)";
+                var nbb_formatted_code = "m1 = timm.create_model(\"resnet18\", pretrained=True, act_layer=Mish, in_chans=1)\nm2 = timm.create_model(\n    \"resnet18\",\n    pretrained=True,\n    act_layer=Mish,\n    global_pool=\"\",\n    num_classes=0,\n    in_chans=1,\n)\ntst = TimmBackBoneBase(\n    model_name=\"resnet18\", cut=-2, act_layer=\"Mish\", pretrained=True, in_chans=1\n)\n\nwith torch.no_grad():\n    i = torch.randn(2, 1, 299, 299)\n    o1 = m1.forward_features(i)\n    o2 = m2(i)\n    o3 = tst(i)\n\ntest_eq(o1, o3)\ntest_eq(o2, o3)";
                 var nbb_cells = Jupyter.notebook.get_cells();
                 for (var i = 0; i < nbb_cells.length; ++i) {
                     if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
@@ -633,13 +852,13 @@ var element = $('#80767b01-0b88-4e38-9e17-9be13ba49cce');
 
 
 
-<div id="d1706427-4420-4ff2-a4c8-840ba61f9954"></div>
+<div id="54bd6323-020c-4092-9e81-597ad9d2368f"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#d1706427-4420-4ff2-a4c8-840ba61f9954');
+var element = $('#54bd6323-020c-4092-9e81-597ad9d2368f');
 
             setTimeout(function() {
-                var nbb_cell_id = 17;
+                var nbb_cell_id = 20;
                 var nbb_unformatted_code = "# export\ndef _get_first_layer(m):\n    \"Access first layer of a model\"\n    c, p, n = m, None, None  # child, parent, name\n    for n in next(m.named_parameters())[0].split(\".\")[:-1]:\n        p, c = c, getattr(c, n)\n    return c, p, n";
                 var nbb_formatted_code = "# export\ndef _get_first_layer(m):\n    \"Access first layer of a model\"\n    c, p, n = m, None, None  # child, parent, name\n    for n in next(m.named_parameters())[0].split(\".\")[:-1]:\n        p, c = c, getattr(c, n)\n    return c, p, n";
                 var nbb_cells = Jupyter.notebook.get_cells();
@@ -676,13 +895,13 @@ var element = $('#d1706427-4420-4ff2-a4c8-840ba61f9954');
 
 
 
-<div id="0bfddf7b-86f8-4fc3-b733-c33fede86be7"></div>
+<div id="fc792654-9944-4134-ab82-841c816aec68"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#0bfddf7b-86f8-4fc3-b733-c33fede86be7');
+var element = $('#fc792654-9944-4134-ab82-841c816aec68');
 
             setTimeout(function() {
-                var nbb_cell_id = 18;
+                var nbb_cell_id = 22;
                 var nbb_unformatted_code = "# export\ndef _update_first_layer(model, n_in):\n    \"Change first layer based on number of input channels used for torchvisions.models\"\n    if n_in == 3:\n        return\n    first_layer, parent, name = _get_first_layer(model)\n    assert isinstance(\n        first_layer, nn.Conv2d\n    ), f\"Change of input channels only supported with Conv2d, found {first_layer.__class__.__name__}\"\n    assert (\n        getattr(first_layer, \"in_channels\") == 3\n    ), f'Unexpected number of input channels, found {getattr(first_layer, \"in_channels\")} while expecting 3'\n    params = {\n        attr: getattr(first_layer, attr)\n        for attr in \"out_channels kernel_size stride padding dilation groups padding_mode\".split()\n    }\n    params[\"bias\"] = getattr(first_layer, \"bias\") is not None\n    params[\"in_channels\"] = n_in\n    new_layer = nn.Conv2d(**params)\n    setattr(parent, name, new_layer)";
                 var nbb_formatted_code = "# export\ndef _update_first_layer(model, n_in):\n    \"Change first layer based on number of input channels used for torchvisions.models\"\n    if n_in == 3:\n        return\n    first_layer, parent, name = _get_first_layer(model)\n    assert isinstance(\n        first_layer, nn.Conv2d\n    ), f\"Change of input channels only supported with Conv2d, found {first_layer.__class__.__name__}\"\n    assert (\n        getattr(first_layer, \"in_channels\") == 3\n    ), f'Unexpected number of input channels, found {getattr(first_layer, \"in_channels\")} while expecting 3'\n    params = {\n        attr: getattr(first_layer, attr)\n        for attr in \"out_channels kernel_size stride padding dilation groups padding_mode\".split()\n    }\n    params[\"bias\"] = getattr(first_layer, \"bias\") is not None\n    params[\"in_channels\"] = n_in\n    new_layer = nn.Conv2d(**params)\n    setattr(parent, name, new_layer)";
                 var nbb_cells = Jupyter.notebook.get_cells();
@@ -718,7 +937,7 @@ var element = $('#0bfddf7b-86f8-4fc3-b733-c33fede86be7');
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="TorchvisionCnnBody" class="doc_header"><code>class</code> <code>TorchvisionCnnBody</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/classification/modelling/backbones.py#L104" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>TorchvisionCnnBody</code>(<strong><code>model_name</code></strong>:<code>str</code>, <strong><code>in_chans</code></strong>:<code>int</code>=<em><code>3</code></em>, <strong><code>pretrained</code></strong>:<code>bool</code>=<em><code>True</code></em>, <strong><code>cut</code></strong>=<em><code>None</code></em>) :: <code>Module</code></p>
+<h2 id="TorchvisionBackBoneBase" class="doc_header"><code>class</code> <code>TorchvisionBackBoneBase</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/classification/modelling/backbones.py#L105" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>TorchvisionBackBoneBase</code>(<strong><code>model_name</code></strong>:<code>str</code>, <strong><code>in_chans</code></strong>:<code>int</code>=<em><code>3</code></em>, <strong><code>pretrained</code></strong>:<code>bool</code>=<em><code>True</code></em>, <strong><code>cut</code></strong>=<em><code>None</code></em>) :: <code>Module</code></p>
 </blockquote>
 <p>default <code>nn.Module</code> to create a body for vision applications from <code>torchvision.models</code></p>
 
@@ -744,15 +963,15 @@ var element = $('#0bfddf7b-86f8-4fc3-b733-c33fede86be7');
 
 
 
-<div id="0bb4ab04-67b4-4874-81cd-ced9ca7fa7df"></div>
+<div id="b27800e7-9c8f-4ba4-aa87-af53ad626255"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#0bb4ab04-67b4-4874-81cd-ced9ca7fa7df');
+var element = $('#b27800e7-9c8f-4ba4-aa87-af53ad626255');
 
             setTimeout(function() {
-                var nbb_cell_id = 19;
-                var nbb_unformatted_code = "# export\nclass TorchvisionCnnBody(nn.Module):\n    \"default `nn.Module` to create a body for vision applications from `torchvision.models`\"\n\n    def __init__(\n        self, model_name: str, in_chans: int = 3, pretrained: bool = True, cut=None\n    ):\n        super(TorchvisionCnnBody, self).__init__()\n\n        module = importlib.import_module(f\"torchvision.models\")\n        model = getattr(module, model_name)(pretrained=pretrained)\n\n        # update the channnels of the first layer\n        _update_first_layer(model, n_in=in_chans)\n        self.net = create_body(model, cut)\n\n    def forward(self, xb):\n        return self.net(xb)\n\n    @classmethod\n    def from_config(cls, config: DictConfig):\n        \"create from a `Omegaconf/ Hydra` config\"\n        return cls(**config)";
-                var nbb_formatted_code = "# export\nclass TorchvisionCnnBody(nn.Module):\n    \"default `nn.Module` to create a body for vision applications from `torchvision.models`\"\n\n    def __init__(\n        self, model_name: str, in_chans: int = 3, pretrained: bool = True, cut=None\n    ):\n        super(TorchvisionCnnBody, self).__init__()\n\n        module = importlib.import_module(f\"torchvision.models\")\n        model = getattr(module, model_name)(pretrained=pretrained)\n\n        # update the channnels of the first layer\n        _update_first_layer(model, n_in=in_chans)\n        self.net = create_body(model, cut)\n\n    def forward(self, xb):\n        return self.net(xb)\n\n    @classmethod\n    def from_config(cls, config: DictConfig):\n        \"create from a `Omegaconf/ Hydra` config\"\n        return cls(**config)";
+                var nbb_cell_id = 23;
+                var nbb_unformatted_code = "# export\nclass TorchvisionBackBoneBase(nn.Module):\n    \"default `nn.Module` to create a body for vision applications from `torchvision.models`\"\n\n    def __init__(\n        self, model_name: str, in_chans: int = 3, pretrained: bool = True, cut=None\n    ):\n        super(TorchvisionBackBoneBase, self).__init__()\n\n        module = importlib.import_module(f\"torchvision.models\")\n        model = getattr(module, model_name)(pretrained=pretrained)\n\n        # update the channnels of the first layer\n        _update_first_layer(model, n_in=in_chans)\n        self.net = create_body(model, cut)\n\n    def forward(self, xb):\n        return self.net(xb)\n\n    @classmethod\n    def from_config(cls, config: DictConfig):\n        \"create from a `Omegaconf/ Hydra` config\"\n        return cls(**config)";
+                var nbb_formatted_code = "# export\nclass TorchvisionBackBoneBase(nn.Module):\n    \"default `nn.Module` to create a body for vision applications from `torchvision.models`\"\n\n    def __init__(\n        self, model_name: str, in_chans: int = 3, pretrained: bool = True, cut=None\n    ):\n        super(TorchvisionBackBoneBase, self).__init__()\n\n        module = importlib.import_module(f\"torchvision.models\")\n        model = getattr(module, model_name)(pretrained=pretrained)\n\n        # update the channnels of the first layer\n        _update_first_layer(model, n_in=in_chans)\n        self.net = create_body(model, cut)\n\n    def forward(self, xb):\n        return self.net(xb)\n\n    @classmethod\n    def from_config(cls, config: DictConfig):\n        \"create from a `Omegaconf/ Hydra` config\"\n        return cls(**config)";
                 var nbb_cells = Jupyter.notebook.get_cells();
                 for (var i = 0; i < nbb_cells.length; ++i) {
                     if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
@@ -777,7 +996,7 @@ var element = $('#0bb4ab04-67b4-4874-81cd-ced9ca7fa7df');
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="CNN_BODY_REGISTRY">CNN_BODY_REGISTRY<a class="anchor-link" href="#CNN_BODY_REGISTRY"> </a></h2><blockquote><p>Registery of <code>cnn_body</code> for Image Classification from <code>timm</code> &amp; <code>torchvision</code></p>
+<h2 id="CLASSIFICATION_BACKBONE_REGISTRY">CLASSIFICATION_BACKBONE_REGISTRY<a class="anchor-link" href="#CLASSIFICATION_BACKBONE_REGISTRY"> </a></h2><blockquote><p>Registery of <code>cnn_body</code> for Image Classification from <code>timm</code> &amp; <code>torchvision</code></p>
 </blockquote>
 
 </div>
@@ -795,75 +1014,15 @@ var element = $('#0bb4ab04-67b4-4874-81cd-ced9ca7fa7df');
 
 
 
-<div id="58752898-0f9b-49ac-88ec-2ba5d5703112"></div>
+<div id="b10d0e4f-253a-4a24-b5b8-7d58167e9c9f"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#58752898-0f9b-49ac-88ec-2ba5d5703112');
+var element = $('#b10d0e4f-253a-4a24-b5b8-7d58167e9c9f');
 
             setTimeout(function() {
-                var nbb_cell_id = 21;
-                var nbb_unformatted_code = "# export\nCNN_BODY_REGISTRY = Registry(\"CNN_Body\")\nCNN_BODY_REGISTRY.register(TimmCnnBody)\nCNN_BODY_REGISTRY.register(TorchvisionCnnBody)";
-                var nbb_formatted_code = "# export\nCNN_BODY_REGISTRY = Registry(\"CNN_Body\")\nCNN_BODY_REGISTRY.register(TimmCnnBody)\nCNN_BODY_REGISTRY.register(TorchvisionCnnBody)";
-                var nbb_cells = Jupyter.notebook.get_cells();
-                for (var i = 0; i < nbb_cells.length; ++i) {
-                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
-                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
-                             nbb_cells[i].set_text(nbb_formatted_code);
-                        }
-                        break;
-                    }
-                }
-            }, 500);
-            
-</script>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>Registry of CNN_Body:
-╒════════════════════╤═══════════════════════════════════════╕
-│ Names              │ Objects                               │
-╞════════════════════╪═══════════════════════════════════════╡
-│ TimmCnnBody        │ &lt;class &#39;__main__.TimmCnnBody&#39;&gt;        │
-├────────────────────┼───────────────────────────────────────┤
-│ TorchvisionCnnBody │ &lt;class &#39;__main__.TorchvisionCnnBody&#39;&gt; │
-╘════════════════════╧═══════════════════════════════════════╛</pre>
-</div>
-
-</div>
-
-<div class="output_area">
-
-
-
-
-<div id="3e411fa3-e11c-4ba7-9c1c-6c38e1369576"></div>
-<div class="output_subarea output_javascript ">
-<script type="text/javascript">
-var element = $('#3e411fa3-e11c-4ba7-9c1c-6c38e1369576');
-
-            setTimeout(function() {
-                var nbb_cell_id = 22;
-                var nbb_unformatted_code = "# hide-input\nCNN_BODY_REGISTRY";
-                var nbb_formatted_code = "# hide-input\nCNN_BODY_REGISTRY";
+                var nbb_cell_id = 27;
+                var nbb_unformatted_code = "# export\nCLASSIFICATION_BACKBONE_REGISTRY = Registry(\"Classification Backbones\")\n\nCLASSIFICATION_BACKBONE_REGISTRY.__doc__ = (\n    \"Registery of Backbones for Image Classification\"\n)\n\n\nCLASSIFICATION_BACKBONE_REGISTRY.register(TimmBackBoneBase)\nCLASSIFICATION_BACKBONE_REGISTRY.register(TorchvisionBackBoneBase)";
+                var nbb_formatted_code = "# export\nCLASSIFICATION_BACKBONE_REGISTRY = Registry(\"Classification Backbones\")\n\nCLASSIFICATION_BACKBONE_REGISTRY.__doc__ = (\n    \"Registery of Backbones for Image Classification\"\n)\n\n\nCLASSIFICATION_BACKBONE_REGISTRY.register(TimmBackBoneBase)\nCLASSIFICATION_BACKBONE_REGISTRY.register(TorchvisionBackBoneBase)";
                 var nbb_cells = Jupyter.notebook.get_cells();
                 for (var i = 0; i < nbb_cells.length; ++i) {
                     if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
@@ -897,9 +1056,104 @@ var element = $('#3e411fa3-e11c-4ba7-9c1c-6c38e1369576');
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="create_cnn_body" class="doc_header"><code>create_cnn_body</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/classification/modelling/backbones.py#L133" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>create_cnn_body</code>(<strong><code>cfg</code></strong>:<code>DictConfig</code>)</p>
+<h4 id="Classification Backbones" class="doc_header"><code>Classification Backbones</code><a href="" class="source_link" style="float:right">[source]</a></h4><p>Registery of Backbones for Image Classification</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">CLASSIFICATION_BACKBONE_REGISTRY</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+<details class="description">
+      <summary data-open="Hide Output" data-close="Show Output"></summary>
+        <summary></summary>
+        
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Registry of Classification Backbones:
+╒═════════════════════════╤════════════════════════════════════════════╕
+│ Names                   │ Objects                                    │
+╞═════════════════════════╪════════════════════════════════════════════╡
+│ TimmBackBoneBase        │ &lt;class &#39;__main__.TimmBackBoneBase&#39;&gt;        │
+├─────────────────────────┼────────────────────────────────────────────┤
+│ TorchvisionBackBoneBase │ &lt;class &#39;__main__.TorchvisionBackBoneBase&#39;&gt; │
+╘═════════════════════════╧════════════════════════════════════════════╛
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+
+
+
+<div id="c8351057-6b4f-42df-b7d2-5af7b9376a68"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#c8351057-6b4f-42df-b7d2-5af7b9376a68');
+
+            setTimeout(function() {
+                var nbb_cell_id = 28;
+                var nbb_unformatted_code = "# collapse-output\nprint(CLASSIFICATION_BACKBONE_REGISTRY)";
+                var nbb_formatted_code = "# collapse-output\nprint(CLASSIFICATION_BACKBONE_REGISTRY)";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            
+</script>
+</div>
+
+</div>
+
+</div>
+</div>
+
+    </details>
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="create_cnn_backbone" class="doc_header"><code>create_cnn_backbone</code><a href="https://github.com/benihime91/lightning_cv/tree/master/lightning_cv/classification/modelling/backbones.py#L140" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>create_cnn_backbone</code>(<strong><code>cfg</code></strong>:<code>DictConfig</code>)</p>
 </blockquote>
-<p>instante an obj from ModelBody registery using lightning_cv config</p>
+<p>instante an obj from ModelBody CLASSIFICATION_BACKBONE_REGISTRY using lightning_cv config</p>
 
 </div>
 
@@ -923,15 +1177,15 @@ var element = $('#3e411fa3-e11c-4ba7-9c1c-6c38e1369576');
 
 
 
-<div id="4082d431-1893-4870-ba9d-4595732f4e48"></div>
+<div id="59b1858d-2034-4887-b826-a9d8f31f4673"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#4082d431-1893-4870-ba9d-4595732f4e48');
+var element = $('#59b1858d-2034-4887-b826-a9d8f31f4673');
 
             setTimeout(function() {
-                var nbb_cell_id = 23;
-                var nbb_unformatted_code = "# export\ndef create_cnn_body(cfg: DictConfig) -> nn.Module:\n    \"instante an obj from ModelBody registery using lightning_cv config\"\n    body = CNN_BODY_REGISTRY.get(cfg.MODEL.BACKBONE.NAME)\n    body = body.from_config(cfg.MODEL.BACKBONE.ARGUMENTS)\n    return body";
-                var nbb_formatted_code = "# export\ndef create_cnn_body(cfg: DictConfig) -> nn.Module:\n    \"instante an obj from ModelBody registery using lightning_cv config\"\n    body = CNN_BODY_REGISTRY.get(cfg.MODEL.BACKBONE.NAME)\n    body = body.from_config(cfg.MODEL.BACKBONE.ARGUMENTS)\n    return body";
+                var nbb_cell_id = 36;
+                var nbb_unformatted_code = "# export\ndef create_cnn_backbone(cfg: DictConfig) -> nn.Module:\n    \"instante an obj from ModelBody CLASSIFICATION_BACKBONE_REGISTRY using lightning_cv config\"\n    backbone_cls = CLASSIFICATION_BACKBONE_REGISTRY.get(cfg.MODEL.BACKBONE.NAME)\n    backbone = backbone_cls.from_config(cfg.MODEL.BACKBONE.ARGUMENTS)\n    return backbone";
+                var nbb_formatted_code = "# export\ndef create_cnn_backbone(cfg: DictConfig) -> nn.Module:\n    \"instante an obj from ModelBody CLASSIFICATION_BACKBONE_REGISTRY using lightning_cv config\"\n    backbone_cls = CLASSIFICATION_BACKBONE_REGISTRY.get(cfg.MODEL.BACKBONE.NAME)\n    backbone = backbone_cls.from_config(cfg.MODEL.BACKBONE.ARGUMENTS)\n    return backbone";
                 var nbb_cells = Jupyter.notebook.get_cells();
                 for (var i = 0; i < nbb_cells.length; ++i) {
                     if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
@@ -972,8 +1226,9 @@ var element = $('#4082d431-1893-4870-ba9d-4595732f4e48');
 
 <span class="n">cfg</span> <span class="o">=</span> <span class="n">get_cfg</span><span class="p">()</span>
 
-<span class="n">cfg</span><span class="o">.</span><span class="n">MODEL</span><span class="o">.</span><span class="n">BACKBONE</span><span class="o">.</span><span class="n">NAME</span> <span class="o">=</span> <span class="s2">&quot;TimmCnnBody&quot;</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">MODEL</span><span class="o">.</span><span class="n">BACKBONE</span><span class="o">.</span><span class="n">NAME</span> <span class="o">=</span> <span class="s2">&quot;TimmBackBoneBase&quot;</span>
 <span class="n">cfg</span><span class="o">.</span><span class="n">MODEL</span><span class="o">.</span><span class="n">BACKBONE</span><span class="o">.</span><span class="n">ARGUMENTS</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;efficientnet_b0&quot;</span><span class="p">,</span> <span class="n">pretrained</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cut</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">in_chans</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
 <span class="nb">print</span><span class="p">(</span><span class="n">OmegaConf</span><span class="o">.</span><span class="n">to_yaml</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">MODEL</span><span class="o">.</span><span class="n">BACKBONE</span><span class="p">))</span>
 </pre></div>
 
@@ -987,7 +1242,7 @@ var element = $('#4082d431-1893-4870-ba9d-4595732f4e48');
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>NAME: TimmCnnBody
+<pre>NAME: TimmBackBoneBase
 ARGUMENTS:
   model_name: efficientnet_b0
   pretrained: true
@@ -1003,15 +1258,15 @@ ARGUMENTS:
 
 
 
-<div id="410081c5-4e0b-4489-978d-fc34c9c408ef"></div>
+<div id="4578de83-3e91-4e7a-992e-c528bd116da1"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#410081c5-4e0b-4489-978d-fc34c9c408ef');
+var element = $('#4578de83-3e91-4e7a-992e-c528bd116da1');
 
             setTimeout(function() {
-                var nbb_cell_id = 25;
-                var nbb_unformatted_code = "from lightning_cv.config import get_cfg\n\ncfg = get_cfg()\n\ncfg.MODEL.BACKBONE.NAME = \"TimmCnnBody\"\ncfg.MODEL.BACKBONE.ARGUMENTS = dict(model_name=\"efficientnet_b0\", pretrained=True, cut=None, in_chans=3)\nprint(OmegaConf.to_yaml(cfg.MODEL.BACKBONE))";
-                var nbb_formatted_code = "from lightning_cv.config import get_cfg\n\ncfg = get_cfg()\n\ncfg.MODEL.BACKBONE.NAME = \"TimmCnnBody\"\ncfg.MODEL.BACKBONE.ARGUMENTS = dict(\n    model_name=\"efficientnet_b0\", pretrained=True, cut=None, in_chans=3\n)\nprint(OmegaConf.to_yaml(cfg.MODEL.BACKBONE))";
+                var nbb_cell_id = 37;
+                var nbb_unformatted_code = "from lightning_cv.config import get_cfg\n\ncfg = get_cfg()\n\ncfg.MODEL.BACKBONE.NAME = \"TimmBackBoneBase\"\ncfg.MODEL.BACKBONE.ARGUMENTS = dict(\n    model_name=\"efficientnet_b0\", pretrained=True, cut=None, in_chans=3\n)\nprint(OmegaConf.to_yaml(cfg.MODEL.BACKBONE))";
+                var nbb_formatted_code = "from lightning_cv.config import get_cfg\n\ncfg = get_cfg()\n\ncfg.MODEL.BACKBONE.NAME = \"TimmBackBoneBase\"\ncfg.MODEL.BACKBONE.ARGUMENTS = dict(\n    model_name=\"efficientnet_b0\", pretrained=True, cut=None, in_chans=3\n)\nprint(OmegaConf.to_yaml(cfg.MODEL.BACKBONE))";
                 var nbb_cells = Jupyter.notebook.get_cells();
                 for (var i = 0; i < nbb_cells.length; ++i) {
                     if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
@@ -1048,10 +1303,8 @@ var element = $('#410081c5-4e0b-4489-978d-fc34c9c408ef');
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tst</span> <span class="o">=</span> <span class="n">create_cnn_body</span><span class="p">(</span><span class="n">cfg</span><span class="p">)</span>
-<span class="n">m1</span> <span class="o">=</span> <span class="n">timm</span><span class="o">.</span><span class="n">create_model</span><span class="p">(</span>
-    <span class="n">cfg</span><span class="o">.</span><span class="n">MODEL</span><span class="o">.</span><span class="n">BACKBONE</span><span class="o">.</span><span class="n">ARGUMENTS</span><span class="o">.</span><span class="n">model_name</span><span class="p">,</span> <span class="n">pretrained</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">act_layer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">in_chans</span><span class="o">=</span><span class="mi">3</span>
-<span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tst</span> <span class="o">=</span> <span class="n">create_cnn_backbone</span><span class="p">(</span><span class="n">cfg</span><span class="p">)</span>
+<span class="n">m1</span> <span class="o">=</span> <span class="n">timm</span><span class="o">.</span><span class="n">create_model</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">MODEL</span><span class="o">.</span><span class="n">BACKBONE</span><span class="o">.</span><span class="n">ARGUMENTS</span><span class="o">.</span><span class="n">model_name</span><span class="p">,</span> <span class="n">pretrained</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">act_layer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">in_chans</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 
 <span class="n">m2</span> <span class="o">=</span> <span class="n">timm</span><span class="o">.</span><span class="n">create_model</span><span class="p">(</span>
     <span class="n">cfg</span><span class="o">.</span><span class="n">MODEL</span><span class="o">.</span><span class="n">BACKBONE</span><span class="o">.</span><span class="n">ARGUMENTS</span><span class="o">.</span><span class="n">model_name</span><span class="p">,</span>
@@ -1085,15 +1338,15 @@ var element = $('#410081c5-4e0b-4489-978d-fc34c9c408ef');
 
 
 
-<div id="c57992b1-43d9-4ba3-8e99-a42cb13ba6fa"></div>
+<div id="1845743a-b785-48bb-bc9a-cb56b27270fb"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#c57992b1-43d9-4ba3-8e99-a42cb13ba6fa');
+var element = $('#1845743a-b785-48bb-bc9a-cb56b27270fb');
 
             setTimeout(function() {
-                var nbb_cell_id = 26;
-                var nbb_unformatted_code = "tst = create_cnn_body(cfg)\nm1 = timm.create_model(\n        cfg.MODEL.BACKBONE.ARGUMENTS.model_name, pretrained=True, act_layer=None, in_chans=3\n)\n\nm2 = timm.create_model(\n        cfg.MODEL.BACKBONE.ARGUMENTS.model_name,\n    pretrained=True,\n    act_layer=None,\n    global_pool=\"\",\n    num_classes=0,\n    in_chans=3,\n)\n\n\nwith torch.no_grad():\n    i = torch.randn(2, 3, 299, 299)\n    o1 = m1.forward_features(i)\n    o2 = m2(i)\n    o3 = tst(i)\n\ntest_eq(o1, o3)\ntest_eq(o2, o3)";
-                var nbb_formatted_code = "tst = create_cnn_body(cfg)\nm1 = timm.create_model(\n    cfg.MODEL.BACKBONE.ARGUMENTS.model_name, pretrained=True, act_layer=None, in_chans=3\n)\n\nm2 = timm.create_model(\n    cfg.MODEL.BACKBONE.ARGUMENTS.model_name,\n    pretrained=True,\n    act_layer=None,\n    global_pool=\"\",\n    num_classes=0,\n    in_chans=3,\n)\n\n\nwith torch.no_grad():\n    i = torch.randn(2, 3, 299, 299)\n    o1 = m1.forward_features(i)\n    o2 = m2(i)\n    o3 = tst(i)\n\ntest_eq(o1, o3)\ntest_eq(o2, o3)";
+                var nbb_cell_id = 38;
+                var nbb_unformatted_code = "tst = create_cnn_backbone(cfg)\nm1 = timm.create_model(\n    cfg.MODEL.BACKBONE.ARGUMENTS.model_name, pretrained=True, act_layer=None, in_chans=3\n)\n\nm2 = timm.create_model(\n    cfg.MODEL.BACKBONE.ARGUMENTS.model_name,\n    pretrained=True,\n    act_layer=None,\n    global_pool=\"\",\n    num_classes=0,\n    in_chans=3,\n)\n\n\nwith torch.no_grad():\n    i = torch.randn(2, 3, 299, 299)\n    o1 = m1.forward_features(i)\n    o2 = m2(i)\n    o3 = tst(i)\n\ntest_eq(o1, o3)\ntest_eq(o2, o3)";
+                var nbb_formatted_code = "tst = create_cnn_backbone(cfg)\nm1 = timm.create_model(\n    cfg.MODEL.BACKBONE.ARGUMENTS.model_name, pretrained=True, act_layer=None, in_chans=3\n)\n\nm2 = timm.create_model(\n    cfg.MODEL.BACKBONE.ARGUMENTS.model_name,\n    pretrained=True,\n    act_layer=None,\n    global_pool=\"\",\n    num_classes=0,\n    in_chans=3,\n)\n\n\nwith torch.no_grad():\n    i = torch.randn(2, 3, 299, 299)\n    o1 = m1.forward_features(i)\n    o2 = m2(i)\n    o3 = tst(i)\n\ntest_eq(o1, o3)\ntest_eq(o2, o3)";
                 var nbb_cells = Jupyter.notebook.get_cells();
                 for (var i = 0; i < nbb_cells.length; ++i) {
                     if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
@@ -1143,7 +1396,7 @@ var element = $('#c57992b1-43d9-4ba3-8e99-a42cb13ba6fa');
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>TimmCnnBody(
+<pre>TimmBackBoneBase(
   (net): Sequential(
     (0): Conv2d(3, 32, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
     (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
@@ -1416,15 +1669,15 @@ var element = $('#c57992b1-43d9-4ba3-8e99-a42cb13ba6fa');
 
 
 
-<div id="4f187f47-ffd3-4bf3-9c17-fb8dfd29a4e1"></div>
+<div id="31410745-c051-49ef-a079-1ccf58d7f8b6"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#4f187f47-ffd3-4bf3-9c17-fb8dfd29a4e1');
+var element = $('#31410745-c051-49ef-a079-1ccf58d7f8b6');
 
             setTimeout(function() {
-                var nbb_cell_id = 27;
-                var nbb_unformatted_code = "# collaspe-ouptut\nprint(tst)";
-                var nbb_formatted_code = "# collaspe-ouptut\nprint(tst)";
+                var nbb_cell_id = 39;
+                var nbb_unformatted_code = "# collapse-ouptut\nprint(tst)";
+                var nbb_formatted_code = "# collapse-ouptut\nprint(tst)";
                 var nbb_cells = Jupyter.notebook.get_cells();
                 for (var i = 0; i < nbb_cells.length; ++i) {
                     if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
@@ -1747,15 +2000,15 @@ var element = $('#4f187f47-ffd3-4bf3-9c17-fb8dfd29a4e1');
 
 
 
-<div id="9f101fca-0e51-44d6-9a38-e0dda71ebdd3"></div>
+<div id="ec06cb44-3f28-46b6-a472-763224942d02"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#9f101fca-0e51-44d6-9a38-e0dda71ebdd3');
+var element = $('#ec06cb44-3f28-46b6-a472-763224942d02');
 
             setTimeout(function() {
-                var nbb_cell_id = 28;
-                var nbb_unformatted_code = "# collaspe-ouput\nprint(m1)";
-                var nbb_formatted_code = "# collaspe-ouput\nprint(m1)";
+                var nbb_cell_id = 40;
+                var nbb_unformatted_code = "# collapse-ouput\nprint(m1)";
+                var nbb_formatted_code = "# collapse-ouput\nprint(m1)";
                 var nbb_cells = Jupyter.notebook.get_cells();
                 for (var i = 0; i < nbb_cells.length; ++i) {
                     if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
@@ -1780,7 +2033,7 @@ var element = $('#9f101fca-0e51-44d6-9a38-e0dda71ebdd3');
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Notice how the modified model created from <a href="/lightning_cv/classification.modelling.backbones.html#TimmCnnBody"><code>TimmCnnBody</code></a> does not have the layers from <code>m1</code> after <code>global_pool</code>. This is what we meant by cuting the model. We removed the layers from <code>tst</code> afer the <code>global_pool</code> layer.</p>
+<p>Notice how the modified model created from <code>TimmCnnBody</code> does not have the layers from <code>m1</code> after <code>global_pool</code>. This is what we meant by cuting the model. We removed the layers from <code>tst</code> afer the <code>global_pool</code> layer.</p>
 
 </div>
 </div>
@@ -1794,7 +2047,7 @@ var element = $('#9f101fca-0e51-44d6-9a38-e0dda71ebdd3');
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">cfg</span><span class="o">.</span><span class="n">MODEL</span><span class="o">.</span><span class="n">BACKBONE</span><span class="o">.</span><span class="n">ARGUMENTS</span><span class="o">.</span><span class="n">act_layer</span> <span class="o">=</span> <span class="s2">&quot;Mish&quot;</span>
 
-<span class="n">tst</span> <span class="o">=</span> <span class="n">create_cnn_body</span><span class="p">(</span><span class="n">cfg</span><span class="p">)</span>
+<span class="n">tst</span> <span class="o">=</span> <span class="n">create_cnn_backbone</span><span class="p">(</span><span class="n">cfg</span><span class="p">)</span>
 <span class="n">m1</span> <span class="o">=</span> <span class="n">timm</span><span class="o">.</span><span class="n">create_model</span><span class="p">(</span>
     <span class="n">cfg</span><span class="o">.</span><span class="n">MODEL</span><span class="o">.</span><span class="n">BACKBONE</span><span class="o">.</span><span class="n">ARGUMENTS</span><span class="o">.</span><span class="n">model_name</span><span class="p">,</span> <span class="n">pretrained</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">act_layer</span><span class="o">=</span><span class="n">Mish</span>
 <span class="p">)</span>
@@ -1829,339 +2082,15 @@ var element = $('#9f101fca-0e51-44d6-9a38-e0dda71ebdd3');
 
 
 
-<div id="0c2d49d0-ead4-40fa-9f86-9263f0b02980"></div>
+<div id="4b10d598-213a-48ba-980f-6a41c8ca4281"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#0c2d49d0-ead4-40fa-9f86-9263f0b02980');
+var element = $('#4b10d598-213a-48ba-980f-6a41c8ca4281');
 
             setTimeout(function() {
-                var nbb_cell_id = 29;
-                var nbb_unformatted_code = "# for a different activation\ncfg.MODEL.BACKBONE.ARGUMENTS.act_layer = \"Mish\"\n\ntst = create_cnn_body(cfg)\nm1 = timm.create_model(\n    cfg.MODEL.BACKBONE.ARGUMENTS.model_name, pretrained=True, act_layer=Mish\n)\nm2 = timm.create_model(\n    cfg.MODEL.BACKBONE.ARGUMENTS.model_name,\n    pretrained=True,\n    act_layer=Mish,\n    global_pool=\"\",\n    num_classes=0,\n)\n\n\nwith torch.no_grad():\n    i = torch.randn(2, 3, 299, 299)\n    o1 = m1.forward_features(i)\n    o2 = m2(i)\n    o3 = tst(i)\n\ntest_eq(o1, o3)\ntest_eq(o2, o3)";
-                var nbb_formatted_code = "# for a different activation\ncfg.MODEL.BACKBONE.ARGUMENTS.act_layer = \"Mish\"\n\ntst = create_cnn_body(cfg)\nm1 = timm.create_model(\n    cfg.MODEL.BACKBONE.ARGUMENTS.model_name, pretrained=True, act_layer=Mish\n)\nm2 = timm.create_model(\n    cfg.MODEL.BACKBONE.ARGUMENTS.model_name,\n    pretrained=True,\n    act_layer=Mish,\n    global_pool=\"\",\n    num_classes=0,\n)\n\n\nwith torch.no_grad():\n    i = torch.randn(2, 3, 299, 299)\n    o1 = m1.forward_features(i)\n    o2 = m2(i)\n    o3 = tst(i)\n\ntest_eq(o1, o3)\ntest_eq(o2, o3)";
-                var nbb_cells = Jupyter.notebook.get_cells();
-                for (var i = 0; i < nbb_cells.length; ++i) {
-                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
-                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
-                             nbb_cells[i].set_text(nbb_formatted_code);
-                        }
-                        break;
-                    }
-                }
-            }, 500);
-            
-</script>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">tst</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>TimmCnnBody(
-  (net): Sequential(
-    (0): Conv2d(3, 32, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
-    (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-    (2): Mish()
-    (3): Sequential(
-      (0): Sequential(
-        (0): DepthwiseSeparableConv(
-          (conv_dw): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (bn1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (act1): Mish()
-          (se): SqueezeExcite(
-            (conv_reduce): Conv2d(32, 8, kernel_size=(1, 1), stride=(1, 1))
-            (act1): Mish()
-            (conv_expand): Conv2d(8, 32, kernel_size=(1, 1), stride=(1, 1))
-          )
-          (conv_pw): Conv2d(32, 16, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (bn2): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (act2): Identity()
-        )
-      )
-      (1): Sequential(
-        (0): InvertedResidual(
-          (conv_pw): Conv2d(16, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (bn1): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (act1): Mish()
-          (conv_dw): Conv2d(96, 96, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), groups=96, bias=False)
-          (bn2): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (act2): Mish()
-          (se): SqueezeExcite(
-            (conv_reduce): Conv2d(96, 4, kernel_size=(1, 1), stride=(1, 1))
-            (act1): Mish()
-            (conv_expand): Conv2d(4, 96, kernel_size=(1, 1), stride=(1, 1))
-          )
-          (conv_pwl): Conv2d(96, 24, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (bn3): BatchNorm2d(24, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-        (1): InvertedResidual(
-          (conv_pw): Conv2d(24, 144, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (bn1): BatchNorm2d(144, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (act1): Mish()
-          (conv_dw): Conv2d(144, 144, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=144, bias=False)
-          (bn2): BatchNorm2d(144, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (act2): Mish()
-          (se): SqueezeExcite(
-            (conv_reduce): Conv2d(144, 6, kernel_size=(1, 1), stride=(1, 1))
-            (act1): Mish()
-            (conv_expand): Conv2d(6, 144, kernel_size=(1, 1), stride=(1, 1))
-          )
-          (conv_pwl): Conv2d(144, 24, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (bn3): BatchNorm2d(24, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-      )
-      (2): Sequential(
-        (0): InvertedResidual(
-          (conv_pw): Conv2d(24, 144, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (bn1): BatchNorm2d(144, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (act1): Mish()
-          (conv_dw): Conv2d(144, 144, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2), groups=144, bias=False)
-          (bn2): BatchNorm2d(144, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (act2): Mish()
-          (se): SqueezeExcite(
-            (conv_reduce): Conv2d(144, 6, kernel_size=(1, 1), stride=(1, 1))
-            (act1): Mish()
-            (conv_expand): Conv2d(6, 144, kernel_size=(1, 1), stride=(1, 1))
-          )
-          (conv_pwl): Conv2d(144, 40, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (bn3): BatchNorm2d(40, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-        (1): InvertedResidual(
-          (conv_pw): Conv2d(40, 240, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (bn1): BatchNorm2d(240, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (act1): Mish()
-          (conv_dw): Conv2d(240, 240, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=240, bias=False)
-          (bn2): BatchNorm2d(240, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (act2): Mish()
-          (se): SqueezeExcite(
-            (conv_reduce): Conv2d(240, 10, kernel_size=(1, 1), stride=(1, 1))
-            (act1): Mish()
-            (conv_expand): Conv2d(10, 240, kernel_size=(1, 1), stride=(1, 1))
-          )
-          (conv_pwl): Conv2d(240, 40, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (bn3): BatchNorm2d(40, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-      )
-      (3): Sequential(
-        (0): InvertedResidual(
-          (conv_pw): Conv2d(40, 240, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (bn1): BatchNorm2d(240, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (act1): Mish()
-          (conv_dw): Conv2d(240, 240, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), groups=240, bias=False)
-          (bn2): BatchNorm2d(240, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (act2): Mish()
-          (se): SqueezeExcite(
-            (conv_reduce): Conv2d(240, 10, kernel_size=(1, 1), stride=(1, 1))
-            (act1): Mish()
-            (conv_expand): Conv2d(10, 240, kernel_size=(1, 1), stride=(1, 1))
-          )
-          (conv_pwl): Conv2d(240, 80, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (bn3): BatchNorm2d(80, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-        (1): InvertedResidual(
-          (conv_pw): Conv2d(80, 480, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (bn1): BatchNorm2d(480, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (act1): Mish()
-          (conv_dw): Conv2d(480, 480, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=480, bias=False)
-          (bn2): BatchNorm2d(480, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (act2): Mish()
-          (se): SqueezeExcite(
-            (conv_reduce): Conv2d(480, 20, kernel_size=(1, 1), stride=(1, 1))
-            (act1): Mish()
-            (conv_expand): Conv2d(20, 480, kernel_size=(1, 1), stride=(1, 1))
-          )
-          (conv_pwl): Conv2d(480, 80, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (bn3): BatchNorm2d(80, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-        (2): InvertedResidual(
-          (conv_pw): Conv2d(80, 480, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (bn1): BatchNorm2d(480, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (act1): Mish()
-          (conv_dw): Conv2d(480, 480, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=480, bias=False)
-          (bn2): BatchNorm2d(480, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (act2): Mish()
-          (se): SqueezeExcite(
-            (conv_reduce): Conv2d(480, 20, kernel_size=(1, 1), stride=(1, 1))
-            (act1): Mish()
-            (conv_expand): Conv2d(20, 480, kernel_size=(1, 1), stride=(1, 1))
-          )
-          (conv_pwl): Conv2d(480, 80, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (bn3): BatchNorm2d(80, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-      )
-      (4): Sequential(
-        (0): InvertedResidual(
-          (conv_pw): Conv2d(80, 480, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (bn1): BatchNorm2d(480, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (act1): Mish()
-          (conv_dw): Conv2d(480, 480, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=480, bias=False)
-          (bn2): BatchNorm2d(480, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (act2): Mish()
-          (se): SqueezeExcite(
-            (conv_reduce): Conv2d(480, 20, kernel_size=(1, 1), stride=(1, 1))
-            (act1): Mish()
-            (conv_expand): Conv2d(20, 480, kernel_size=(1, 1), stride=(1, 1))
-          )
-          (conv_pwl): Conv2d(480, 112, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (bn3): BatchNorm2d(112, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-        (1): InvertedResidual(
-          (conv_pw): Conv2d(112, 672, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (bn1): BatchNorm2d(672, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (act1): Mish()
-          (conv_dw): Conv2d(672, 672, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=672, bias=False)
-          (bn2): BatchNorm2d(672, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (act2): Mish()
-          (se): SqueezeExcite(
-            (conv_reduce): Conv2d(672, 28, kernel_size=(1, 1), stride=(1, 1))
-            (act1): Mish()
-            (conv_expand): Conv2d(28, 672, kernel_size=(1, 1), stride=(1, 1))
-          )
-          (conv_pwl): Conv2d(672, 112, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (bn3): BatchNorm2d(112, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-        (2): InvertedResidual(
-          (conv_pw): Conv2d(112, 672, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (bn1): BatchNorm2d(672, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (act1): Mish()
-          (conv_dw): Conv2d(672, 672, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=672, bias=False)
-          (bn2): BatchNorm2d(672, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (act2): Mish()
-          (se): SqueezeExcite(
-            (conv_reduce): Conv2d(672, 28, kernel_size=(1, 1), stride=(1, 1))
-            (act1): Mish()
-            (conv_expand): Conv2d(28, 672, kernel_size=(1, 1), stride=(1, 1))
-          )
-          (conv_pwl): Conv2d(672, 112, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (bn3): BatchNorm2d(112, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-      )
-      (5): Sequential(
-        (0): InvertedResidual(
-          (conv_pw): Conv2d(112, 672, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (bn1): BatchNorm2d(672, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (act1): Mish()
-          (conv_dw): Conv2d(672, 672, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2), groups=672, bias=False)
-          (bn2): BatchNorm2d(672, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (act2): Mish()
-          (se): SqueezeExcite(
-            (conv_reduce): Conv2d(672, 28, kernel_size=(1, 1), stride=(1, 1))
-            (act1): Mish()
-            (conv_expand): Conv2d(28, 672, kernel_size=(1, 1), stride=(1, 1))
-          )
-          (conv_pwl): Conv2d(672, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (bn3): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-        (1): InvertedResidual(
-          (conv_pw): Conv2d(192, 1152, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (bn1): BatchNorm2d(1152, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (act1): Mish()
-          (conv_dw): Conv2d(1152, 1152, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=1152, bias=False)
-          (bn2): BatchNorm2d(1152, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (act2): Mish()
-          (se): SqueezeExcite(
-            (conv_reduce): Conv2d(1152, 48, kernel_size=(1, 1), stride=(1, 1))
-            (act1): Mish()
-            (conv_expand): Conv2d(48, 1152, kernel_size=(1, 1), stride=(1, 1))
-          )
-          (conv_pwl): Conv2d(1152, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (bn3): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-        (2): InvertedResidual(
-          (conv_pw): Conv2d(192, 1152, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (bn1): BatchNorm2d(1152, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (act1): Mish()
-          (conv_dw): Conv2d(1152, 1152, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=1152, bias=False)
-          (bn2): BatchNorm2d(1152, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (act2): Mish()
-          (se): SqueezeExcite(
-            (conv_reduce): Conv2d(1152, 48, kernel_size=(1, 1), stride=(1, 1))
-            (act1): Mish()
-            (conv_expand): Conv2d(48, 1152, kernel_size=(1, 1), stride=(1, 1))
-          )
-          (conv_pwl): Conv2d(1152, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (bn3): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-        (3): InvertedResidual(
-          (conv_pw): Conv2d(192, 1152, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (bn1): BatchNorm2d(1152, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (act1): Mish()
-          (conv_dw): Conv2d(1152, 1152, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=1152, bias=False)
-          (bn2): BatchNorm2d(1152, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (act2): Mish()
-          (se): SqueezeExcite(
-            (conv_reduce): Conv2d(1152, 48, kernel_size=(1, 1), stride=(1, 1))
-            (act1): Mish()
-            (conv_expand): Conv2d(48, 1152, kernel_size=(1, 1), stride=(1, 1))
-          )
-          (conv_pwl): Conv2d(1152, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (bn3): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-      )
-      (6): Sequential(
-        (0): InvertedResidual(
-          (conv_pw): Conv2d(192, 1152, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (bn1): BatchNorm2d(1152, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (act1): Mish()
-          (conv_dw): Conv2d(1152, 1152, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=1152, bias=False)
-          (bn2): BatchNorm2d(1152, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (act2): Mish()
-          (se): SqueezeExcite(
-            (conv_reduce): Conv2d(1152, 48, kernel_size=(1, 1), stride=(1, 1))
-            (act1): Mish()
-            (conv_expand): Conv2d(48, 1152, kernel_size=(1, 1), stride=(1, 1))
-          )
-          (conv_pwl): Conv2d(1152, 320, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (bn3): BatchNorm2d(320, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-      )
-    )
-    (4): Conv2d(320, 1280, kernel_size=(1, 1), stride=(1, 1), bias=False)
-    (5): BatchNorm2d(1280, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-    (6): Mish()
-  )
-)
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-
-
-
-<div id="285e8e28-b20c-4bf1-936a-f8a2c9a4426d"></div>
-<div class="output_subarea output_javascript ">
-<script type="text/javascript">
-var element = $('#285e8e28-b20c-4bf1-936a-f8a2c9a4426d');
-
-            setTimeout(function() {
-                var nbb_cell_id = 30;
-                var nbb_unformatted_code = "# collaspe-ouput\nprint(tst)";
-                var nbb_formatted_code = "# collaspe-ouput\nprint(tst)";
+                var nbb_cell_id = 41;
+                var nbb_unformatted_code = "# for a different activation\ncfg.MODEL.BACKBONE.ARGUMENTS.act_layer = \"Mish\"\n\ntst = create_cnn_backbone(cfg)\nm1 = timm.create_model(\n    cfg.MODEL.BACKBONE.ARGUMENTS.model_name, pretrained=True, act_layer=Mish\n)\nm2 = timm.create_model(\n    cfg.MODEL.BACKBONE.ARGUMENTS.model_name,\n    pretrained=True,\n    act_layer=Mish,\n    global_pool=\"\",\n    num_classes=0,\n)\n\n\nwith torch.no_grad():\n    i = torch.randn(2, 3, 299, 299)\n    o1 = m1.forward_features(i)\n    o2 = m2(i)\n    o3 = tst(i)\n\ntest_eq(o1, o3)\ntest_eq(o2, o3)";
+                var nbb_formatted_code = "# for a different activation\ncfg.MODEL.BACKBONE.ARGUMENTS.act_layer = \"Mish\"\n\ntst = create_cnn_backbone(cfg)\nm1 = timm.create_model(\n    cfg.MODEL.BACKBONE.ARGUMENTS.model_name, pretrained=True, act_layer=Mish\n)\nm2 = timm.create_model(\n    cfg.MODEL.BACKBONE.ARGUMENTS.model_name,\n    pretrained=True,\n    act_layer=Mish,\n    global_pool=\"\",\n    num_classes=0,\n)\n\n\nwith torch.no_grad():\n    i = torch.randn(2, 3, 299, 299)\n    o1 = m1.forward_features(i)\n    o2 = m2(i)\n    o3 = tst(i)\n\ntest_eq(o1, o3)\ntest_eq(o2, o3)";
                 var nbb_cells = Jupyter.notebook.get_cells();
                 for (var i = 0; i < nbb_cells.length; ++i) {
                     if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
@@ -2186,7 +2115,7 @@ var element = $('#285e8e28-b20c-4bf1-936a-f8a2c9a4426d');
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>For creating models from <code>Torchvision</code> we need to use the <a href="/lightning_cv/classification.modelling.backbones.html#TorchvisionCnnBody"><code>TorchvisionCnnBody</code></a> class. we will modify the config as given below. <code>model_name</code> and <code>pretrained</code> are arguments used for loadining <code>torchvision.models</code>.</p>
+<p>For creating models from <code>Torchvision</code> we need to use the <code>TorchvisionCnnBody</code> class. we will modify the config as given below. <code>model_name</code> and <code>pretrained</code> are arguments used for loadining <code>torchvision.models</code>.</p>
 
 </div>
 </div>
@@ -2199,8 +2128,10 @@ var element = $('#285e8e28-b20c-4bf1-936a-f8a2c9a4426d');
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># First we need to update the config</span>
-<span class="n">cfg</span><span class="o">.</span><span class="n">MODEL</span><span class="o">.</span><span class="n">BACKBONE</span><span class="o">.</span><span class="n">NAME</span> <span class="o">=</span> <span class="s2">&quot;TorchvisionCnnBody&quot;</span>
-<span class="n">cfg</span><span class="o">.</span><span class="n">MODEL</span><span class="o">.</span><span class="n">BACKBONE</span><span class="o">.</span><span class="n">ARGUMENTS</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;resnet18&quot;</span><span class="p">,</span> <span class="n">pretrained</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">in_chans</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">cut</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">MODEL</span><span class="o">.</span><span class="n">BACKBONE</span><span class="o">.</span><span class="n">NAME</span> <span class="o">=</span> <span class="s2">&quot;TorchvisionBackBoneBase&quot;</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">MODEL</span><span class="o">.</span><span class="n">BACKBONE</span><span class="o">.</span><span class="n">ARGUMENTS</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+    <span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;resnet18&quot;</span><span class="p">,</span> <span class="n">pretrained</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">in_chans</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">cut</span><span class="o">=</span><span class="kc">None</span>
+<span class="p">)</span>
 </pre></div>
 
     </div>
@@ -2215,15 +2146,15 @@ var element = $('#285e8e28-b20c-4bf1-936a-f8a2c9a4426d');
 
 
 
-<div id="44ffcb66-cf2a-4223-91cd-c0ceca42d3bc"></div>
+<div id="f1042bdd-dd93-42a1-963e-0fe63cd62005"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#44ffcb66-cf2a-4223-91cd-c0ceca42d3bc');
+var element = $('#f1042bdd-dd93-42a1-963e-0fe63cd62005');
 
             setTimeout(function() {
-                var nbb_cell_id = 31;
-                var nbb_unformatted_code = "# for a torchvision models\n\n# First we need to update the config\ncfg.MODEL.BACKBONE.NAME = \"TorchvisionCnnBody\"\ncfg.MODEL.BACKBONE.ARGUMENTS = dict(model_name=\"resnet18\", pretrained=True, in_chans=3, cut=None)";
-                var nbb_formatted_code = "# for a torchvision models\n\n# First we need to update the config\ncfg.MODEL.BACKBONE.NAME = \"TorchvisionCnnBody\"\ncfg.MODEL.BACKBONE.ARGUMENTS = dict(\n    model_name=\"resnet18\", pretrained=True, in_chans=3, cut=None\n)";
+                var nbb_cell_id = 45;
+                var nbb_unformatted_code = "# for a torchvision models\n# First we need to update the config\ncfg.MODEL.BACKBONE.NAME = \"TorchvisionBackBoneBase\"\ncfg.MODEL.BACKBONE.ARGUMENTS = dict(\n    model_name=\"resnet18\", pretrained=True, in_chans=3, cut=None\n)";
+                var nbb_formatted_code = "# for a torchvision models\n# First we need to update the config\ncfg.MODEL.BACKBONE.NAME = \"TorchvisionBackBoneBase\"\ncfg.MODEL.BACKBONE.ARGUMENTS = dict(\n    model_name=\"resnet18\", pretrained=True, in_chans=3, cut=None\n)";
                 var nbb_cells = Jupyter.notebook.get_cells();
                 for (var i = 0; i < nbb_cells.length; ++i) {
                     if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
@@ -2253,8 +2184,8 @@ var element = $('#44ffcb66-cf2a-4223-91cd-c0ceca42d3bc');
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tst</span> <span class="o">=</span> <span class="n">create_cnn_body</span><span class="p">(</span><span class="n">cfg</span><span class="p">)</span>
-<span class="n">m1</span> <span class="o">=</span> <span class="n">TorchvisionCnnBody</span><span class="p">(</span><span class="s2">&quot;resnet18&quot;</span><span class="p">,</span> <span class="n">pretrained</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">in_chans</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">cut</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tst</span> <span class="o">=</span> <span class="n">create_cnn_backbone</span><span class="p">(</span><span class="n">cfg</span><span class="p">)</span>
+<span class="n">m1</span> <span class="o">=</span> <span class="n">TorchvisionBackBoneBase</span><span class="p">(</span><span class="s2">&quot;resnet18&quot;</span><span class="p">,</span> <span class="n">pretrained</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">in_chans</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">cut</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 
 <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
     <span class="n">i</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">299</span><span class="p">,</span> <span class="mi">299</span><span class="p">)</span>
@@ -2276,15 +2207,15 @@ var element = $('#44ffcb66-cf2a-4223-91cd-c0ceca42d3bc');
 
 
 
-<div id="2666c984-4886-4ed2-800e-62cf4a145d84"></div>
+<div id="1de79eb7-f449-472e-8f4c-6b266470e0b6"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#2666c984-4886-4ed2-800e-62cf4a145d84');
+var element = $('#1de79eb7-f449-472e-8f4c-6b266470e0b6');
 
             setTimeout(function() {
-                var nbb_cell_id = 32;
-                var nbb_unformatted_code = "tst = create_cnn_body(cfg)\nm1 = TorchvisionCnnBody(\"resnet18\", pretrained=True, in_chans=3, cut=None)\n\nwith torch.no_grad():\n    i = torch.randn(2, 3, 299, 299)\n    o1 = m1(i)\n    o2 = tst(i)\n\ntest_eq(o1, o2)";
-                var nbb_formatted_code = "tst = create_cnn_body(cfg)\nm1 = TorchvisionCnnBody(\"resnet18\", pretrained=True, in_chans=3, cut=None)\n\nwith torch.no_grad():\n    i = torch.randn(2, 3, 299, 299)\n    o1 = m1(i)\n    o2 = tst(i)\n\ntest_eq(o1, o2)";
+                var nbb_cell_id = 47;
+                var nbb_unformatted_code = "tst = create_cnn_backbone(cfg)\nm1 = TorchvisionBackBoneBase(\"resnet18\", pretrained=True, in_chans=3, cut=None)\n\nwith torch.no_grad():\n    i = torch.randn(2, 3, 299, 299)\n    o1 = m1(i)\n    o2 = tst(i)\n\ntest_eq(o1, o2)";
+                var nbb_formatted_code = "tst = create_cnn_backbone(cfg)\nm1 = TorchvisionBackBoneBase(\"resnet18\", pretrained=True, in_chans=3, cut=None)\n\nwith torch.no_grad():\n    i = torch.randn(2, 3, 299, 299)\n    o1 = m1(i)\n    o2 = tst(i)\n\ntest_eq(o1, o2)";
                 var nbb_cells = Jupyter.notebook.get_cells();
                 for (var i = 0; i < nbb_cells.length; ++i) {
                     if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
@@ -2309,7 +2240,7 @@ var element = $('#2666c984-4886-4ed2-800e-62cf4a145d84');
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>{% include note.html content='For <a href="/lightning_cv/classification.modelling.backbones.html#create_cnn_body"><code>create_cnn_body</code></a> to work your <code>obj</code> must be registerd in the <a href="/lightning_cv/classification.modelling.backbones.html#CNN_BODY_REGISTRY"><code>CNN_BODY_REGISTRY</code></a> registery and the <code>obj</code> must have a <code>from_config</code> <code>classmethod</code>.' %}</p>
+<p>{% include note.html content='For <code>create_cnn_body</code> to work your <code>obj</code> must be registerd in the <a href="/lightning_cv/classification.modelling.backbones.html#CLASSIFICATION_BACKBONE_REGISTRY"><code>CLASSIFICATION_BACKBONE_REGISTRY</code></a> and the <code>obj</code> must have a <code>from_config</code> <code>classmethod</code>.' %}</p>
 
 </div>
 </div>
@@ -2328,10 +2259,10 @@ var element = $('#2666c984-4886-4ed2-800e-62cf4a145d84');
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nd">@CNN_BODY_REGISTRY</span><span class="o">.</span><span class="n">register</span><span class="p">()</span>
-<span class="k">class</span> <span class="nc">CustomBody</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nd">@CLASSIFICATION_BACKBONE_REGISTRY</span><span class="o">.</span><span class="n">register</span><span class="p">()</span>
+<span class="k">class</span> <span class="nc">MyCustomBackBone</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">CustomBody</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">MyCustomBackBone</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="n">model</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">googlenet</span><span class="p">(</span><span class="n">pretrained</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
         <span class="n">_update_first_layer</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">n_in</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">net</span> <span class="o">=</span> <span class="n">create_body</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
@@ -2344,11 +2275,11 @@ var element = $('#2666c984-4886-4ed2-800e-62cf4a145d84');
         <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="o">**</span><span class="n">cfg</span><span class="p">)</span>
 
 
-<span class="n">cfg</span> <span class="o">=</span> <span class="n">get_cfg</span><span class="p">(</span><span class="n">strict</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">cfg</span><span class="o">.</span><span class="n">MODEL</span><span class="o">.</span><span class="n">BACKBONE</span><span class="o">.</span><span class="n">NAME</span> <span class="o">=</span> <span class="s2">&quot;CustomBody&quot;</span>
+<span class="n">cfg</span> <span class="o">=</span> <span class="n">get_cfg</span><span class="p">()</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">MODEL</span><span class="o">.</span><span class="n">BACKBONE</span><span class="o">.</span><span class="n">NAME</span> <span class="o">=</span> <span class="s2">&quot;MyCustomBackBone&quot;</span>
 <span class="n">cfg</span><span class="o">.</span><span class="n">MODEL</span><span class="o">.</span><span class="n">BACKBONE</span><span class="o">.</span><span class="n">ARGUMENTS</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
 
-<span class="n">mb</span> <span class="o">=</span> <span class="n">create_cnn_body</span><span class="p">(</span><span class="n">cfg</span><span class="p">)</span>
+<span class="n">mb</span> <span class="o">=</span> <span class="n">create_cnn_backbone</span><span class="p">(</span><span class="n">cfg</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -2363,15 +2294,15 @@ var element = $('#2666c984-4886-4ed2-800e-62cf4a145d84');
 
 
 
-<div id="457c0281-66a7-4792-b542-45203a0d45c2"></div>
+<div id="4a95a13d-a322-4f5a-a10d-7f3dc474513e"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#457c0281-66a7-4792-b542-45203a0d45c2');
+var element = $('#4a95a13d-a322-4f5a-a10d-7f3dc474513e');
 
             setTimeout(function() {
-                var nbb_cell_id = 33;
-                var nbb_unformatted_code = "@CNN_BODY_REGISTRY.register()\nclass CustomBody(nn.Module):\n    def __init__(self):\n        super(CustomBody, self).__init__()\n        model = models.googlenet(pretrained=False)\n        _update_first_layer(model, n_in=3)\n        self.net = create_body(model)\n\n    def forward(self, xb):\n        return self.net(xb)\n\n    @classmethod\n    def from_config(cls, cfg: Dict):\n        return cls(**cfg)\n\n\ncfg = get_cfg(strict=False)\ncfg.MODEL.BACKBONE.NAME = \"CustomBody\"\ncfg.MODEL.BACKBONE.ARGUMENTS = dict()\n\nmb = create_cnn_body(cfg)";
-                var nbb_formatted_code = "@CNN_BODY_REGISTRY.register()\nclass CustomBody(nn.Module):\n    def __init__(self):\n        super(CustomBody, self).__init__()\n        model = models.googlenet(pretrained=False)\n        _update_first_layer(model, n_in=3)\n        self.net = create_body(model)\n\n    def forward(self, xb):\n        return self.net(xb)\n\n    @classmethod\n    def from_config(cls, cfg: Dict):\n        return cls(**cfg)\n\n\ncfg = get_cfg(strict=False)\ncfg.MODEL.BACKBONE.NAME = \"CustomBody\"\ncfg.MODEL.BACKBONE.ARGUMENTS = dict()\n\nmb = create_cnn_body(cfg)";
+                var nbb_cell_id = 50;
+                var nbb_unformatted_code = "@CLASSIFICATION_BACKBONE_REGISTRY.register()\nclass MyCustomBackBone(nn.Module):\n    def __init__(self):\n        super(MyCustomBackBone, self).__init__()\n        model = models.googlenet(pretrained=False)\n        _update_first_layer(model, n_in=3)\n        self.net = create_body(model)\n\n    def forward(self, xb):\n        return self.net(xb)\n\n    @classmethod\n    def from_config(cls, cfg: Dict):\n        return cls(**cfg)\n\n\ncfg = get_cfg()\ncfg.MODEL.BACKBONE.NAME = \"MyCustomBackBone\"\ncfg.MODEL.BACKBONE.ARGUMENTS = dict()\n\nmb = create_cnn_backbone(cfg)";
+                var nbb_formatted_code = "@CLASSIFICATION_BACKBONE_REGISTRY.register()\nclass MyCustomBackBone(nn.Module):\n    def __init__(self):\n        super(MyCustomBackBone, self).__init__()\n        model = models.googlenet(pretrained=False)\n        _update_first_layer(model, n_in=3)\n        self.net = create_body(model)\n\n    def forward(self, xb):\n        return self.net(xb)\n\n    @classmethod\n    def from_config(cls, cfg: Dict):\n        return cls(**cfg)\n\n\ncfg = get_cfg()\ncfg.MODEL.BACKBONE.NAME = \"MyCustomBackBone\"\ncfg.MODEL.BACKBONE.ARGUMENTS = dict()\n\nmb = create_cnn_backbone(cfg)";
                 var nbb_cells = Jupyter.notebook.get_cells();
                 for (var i = 0; i < nbb_cells.length; ++i) {
                     if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
@@ -2407,14 +2338,17 @@ var element = $('#457c0281-66a7-4792-b542-45203a0d45c2');
     </div>
 </div>
 </div>
-
+<details class="description">
+      <summary data-open="Hide Output" data-close="Show Output"></summary>
+        <summary></summary>
+        
 <div class="output_wrapper">
 <div class="output">
 
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>CustomBody(
+<pre>MyCustomBackBone(
   (net): Sequential(
     (0): BasicConv2d(
       (conv): Conv2d(3, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False)
@@ -2756,15 +2690,15 @@ var element = $('#457c0281-66a7-4792-b542-45203a0d45c2');
 
 
 
-<div id="3372909d-1efb-4773-bda6-e1c13ed2a3b3"></div>
+<div id="cddd0efa-435a-4d29-917d-dfc08da1e341"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#3372909d-1efb-4773-bda6-e1c13ed2a3b3');
+var element = $('#cddd0efa-435a-4d29-917d-dfc08da1e341');
 
             setTimeout(function() {
-                var nbb_cell_id = 34;
-                var nbb_unformatted_code = "# collaspe-output\nprint(mb)";
-                var nbb_formatted_code = "# collaspe-output\nprint(mb)";
+                var nbb_cell_id = 51;
+                var nbb_unformatted_code = "# collapse-output\nprint(mb)";
+                var nbb_formatted_code = "# collapse-output\nprint(mb)";
                 var nbb_cells = Jupyter.notebook.get_cells();
                 for (var i = 0; i < nbb_cells.length; ++i) {
                     if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
@@ -2784,6 +2718,7 @@ var element = $('#3372909d-1efb-4773-bda6-e1c13ed2a3b3');
 </div>
 </div>
 
+    </details>
 </div>
     {% endraw %}
 

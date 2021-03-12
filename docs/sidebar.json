@@ -10,6 +10,6 @@
     "Transforms for ImageClassification": "classification.data.transforms.html",
     "Datasets": "classification.data.datasets.html",
     "Model Body for Image Classification": "classification.modelling.backbones.html",
-    "Image Classification heads": "classification.modelling.classifiers.html"
+    "Image Classification Classifiers": "classification.modelling.classifiers.html"
   }
 }
