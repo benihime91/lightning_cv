@@ -5,9 +5,9 @@ __all__ = ['ImageNetConstants', 'CIFAR10Constants', 'ClassificationTransformCata
            'AugTransforms', 'TransformOutput', 'create_transform']
 
 # Cell
-from typing import *
-from abc import ABC, abstractmethod, abstractclassmethod
+import abc
 import math
+from typing import *
 
 import albumentations as A
 from albumentations.pytorch import ToTensorV2
@@ -34,7 +34,6 @@ from ...core import Registry, LOADER_REGISTERY
 class ImageNetConstants(NamedTuple):
     MEAN = IMAGENET_DEFAULT_MEAN
     STD = IMAGENET_DEFAULT_STD
-    CROP = DEFAULT_CROP_PCT
 
 
 class CIFAR10Constants(NamedTuple):
@@ -42,20 +41,20 @@ class CIFAR10Constants(NamedTuple):
     STD = [0.24703225141799082, 0.24348516474564, 0.26158783926049628]
 
 # Cell
-# hide
+# export
 ClassificationTransformCatalog = Registry("TRANSFORMS")
 ClassificationTransformCatalog.__doc__ = (
-    "Registery of ImageClassification Transformations"
+    "Registery of Transformations Used in Image Classification"
 )
 
 # Cell
 # hide
-class ImageClassificationTransforms(ABC):
+class ImageClassificationTransforms(abc.ABC):
     "Class representing a data transform abstraction."
     transforms = None
     __repr__ = basic_repr("transforms")
 
-    @abstractmethod
+    @abc.abstractmethod
     def __call__(self, **kwargs):
         """
         The interface `__call__` is used to transform the input data. It should contain
@@ -65,7 +64,7 @@ class ImageClassificationTransforms(ABC):
         """
         raise NotImplementedError
 
-    @abstractclassmethod
+    @abc.abstractclassmethod
     def from_config(cls, config: DictConfig):
         "Instantiate a cls from config"
         raise NotImplementedError
@@ -91,7 +90,7 @@ class TorchvisionTransform(ImageClassificationTransforms):
 # Cell
 @ClassificationTransformCatalog.register()
 class AlbumentationsTransform(ImageClassificationTransforms):
-    "base class for creating albumentations transforms"
+    "Base class for creating albumentations transforms"
 
     def __init__(self, transforms: List):
         self.transforms = A.Compose(transforms)
@@ -222,16 +221,16 @@ class AugTransforms(AlbumentationsTransform):
     Utility func to easily create a list of flip, affine, lighting, cutout transforms
     using Albumentations Library.
 
-    * `border_mode` and `interpolation` are OpenCV flag.
-    * `do_flip` and `flip_vert` applies Horizontal/ Vertical flips with a prob of 0.5
-    * `shift_limit`, `scale_limit`, `max_rotate` are parameters for `albumentations.ShiftScaleRotate`
-    * `max_lighting` parameter for `albumentations.HueSaturationValue`
-    * `p_shift`, `p_lighting`, `p_cutout` probablities for `ShiftScaleRotate`, `HueSaturationValue` & `CutOut`.
+    1. `border_mode` and `interpolation` are OpenCV flag.
+    2. `do_flip` and `flip_vert` applies Horizontal/ Vertical flips with a prob of 0.5
+    3. `shift_limit`, `scale_limit`, `max_rotate` are parameters for `albumentations.ShiftScaleRotate`
+    4. `max_lighting` parameter for `albumentations.HueSaturationValue`
+    5. `p_shift`, `p_lighting`, `p_cutout` probablities for `ShiftScaleRotate`, `HueSaturationValue` & `CutOut`.
     """
 
     def __init__(
         self,
-        img_size: int,
+        img_size: Union[int, List, Tuple],
         scale: Optional[Union[List, Tuple]] = None,
         ratio: Optional[Union[List, Tuple]] = None,
         interpolation: int = 1,
@@ -253,10 +252,18 @@ class AugTransforms(AlbumentationsTransform):
         scale = tuple(ifnone(scale, (0.08, 1.0)))
         # default imagenet ratio range
         ratio = tuple(ifnone(ratio, (3.0 / 4.0, 4.0 / 3.0)))
-
-        tfl = [
-            A.RandomResizedCrop(img_size, img_size, scale, ratio, interpolation, p=1.0)
-        ]
+        if isinstance(img_size, list) or isinstance(img_size, tuple):
+            tfl = [
+                A.RandomResizedCrop(
+                    img_size[0], img_size[1], scale, ratio, interpolation, p=1.0
+                )
+            ]
+        else:
+            tfl = [
+                A.RandomResizedCrop(
+                    img_size, img_size, scale, ratio, interpolation, p=1.0
+                )
+            ]
 
         if do_flip:
             tfl += [A.HorizontalFlip(p=0.5)]
@@ -297,12 +304,13 @@ class AugTransforms(AlbumentationsTransform):
 
 # Cell
 class TransformOutput(NamedTuple):
+    "stores the loader and transformations"
     LOADER: Callable = None
     TRANSFORMS: Callable = None
 
 # Cell
 def create_transform(cfg: DictConfig) -> Dict[str, TransformOutput]:
-    "Utility function to create Image Classification Transformations given `cfg.TRANSFORMS.{}`"
+    "Utility function to create Image Classification Transformations given `cfg.TRANSFORMS.{TRAIN/VALID}`"
 
     transform_cls = ClassificationTransformCatalog.get(cfg.NAME)
     transform_cls = transform_cls.from_config(cfg.ARGUMENTS)

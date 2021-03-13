@@ -162,6 +162,7 @@ class ImageCsvDataset(BaseClassificationDataset):
 
         if self.test:
             return aug_im
+
         if not self.test:
             label = self.df[self.label_col][index]
             label = torch.tensor(label, dtype=torch.long)
