@@ -7,9 +7,12 @@
     "Optimizers": "core.optim.html",
     "Learning Rate Schedules": "core.schedules.html",
     "Layers": "core.layers.html",
+    "Loss Functions": "core.losses.py.html",
     "Transforms for ImageClassification": "classification.data.transforms.html",
     "Datasets": "classification.data.datasets.html",
     "Model Body for Image Classification": "classification.modelling.backbones.html",
-    "Image Classification Classifiers": "classification.modelling.classifiers.html"
+    "Image Classification Classifiers": "classification.modelling.classifiers.html",
+    "MixUp and Friends": "classification.data.mixmethods.html",
+    "LightningModule for Image Classification": "classification.modelPL.html"
   }
 }

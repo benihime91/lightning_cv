@@ -28,6 +28,9 @@ entries:
       title: Layers
       url: core.layers.html
     - output: web,pdf
+      title: Loss Functions
+      url: core.losses.py.html
+    - output: web,pdf
       title: Transforms for ImageClassification
       url: classification.data.transforms.html
     - output: web,pdf
@@ -39,6 +42,12 @@ entries:
     - output: web,pdf
       title: Image Classification Classifiers
       url: classification.modelling.classifiers.html
+    - output: web,pdf
+      title: MixUp and Friends
+      url: classification.data.mixmethods.html
+    - output: web,pdf
+      title: LightningModule for Image Classification
+      url: classification.modelPL.html
     output: web
     title: lightning_cv
   output: web
