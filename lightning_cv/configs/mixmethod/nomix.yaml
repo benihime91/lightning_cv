@@ -1,0 +1,2 @@
+# @package MIXMETHOD
+_target_: lightning_cv.classification.data.mixmethods.NoMix

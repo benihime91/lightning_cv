@@ -1,0 +1,4 @@
+# @package MIXMETHOD
+_target_: lightning_cv.classification.data.mixmethods.Cutmix
+alpha: 1.0
+conf_prob: 1.0

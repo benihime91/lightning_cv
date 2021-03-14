@@ -3,10 +3,11 @@ SEED: 42
 
 # Default Hydra Configs
 defaults:
+  - transforms: GenericImageTransforms
+  - mixmethod: nomix
   - model: default
   - optimizer: Ranger
   - scheduler: FlatCos
-  - transforms: GenericImageTransforms
 
 DATASETS:
   TRAIN: " " # Name of registered train dataset
