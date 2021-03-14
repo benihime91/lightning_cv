@@ -1,10 +1,10 @@
 # @package OPTIMIZER
 NAME: SGDP
 ARGUMENTS:
-  lr: 1e-03
+  lr: ${SOLVER.BASE_LR}
   momentum: 0
   dampening: 0
-  weight_decay: 0
+  weight_decay: ${SOLVER.WEIGHT_DECAY}
   nesterov: false
   eps: 1e-08
   delta: 0.1

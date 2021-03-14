@@ -1,7 +1,7 @@
 # @package SCHEDULER
 NAME: OneCycleLR
 ARGUMENTS:
-  max_lr: 1e-03
+  max_lr: ${SOLVER.BASE_LR}
   epochs: null
   steps_per_epoch: null
   anneal_strategy: cos

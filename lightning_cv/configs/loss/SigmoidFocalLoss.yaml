@@ -1,0 +1,5 @@
+# @package LOSS
+_target_: lightning_cv.core.losses.SigmoidFocalLoss
+alpha: -1
+gamma: 2
+reduction: mean

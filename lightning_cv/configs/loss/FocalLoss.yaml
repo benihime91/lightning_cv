@@ -1,0 +1,6 @@
+# @package LOSS
+_target_: lightning_cv.core.losses.FocalLoss
+gamma: 2
+ignore_index: -100
+reduction: mean
+weight: null

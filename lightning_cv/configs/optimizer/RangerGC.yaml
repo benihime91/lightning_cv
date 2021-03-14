@@ -1,9 +1,10 @@
 # @package OPTIMIZER
 NAME: RangerGC
 ARGUMENTS:
+  lr: ${SOLVER.BASE_LR}
   eps: 1e-05
   N_sma_threshhold: 5
-  weight_decay: 0
+  weight_decay: ${SOLVER.WEIGHT_DECAY}
   k: 6
   alpha: 0.5
   use_gc: true

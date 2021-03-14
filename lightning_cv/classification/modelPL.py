@@ -40,7 +40,7 @@ class ClassificationModelPL(LightningModule):
         self._trainer = trainer
 
     @rank_zero_only
-    def _log_info(self, msg: str):
+    def do_log(self, msg: str):
         return self._logger.info(msg)
 
     def setup(self):

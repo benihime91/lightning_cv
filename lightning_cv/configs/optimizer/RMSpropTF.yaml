@@ -1,9 +1,9 @@
 # @package OPTIMIZER
 NAME: RMSpropTF
 ARGUMENTS:
-  lr: 1e-03
+  lr: ${SOLVER.BASE_LR}
   alpha: 0.9
-  weight_decay: 0
+  weight_decay: ${SOLVER.WEIGHT_DECAY}
   momentum: 0.0
   centered: false
   decoupled_decay: false

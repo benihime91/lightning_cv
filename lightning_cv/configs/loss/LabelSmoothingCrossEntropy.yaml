@@ -1,0 +1,5 @@
+# @package LOSS
+_target_: lightning_cv.core.losses.LabelSmoothingCrossEntropy
+eps: 0.1
+reduction: mean
+weight: null

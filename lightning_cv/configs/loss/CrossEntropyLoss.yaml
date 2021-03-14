@@ -1,0 +1,6 @@
+# @package LOSS
+_target_: torch.nn.modules.loss.CrossEntropyLoss
+size_average: None
+ignore_index: -100
+reduce: None
+reduction: mean

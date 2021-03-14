@@ -1,0 +1,126 @@
+# -----------------------------------------------------------------------------
+# Config definition for Image Classification Task
+# -----------------------------------------------------------------------------
+
+# ---------------------------------------------------------------------------- #
+# Misc options
+# ---------------------------------------------------------------------------- #
+# Set seed to positive to use a fixed seed. Note that a fixed seed increases
+# reproducibility but does not guarantee fully deterministic behavior.
+# Disabling all parallelism further increases reproducibility.
+SEED: 42
+# Benchmark different cudnn algorithms.
+# If input images have very different sizes, this option will have large overhead
+# for about 10k iterations. It usually hurts total time, but can benefit for certain models.
+# If input images have the same or similar sizes, benchmark is often helpful.
+CUDNN_BENCHMARK: false
+
+# -----------------------------------------------------------------------------
+# INPUT
+# -----------------------------------------------------------------------------
+INPUT:
+  # Size of the images during training
+  SIZE_TRAIN: 255
+  # Size of the images during validation
+  SIZE_VALID: 255
+  # Mean and STD for Normalization
+  MEAN_TRAIN:
+    - 0.485
+    - 0.456
+    - 0.406
+  STD_TRAIN:
+    - 0.229
+    - 0.224
+    - 0.225
+  MEAN_VALID:
+    - 0.485
+    - 0.456
+    - 0.406
+  STD_VALID:
+    - 0.229
+    - 0.224
+    - 0.225
+
+# -----------------------------------------------------------------------------
+# Dataset
+# -----------------------------------------------------------------------------
+DATASETS:
+  TRAIN: " "
+  # Dataset names for training. Must be registered in DatasetCatalog
+  VALID: " "
+  # Dataset names for validation. Must be registered in DatasetCatalog
+
+# -----------------------------------------------------------------------------
+# DataLoader
+# -----------------------------------------------------------------------------
+DATALOADER:
+  # Number of data loading threads
+  NUM_WORKERS: 4
+  # If True, Shuffles the instances in the Train Dataset
+  SHUFFLE_TRAIN: true
+  # Number of images per batch across all machines. This is also the number
+  # of training images per step (i.e. per iteration).
+  TRAIN_BATCH_SIZE: 32
+  # If True, Shuffles the instances in the Validation Dataset
+  SHUFFLE_VALID: true
+  # Number of images per batch across all machines. This is also the number
+  # of validation images per step (i.e. per iteration).
+  VALID_BATCH_SIZE: 32
+  # pin dataset to memory, Increases performace for CUDA enable GPUs
+  PIN_MEMORY: true
+
+# ---------------------------------------------------------------------------- #
+# Default HYDRA options
+# ---------------------------------------------------------------------------- #
+defaults:
+  # Default Image Transformations to use during Train/Validation
+  - transforms: GenericImageTransforms
+  # Default mix Augmentations to use during Training. Note : mix augments are active only
+  # during Training
+  # Options: cutmix, mixup, nomix
+  - mixmethod: nomix
+  - model: default
+  # Optimizer for Training. Must be register in OPTIM_REGISTERY.
+  # See lightning_cv/core/optim.py for Optimizer Options.
+  - optimizer: Ranger
+  # LR_SCHEDULER (Must be register in LR_SCHEDULER_REGISTERY)
+  # See for lightning_cv/core/schedules.py LR scheduler options
+  - scheduler: FlatCos
+  # Loss functions to use
+  - loss: CrossEntropyLoss
+
+# -----------------------------------------------------------------------------
+# Metrics
+# -----------------------------------------------------------------------------
+METRICS:
+  # List of the metrics used for Training. Metrics must be from pytorch_lightning.metrics
+  TRAIN:
+    - _target_: pytorch_lightning.metrics.classification.accuracy.Accuracy
+      threshold: 0.5
+      top_k: null
+  # List of the metrics used for Validation. Metrics must be from pytorch_lightning.metrics
+  VALID:
+    - _target_: pytorch_lightning.metrics.classification.accuracy.Accuracy
+      threshold: 0.5
+      top_k: null
+
+# ---------------------------------------------------------------------------- #
+# Specific Training Options : SOLVER
+# ---------------------------------------------------------------------------- #
+SOLVER:
+  # Base Learning Rate for the Optimizer
+  BASE_LR: 0.001
+  # Multiplier for Multiplying the Learning Rate of the BackBone
+  # when using Discriminative Lrs
+  LR_MULT: 0.01
+  # The weight decay that's applied to parameters of normalization layers
+  WEIGHT_DECAY: 0.0001
+  # Do not use weight decay to update the weights of the BACKBONE of the Model.
+  ZERO_WEIGHT_DECAY_BACKBONE: false
+  # Parameter Splitter. Splitters exist for two reasons
+  # 1. Determines which layers to freeze during transfer learning.
+  # 2. Determines where to apply which learning rate (if discriminative rates are used).
+  # By default the BACKBONE and CLASSIFIER are split up into 2 different param groups.
+  # Setting this to null will set the BACKBONE and the CLASSIFIER into same param group.
+  # Must be registered in SPLITTER_REGISTRY.
+  PARAM_SPLITTER: default_split
