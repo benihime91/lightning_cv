@@ -59,10 +59,10 @@ nb_path: "nbs/00_config.ipynb"
 
 
 
-<div id="fcca9b4c-2b51-4224-8777-99796e2737e5"></div>
+<div id="6228706d-ec23-4397-bae8-14f36bfe89fc"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#fcca9b4c-2b51-4224-8777-99796e2737e5');
+var element = $('#6228706d-ec23-4397-bae8-14f36bfe89fc');
 
             setTimeout(function() {
                 var nbb_cell_id = 5;
@@ -127,15 +127,15 @@ var element = $('#fcca9b4c-2b51-4224-8777-99796e2737e5');
 
 
 
-<div id="86ace699-47fd-48d1-8abb-8462a7f26d26"></div>
+<div id="d36b313d-e6be-4d5b-bf2c-898076a96fb8"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#86ace699-47fd-48d1-8abb-8462a7f26d26');
+var element = $('#d36b313d-e6be-4d5b-bf2c-898076a96fb8');
 
             setTimeout(function() {
                 var nbb_cell_id = 6;
-                var nbb_unformatted_code = "# export\n@delegates(compose)\ndef get_cfg(config_name=\"config\", strict=False, **kwargs) -> DictConfig:\n    \"Get a copy of the default config\"\n    with initialize_config_module(\"lightning_cv.configs\"):\n        cfg = compose(config_name=config_name, strict=False, **kwargs)\n    return cfg";
-                var nbb_formatted_code = "# export\n@delegates(compose)\ndef get_cfg(config_name=\"config\", strict=False, **kwargs) -> DictConfig:\n    \"Get a copy of the default config\"\n    with initialize_config_module(\"lightning_cv.configs\"):\n        cfg = compose(config_name=config_name, strict=False, **kwargs)\n    return cfg";
+                var nbb_unformatted_code = "# export\n@delegates(compose)\ndef get_cfg(config_name=\"classification\", strict=False, **kwargs) -> DictConfig:\n    \"Get a copy of the default config\"\n    with initialize_config_module(\"lightning_cv.configs\"):\n        cfg = compose(config_name=config_name, strict=False, **kwargs)\n    return cfg";
+                var nbb_formatted_code = "# export\n@delegates(compose)\ndef get_cfg(config_name=\"classification\", strict=False, **kwargs) -> DictConfig:\n    \"Get a copy of the default config\"\n    with initialize_config_module(\"lightning_cv.configs\"):\n        cfg = compose(config_name=config_name, strict=False, **kwargs)\n    return cfg";
                 var nbb_cells = Jupyter.notebook.get_cells();
                 for (var i = 0; i < nbb_cells.length; ++i) {
                     if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
@@ -166,30 +166,154 @@ var element = $('#86ace699-47fd-48d1-8abb-8462a7f26d26');
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">cfg</span> <span class="o">=</span> <span class="n">get_cfg</span><span class="p">()</span>
-<span class="c1"># print(OmegaConf.to_yaml(cfg))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">OmegaConf</span><span class="o">.</span><span class="n">to_yaml</span><span class="p">(</span><span class="n">cfg</span><span class="p">))</span>
 </pre></div>
 
     </div>
 </div>
 </div>
-
+<details class="description">
+      <summary data-open="Hide Output" data-close="Show Output"></summary>
+        <summary></summary>
+        
 <div class="output_wrapper">
 <div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>SEED: 42
+CUDNN_BENCHMARK: false
+INPUT:
+  SIZE_TRAIN: 255
+  SIZE_VALID: 255
+  MEAN_TRAIN:
+  - 0.485
+  - 0.456
+  - 0.406
+  STD_TRAIN:
+  - 0.229
+  - 0.224
+  - 0.225
+  MEAN_VALID:
+  - 0.485
+  - 0.456
+  - 0.406
+  STD_VALID:
+  - 0.229
+  - 0.224
+  - 0.225
+DATASETS:
+  TRAIN: &#39; &#39;
+  VALID: &#39; &#39;
+DATALOADER:
+  NUM_WORKERS: 4
+  SHUFFLE_TRAIN: true
+  TRAIN_BATCH_SIZE: 32
+  SHUFFLE_VALID: true
+  VALID_BATCH_SIZE: 32
+  PIN_MEMORY: true
+METRICS:
+  TRAIN:
+  - _target_: pytorch_lightning.metrics.classification.accuracy.Accuracy
+    threshold: 0.5
+    top_k: null
+  VALID:
+  - _target_: pytorch_lightning.metrics.classification.accuracy.Accuracy
+    threshold: 0.5
+    top_k: null
+SOLVER:
+  BASE_LR: 0.001
+  LR_MULT: 0.01
+  WEIGHT_DECAY: 0.0001
+  ZERO_WEIGHT_DECAY_BACKBONE: false
+  PARAM_SPLITTER: default_split
+TRANSFORMS:
+  TRAIN:
+    LOADER: pil_loader
+    NAME: GenericImageTransform
+    ARGUMENTS:
+      img_size: ${INPUT.SIZE_TRAIN}
+      interpolation: random
+      hflip: 0.5
+      vflip: 0.5
+      color_jitter: 0.4
+      re_prob: 0.5
+      re_mode: pixel
+      re_count: 1
+      mean: ${INPUT.MEAN_TRAIN}
+      std: ${INPUT.STD_TRAIN}
+  VALID:
+    LOADER: pil_loader
+    NAME: ImagenetNoAugmentTransform
+    ARGUMENTS:
+      img_size: ${INPUT.SIZE_VALID}
+      interpolation: bilinear
+      mean: ${INPUT.MEAN_VALID}
+      std: ${INPUT.STD_VALID}
+MIXMETHOD:
+  _target_: lightning_cv.classification.data.mixmethods.NoMix
+MODEL:
+  BACKBONE:
+    NAME: TimmBackBoneBase
+    ARGUMENTS:
+      model_name: efficientnet_b0
+      cut: null
+      act_layer: null
+      pretrained: true
+      drop_path_rate: 0.3
+  CLASSIFIER:
+    NAME: GeneralClassifier
+    ARGUMENTS:
+      num_features: ???
+      num_classes: ???
+      drop_rate: 0.25
+      pool_type: avg
+      use_conv: false
+OPTIMIZER:
+  NAME: Ranger
+  ARGUMENTS:
+    lr: ${SOLVER.BASE_LR}
+    betas:
+    - 0.95
+    - 0.999
+    eps: 1.0e-05
+    weight_decay: ${SOLVER.WEIGHT_DECAY}
+    k: 6
+    alpha: 0.5
+SCHEDULER:
+  NAME: FlatCos
+  ARGUMENTS:
+    pct_start: 0.72
+    max_iters: null
+  INTERVAL: step
+  FREQUENCY: 1
+  MONITOR: null
+LOSS:
+  _target_: torch.nn.modules.loss.CrossEntropyLoss
+  size_average: None
+  ignore_index: -100
+  reduce: None
+  reduction: mean
+
+</pre>
+</div>
+</div>
 
 <div class="output_area">
 
 
 
 
-<div id="1bfd9a68-7741-401e-b368-60a1f5d956ae"></div>
+<div id="36cd515e-15fa-4e6b-bd2e-fee8d5e9b304"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#1bfd9a68-7741-401e-b368-60a1f5d956ae');
+var element = $('#36cd515e-15fa-4e6b-bd2e-fee8d5e9b304');
 
             setTimeout(function() {
                 var nbb_cell_id = 7;
-                var nbb_unformatted_code = "cfg = get_cfg()\n# print(OmegaConf.to_yaml(cfg))";
-                var nbb_formatted_code = "cfg = get_cfg()\n# print(OmegaConf.to_yaml(cfg))";
+                var nbb_unformatted_code = "# collapse-output\ncfg = get_cfg()\nprint(OmegaConf.to_yaml(cfg))";
+                var nbb_formatted_code = "# collapse-output\ncfg = get_cfg()\nprint(OmegaConf.to_yaml(cfg))";
                 var nbb_cells = Jupyter.notebook.get_cells();
                 for (var i = 0; i < nbb_cells.length; ++i) {
                     if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
@@ -209,6 +333,7 @@ var element = $('#1bfd9a68-7741-401e-b368-60a1f5d956ae');
 </div>
 </div>
 
+    </details>
 </div>
     {% endraw %}
 
@@ -235,10 +360,10 @@ var element = $('#1bfd9a68-7741-401e-b368-60a1f5d956ae');
 
 
 
-<div id="1f96819c-8360-4a3e-8186-0caec567e69d"></div>
+<div id="0f40733f-eb65-4cb4-8c13-e6234772340f"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#1f96819c-8360-4a3e-8186-0caec567e69d');
+var element = $('#0f40733f-eb65-4cb4-8c13-e6234772340f');
 
             setTimeout(function() {
                 var nbb_cell_id = 8;
@@ -311,10 +436,10 @@ This is a hacky feature introduced for quick prototyping / research exploration.
 
 
 
-<div id="2b86f4a7-cee2-44dc-91ad-9409ba889f95"></div>
+<div id="3c3bd769-9368-45b5-9f95-e369363ba381"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#2b86f4a7-cee2-44dc-91ad-9409ba889f95');
+var element = $('#3c3bd769-9368-45b5-9f95-e369363ba381');
 
             setTimeout(function() {
                 var nbb_cell_id = 9;
@@ -379,80 +504,15 @@ var element = $('#2b86f4a7-cee2-44dc-91ad-9409ba889f95');
 
 
 
-<div id="2ac784fd-c622-4948-8b60-0b3dc548c768"></div>
+<div id="b0a2dc1e-4b6b-4cbe-89e0-11b71e56614d"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#2ac784fd-c622-4948-8b60-0b3dc548c768');
+var element = $('#b0a2dc1e-4b6b-4cbe-89e0-11b71e56614d');
 
             setTimeout(function() {
                 var nbb_cell_id = 10;
                 var nbb_unformatted_code = "# export\ndef get_class_path(cls):\n    \"utility for building the class path\"\n    return f\"{cls.__module__}.{cls.__name__}\"";
                 var nbb_formatted_code = "# export\ndef get_class_path(cls):\n    \"utility for building the class path\"\n    return f\"{cls.__module__}.{cls.__name__}\"";
-                var nbb_cells = Jupyter.notebook.get_cells();
-                for (var i = 0; i < nbb_cells.length; ++i) {
-                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
-                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
-                             nbb_cells[i].set_text(nbb_formatted_code);
-                        }
-                        break;
-                    }
-                }
-            }, 500);
-            
-</script>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">timm.data</span> <span class="kn">import</span> <span class="n">RandomResizedCropAndInterpolation</span>
-
-<span class="n">get_class_path</span><span class="p">(</span><span class="n">RandomResizedCropAndInterpolation</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>&#39;timm.data.transforms.RandomResizedCropAndInterpolation&#39;</pre>
-</div>
-
-</div>
-
-<div class="output_area">
-
-
-
-
-<div id="35315670-df28-4488-bb93-4af580f8d8b2"></div>
-<div class="output_subarea output_javascript ">
-<script type="text/javascript">
-var element = $('#35315670-df28-4488-bb93-4af580f8d8b2');
-
-            setTimeout(function() {
-                var nbb_cell_id = 11;
-                var nbb_unformatted_code = "from timm.data import RandomResizedCropAndInterpolation\n\nget_class_path(RandomResizedCropAndInterpolation)";
-                var nbb_formatted_code = "from timm.data import RandomResizedCropAndInterpolation\n\nget_class_path(RandomResizedCropAndInterpolation)";
                 var nbb_cells = Jupyter.notebook.get_cells();
                 for (var i = 0; i < nbb_cells.length; ++i) {
                     if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
