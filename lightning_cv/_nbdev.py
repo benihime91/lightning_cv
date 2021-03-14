@@ -106,7 +106,12 @@ index = {"get_cfg": "00_config.ipynb",
          "FastaiClassifier": "01d_classification.modelling.classifiers.ipynb",
          "CLASSIFICATION_CLASSIFIER_REGISTRY": "01d_classification.modelling.classifiers.ipynb",
          "CLASSIFICATION_CLASSIFIER_REGISTRY.__doc__": "01d_classification.modelling.classifiers.ipynb",
-         "create_classifier_head": "01d_classification.modelling.classifiers.ipynb"}
+         "create_classifier_head": "01d_classification.modelling.classifiers.ipynb",
+         "MixHandler": "01e_classification.data.mixmethods.ipynb",
+         "NoMix": "01e_classification.data.mixmethods.ipynb",
+         "Mixup": "01e_classification.data.mixmethods.ipynb",
+         "Cutmix": "01e_classification.data.mixmethods.ipynb",
+         "ClassificationModelPL": "01f_classification.modelPL.ipynb"}
 
 modules = ["config.py",
            "core/utils/common.py",
@@ -119,6 +124,7 @@ modules = ["config.py",
            "classification/data/datasets.py",
            "classification/modelling/backbones.py",
            "classification/modelling/classifiers.py",
+           "classification/data/mixmethods.py",
            "classification/modelPL.py"]
 
 doc_url = "https://benihime91.github.io/lightning_cv/"

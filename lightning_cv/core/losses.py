@@ -26,9 +26,9 @@ class LabelSmoothingCrossEntropy(nn.Module):
         super(LabelSmoothingCrossEntropy, self).__init__()
         store_attr("eps, reduction, weight")
 
-    def forward(self, output: Tensor, target: Tensor):
-        c = output.size()[1]
-        log_preds = F.log_softmax(output, dim=1)
+    def forward(self, input: Tensor, target: Tensor):
+        c = input.size()[1]
+        log_preds = F.log_softmax(input, dim=1)
         if self.reduction == "sum":
             loss = -log_preds.sum()
         else:
@@ -43,7 +43,7 @@ class LabelSmoothingCrossEntropy(nn.Module):
 # Cell
 class FocalLoss(nn.CrossEntropyLoss):
     """
-    Same as nn.CrossEntropyLoss but with focal paramter, gamma. Focal loss is introduced by Lin et al.
+    Same as `nn.CrossEntropyLoss` but with focal paramter, gamma. Focal loss is introduced by Lin et al.
     https://arxiv.org/pdf/1708.02002.pdf.
     """
 
@@ -54,8 +54,8 @@ class FocalLoss(nn.CrossEntropyLoss):
         self.reduce = kwargs.pop("reduction") if "reduction" in kwargs else "mean"
         super().__init__(*args, reduction="none", **kwargs)
 
-    def forward(self, output: Tensor, target: Tensor):
-        ce_loss = super().forward(output, target)
+    def forward(self, input: Tensor, target: Tensor):
+        ce_loss = super().forward(input, target)
         pt = torch.exp(-ce_loss)
         fl_loss = (1 - pt) ** self.gamma * ce_loss
         return (
@@ -79,11 +79,9 @@ class SigmoidFocalLoss(nn.Module):
         super(SigmoidFocalLoss, self).__init__()
         store_attr("alpha, gamma, reduction")
 
-    def forward(self, output: Tensor, target: Tensor):
-        target = maybe_convert_to_onehot(output, target)
-        loss = sigmoid_focal_loss(
-            output, target, self.gamma, self.alpha, self.reduction
-        )
+    def forward(self, input: Tensor, target: Tensor):
+        target = maybe_convert_to_onehot(input, target)
+        loss = sigmoid_focal_loss(input, target, self.gamma, self.alpha, self.reduction)
         return loss
 
 # Cell
@@ -211,9 +209,9 @@ class BiTemperedLogisticLoss(nn.Module):
         self.num_iters = num_iters
         self.reduction = reduction
 
-    def forward(self, output, target):
-        target = maybe_convert_to_onehot(output, target)
+    def forward(self, input: torch.Tensor, target: torch.Tensor):
+        target = maybe_convert_to_onehot(input, target)
         loss = bi_tempered_logistic_loss(
-            output, target, self.t1, self.t2, self.eps, self.num_iters, self.reduction
+            input, target, self.t1, self.t2, self.eps, self.num_iters, self.reduction
         )
         return loss

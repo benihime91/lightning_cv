@@ -11,3 +11,11 @@ defaults:
 DATASETS:
   TRAIN: " " # Name of registered train dataset
   VALID: " " # Name of the registered validation dataset
+
+DATALOADER:
+  NUM_WORKERS: 4
+  SHUFFLE_TRAIN: true
+  TRAIN_BATCH_SIZE: 32
+  SHUFFLE_VALID: true
+  VALID_BATCH_SIZE: 32
+  PIN_MEMORY: true
